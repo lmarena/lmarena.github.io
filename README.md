@@ -1,6 +1,6 @@
 # Chatbot Arena Blog
 
-For careful documentation of this tempalte, see [here](https://github.com/alshedivat/al-folio/tree/master).
+For careful documentation of this template, see [here](https://github.com/alshedivat/al-folio/tree/master).
 
 ## Dev workflow
 
