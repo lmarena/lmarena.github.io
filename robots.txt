@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://lmarena.ai/sitemap.xml
+Sitemap: https://chatbot-arena.github.io/sitemap.xml
