@@ -4,6 +4,7 @@ title: Introducing Hard Prompts Category in Chatbot Arena
 giscus_comments: true
 date: 2024-05-17
 featured: false
+thumbnail: assets/img/blog/category_hard/preview.png
 
 authors:
   - name: Tianle Li
