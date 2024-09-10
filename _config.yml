@@ -9,7 +9,7 @@ last_name: Arena
 email: lmarena.ai@gmail.com
 description: an open platform for human preference evaluations
 footer_text:
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: bear.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -541,10 +541,10 @@ third_party_libraries:
       js: "sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
       js_map: "sha256-UPgyn4YNsT0khkBK5553QwhnlbTlU0aa+igyc6qP1bE="
     url:
-      css: "https://cdn.jsdelivr.net/npm/mdbootstrap@{{version}}/css/mdb.min.css"
-      css_map: "https://cdn.jsdelivr.net/npm/mdbootstrap@{{version}}/css/mdb.min.css.map"
-      js: "https://cdn.jsdelivr.net/npm/mdbootstrap@{{version}}/js/mdb.min.js"
-      js_map: "https://cdn.jsdelivr.net/npm/mdbootstrap@{{version}}/js/mdb.min.js.map"
+      css: "https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
+      css_map: "https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css.map"
+      js: "https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
+      js_map: "https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js.map"
     version: "4.20.0"
   medium_zoom:
     integrity:
