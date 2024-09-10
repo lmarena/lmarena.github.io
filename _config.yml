@@ -4,11 +4,11 @@
 
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Chatbot
-middle_name: 
+middle_name:
 last_name: Arena
 email: lmarena.ai@gmail.com
 description: an open platform for human preference evaluations
-footer_text: 
+footer_text:
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: bear.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
