@@ -5,6 +5,7 @@ description: Disentangling style and substance in Chatbot Arena
 giscus_comments: true
 date: 2024-08-29
 featured: false
+thumbnail: assets/img/blog/style_control/logo.png
 
 authors:
   - name: Tianle Li*

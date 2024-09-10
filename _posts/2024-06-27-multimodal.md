@@ -4,6 +4,7 @@ title: The Multimodal Arena is Here!
 giscus_comments: true
 date: 2024-06-27
 featured: false
+thumbnail: assets/img/blog/vision_arena/llama_gallery.png
 
 authors:
   - name: Christopher Chou*
