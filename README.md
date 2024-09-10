@@ -25,6 +25,7 @@ This template was taken from [AI-Folio](https://github.com/alshedivat/al-folio).
 ## Commands
 
 Format the code
+
 ```
 npx prettier . --write
 ```
