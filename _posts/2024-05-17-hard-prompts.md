@@ -12,7 +12,7 @@ authors:
       name: UC Berkeley
   - name: Wei-Lin Chiang
     url: "https://infwinston.github.io/"
-  - name: Lisa Dunlap*
+  - name: Lisa Dunlap
     url: "https://www.lisabdunlap.com/"
 ---
 
