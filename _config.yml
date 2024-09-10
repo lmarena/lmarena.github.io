@@ -438,28 +438,28 @@ third_party_libraries:
       css: "sha256-uRX+PiRTR4ysKFRCykT8HLuRCub26LgXJZym3Yeom1c="
       js: "sha256-4rppopQE9POKfukn2kEvhJ9Um25Cf6+IDVkARD0xh78="
     url:
-      css: "https://cdn.jsdelivr.net/npm/bootstrap-table@{{version}}/dist/bootstrap-table.min.css"
-      js: "https://cdn.jsdelivr.net/npm/bootstrap-table@{{version}}/dist/bootstrap-table.min.js"
+      css: "https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.4/dist/bootstrap-table.min.css"
+      js: "https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.4/dist/bootstrap-table.min.js"
     version: "1.22.4"
   chartjs:
     integrity:
       js: "sha256-0q+JdOlScWOHcunpUk21uab1jW7C1deBQARHtKMcaB4="
     url:
-      js: "https://cdn.jsdelivr.net/npm/chart.js@{{version}}/dist/chart.umd.min.js"
+      js: "https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
     version: "4.4.1"
   d3:
     integrity:
       js: "sha256-1rA678n2xEx7x4cTZ5x4wpUCj6kUMZEZ5cxLSVSFWxw="
     url:
-      js: "https://cdn.jsdelivr.net/npm/d3@{{version}}/dist/d3.min.js"
+      js: "https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"
     version: "7.8.5"
   diff2html:
     integrity:
       css: "sha256-IMBK4VNZp0ivwefSn51bswdsrhk0HoMTLc2GqFHFBXg="
       js: "sha256-eU2TVHX633T1o/bTQp6iIJByYJEtZThhF9bKz/DcbbY="
     url:
-      css: "https://cdn.jsdelivr.net/npm/diff2html@{{version}}/bundles/css/diff2html.min.css"
-      js: "https://cdn.jsdelivr.net/npm/diff2html@{{version}}/bundles/js/diff2html-ui.min.js"
+      css: "https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/css/diff2html.min.css"
+      js: "https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/js/diff2html-ui.min.js"
     version: "3.4.47"
   echarts:
     integrity:
@@ -468,8 +468,8 @@ third_party_libraries:
         dark_theme: "sha256-sm6Ui9w41++ZCWmIWDLC18a6ki72FQpWDiYTDxEPXwU="
     url:
       js:
-        library: "https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/echarts.min.js"
-        dark_theme: "https://cdn.jsdelivr.net/npm/echarts@{{version}}/theme/dark-fresh-cut.js"
+        library: "https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"
+        dark_theme: "https://cdn.jsdelivr.net/npm/echarts@5.5.0/theme/dark-fresh-cut.js"
     version: "5.5.0"
   google_fonts:
     url:
@@ -481,8 +481,8 @@ third_party_libraries:
         dark: "sha256-nyCNAiECsdDHrr/s2OQsp5l9XeY2ZJ0rMepjCT2AkBk="
     url:
       css:
-        light: "https://cdn.jsdelivr.net/npm/highlight.js@{{version}}/styles/github.min.css"
-        dark: "https://cdn.jsdelivr.net/npm/highlight.js@{{version}}/styles/github-dark.min.css"
+        light: "https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css"
+        dark: "https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css"
     version: "11.9.0"
   imagesloaded:
     integrity:
@@ -496,9 +496,9 @@ third_party_libraries:
       js: "sha256-EXHg3x1K4oIWdyohPeKX2ZS++Wxt/FRPH7Nl01nat1o="
       map: "sha256-3wfqS2WU5kGA/ePcgFzJXl5oSN1QsgZI4/edprTgX8w="
     url:
-      css: "https://cdn.jsdelivr.net/npm/img-comparison-slider@{{version}}/dist/styles.min.css"
-      js: "https://cdn.jsdelivr.net/npm/img-comparison-slider@{{version}}/dist/index.min.js"
-      map: "https://cdn.jsdelivr.net/npm/img-comparison-slider@{{version}}/dist/index.js.map"
+      css: "https://cdn.jsdelivr.net/npm/img-comparison-slider@8.0.6/dist/styles.min.css"
+      js: "https://cdn.jsdelivr.net/npm/img-comparison-slider@8.0.6/dist/index.min.js"
+      map: "https://cdn.jsdelivr.net/npm/img-comparison-slider@8.0.6/dist/index.js.map"
     version: "8.0.6"
   jquery:
     integrity:
@@ -514,10 +514,10 @@ third_party_libraries:
     local:
       images: "images/"
     url:
-      css: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.min.css"
-      images: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/images/"
-      js: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.min.js"
-      js_map: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.js.map"
+      css: "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"
+      images: "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/"
+      js: "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"
+      js_map: "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js.map"
     version: "1.9.4"
   mathjax:
     integrity:
@@ -550,13 +550,13 @@ third_party_libraries:
     integrity:
       js: "sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc="
     url:
-      js: "https://cdn.jsdelivr.net/npm/medium-zoom@{{version}}/dist/medium-zoom.min.js"
+      js: "https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"
     version: "1.1.0"
   mermaid:
     integrity:
       js: "sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="
     url:
-      js: "https://cdn.jsdelivr.net/npm/mermaid@{{version}}/dist/mermaid.min.js"
+      js: "https://cdn.jsdelivr.net/npm/mermaid@10.7.0/dist/mermaid.min.js"
     version: "10.7.0"
   polyfill:
     url:
@@ -567,8 +567,8 @@ third_party_libraries:
       css: "sha256-VwMV//xgBPDyRFVSOshhRhzJRDyBmIACniLPpeXNUdc="
       js: "sha256-aVkDxqyzrB+ExUsOY9PdyelkDhn/DfrjWu08aVpqNlo="
     url:
-      css: "https://cdn.jsdelivr.net/npm/pseudocode@{{version}}/build/pseudocode.min.css"
-      js: "https://cdn.jsdelivr.net/npm/pseudocode@{{version}}/build/pseudocode.min.js"
+      css: "https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css"
+      js: "https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"
     version: "2.4.1"
   swiper:
     integrity:
@@ -576,39 +576,39 @@ third_party_libraries:
       js: "sha256-BPrwikijIybg9OQC5SYFFqhBjERYOn97tCureFgYH1E="
       map: "sha256-lbF5CsospW93otqvWOIbbhj80CjazrZXvamD7nC7TBI="
     url:
-      css: "https://cdn.jsdelivr.net/npm/swiper@{{version}}/swiper-bundle.min.css"
-      js: "https://cdn.jsdelivr.net/npm/swiper@{{version}}/swiper-element-bundle.min.js"
-      map: "https://cdn.jsdelivr.net/npm/swiper@{{version}}/swiper-element-bundle.min.js.map"
+      css: "https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css"
+      js: "https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-element-bundle.min.js"
+      map: "https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-element-bundle.min.js.map"
     version: "11.0.5"
   swiper-map:
     integrity:
       js: "sha256-hlZaH8ySXX97bZaetnrtYlKuhx3oEXFz/s2IXchu6vk="
     url:
-      js: "https://cdn.jsdelivr.net/npm/swiper@11.1.0/swiper-element-bundle.min.js.map"
+      js: "https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-element-bundle.min.js.map"
     version: "11.0.5"
   vega:
     integrity:
       js: "sha256-Yot/cfgMMMpFwkp/5azR20Tfkt24PFqQ6IQS+80HIZs="
       js_map: "sha256-z0x9ICA65dPkZ0JVa9wTImfF6n7AJsKc6WlFE96/wNA="
     url:
-      js: "https://cdn.jsdelivr.net/npm/vega@{{version}}/build/vega.min.js"
-      js_map: "https://cdn.jsdelivr.net/npm/vega@{{version}}/build/vega.min.js.map"
+      js: "https://cdn.jsdelivr.net/npm/vega@5.27.0/build/vega.min.js"
+      js_map: "https://cdn.jsdelivr.net/npm/vega@5.27.0/build/vega.min.js.map"
     version: "5.27.0"
   vega-embed:
     integrity:
       js: "sha256-FPCJ9JYCC9AZSpvC/t/wHBX7ybueZhIqOMjpWqfl3DU="
       js_map: "sha256-VBbfSEFYSMdX/rTdGrONEHNP6BprCB7H/LpMMNt/cPA="
     url:
-      js: "https://cdn.jsdelivr.net/npm/vega-embed@{{version}}/build/vega-embed.min.js"
-      js_map: "https://cdn.jsdelivr.net/npm/vega-embed@{{version}}/build/vega-embed.min.js.map"
+      js: "https://cdn.jsdelivr.net/npm/vega-embed@6.24.0/build/vega-embed.min.js"
+      js_map: "https://cdn.jsdelivr.net/npm/vega-embed@6.24.0/build/vega-embed.min.js.map"
     version: "6.24.0"
   vega-lite:
     integrity:
       js: "sha256-TvBvIS5jUN4BSy009usRjNzjI1qRrHPYv7xVLJyjUyw="
       js_map: "sha256-l2I4D5JC23Ulsu6e3sKVe5AJ+r+DFkzkKnZS8nUGz28="
     url:
-      js: "https://cdn.jsdelivr.net/npm/vega-lite@{{version}}/build/vega-lite.min.js"
-      js_map: "https://cdn.jsdelivr.net/npm/vega-lite@{{version}}/build/vega-lite.min.js.map"
+      js: "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3/build/vega-lite.min.js"
+      js_map: "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3/build/vega-lite.min.js.map"
     version: "5.16.3"
 
 # -----------------------------------------------------------------------------
