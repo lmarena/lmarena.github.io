@@ -103,13 +103,7 @@ pagination:
 
   <ul class="post-list">
 
-    {% if page.pagination.enabled %}
-      {% assign postlist = paginator.posts %}
-    {% else %}
-      {% assign postlist = site.posts %}
-    {% endif %}
-
-    {% for post in postlist %}
+    {% for post in site.posts %}
 
     {% if post.external_source == blank %}
       {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
@@ -183,11 +177,11 @@ pagination:
   </div>
 </div>
 {% endif %}
-    </li>
+</li>
 
-    {% endfor %}
+{% endfor %}
 
-  </ul>
+</ul>
 
 {% if page.pagination.enabled %}
 {% include pagination.liquid %}
