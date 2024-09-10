@@ -21,14 +21,6 @@ social: true # includes social icons at the bottom of the page
 
 Chatbot Arena is an open-source research project developed by members from LMSYS and UC Berkeley SkyLab. Our mission is to build an open platform to evaluate LLMs by human preference in the real-world. We open-source our FastChat project at GitHub and release chat and human feedback dataset. We invite everyone to join us!
 
-Open-source contributors: Wei-Lin Chiang, Lianmin Zheng, Ying Sheng, Lisa Dunlap, Anastasios Angelopoulos, Christopher Chou, Tianle Li, Siyuan Zhuang
-
-Advisors: Ion Stoica, Joseph E. Gonzalez, Hao Zhang, Trevor Darrell
-
-Learn more:
-Chatbot Arena paper, launch blog, dataset, policy
-LMSYS-Chat-1M dataset paper, LLM Judge paper
-
 Contact Us:
 Follow our X, Discord or email us at lmsys.org@gmail.com
 File issues on GitHub
