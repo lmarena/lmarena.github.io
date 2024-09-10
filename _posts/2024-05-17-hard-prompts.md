@@ -20,7 +20,6 @@ authors:
 
 Introducing **Hard Prompts**, a new and challenging category in the Chatbot Arena [Leaderboard](https://leaderboard.lmsys.org).
 
-
 Over the past few months, the community has shown a growing interest in more challenging prompts that push the limits of current language models.
 To meet this demand, we are excited to introduce the **Hard Prompts** category. This category features user-submitted prompts from the Arena that are specifically designed to be more complex, demanding, and rigorous. Carefully curated, these prompts test the capabilities of the latest language models, providing valuable insights into their strengths and weaknesses in tackling challenging tasks. We believe this new category will offer insights into the models' performance on more difficult tasks.
 
@@ -31,13 +30,14 @@ To evaluate the difficulty of a prompt, we define several hardness criteria, suc
 In Figure 1, we present the ranking shift from English to Hard Prompts (English). We observe that **Llama-3-8B-Instruct**, which performs comparably to **GPT-4-0314** on the English leaderboard, drops significantly in ranking. This suggests that the model may struggle with the increased complexity and difficulty of the prompts in this new category. We also observe **Claude-3-Opus** surpasses **Llama-3-70B-Instruct**, and **GPT-4o** shows slight improvement.
 
 <img src="/assets/img/blog/category_hard/elo_comparison_1.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 85%"></img>
+
 <p style="color:gray; text-align: center;">Figure 1. Comparison between Chatbot Arena Category English vs Hard Prompts (English). We set gpt-4-0314 as anchor model.</p>
 
-We also observe notable improvements in **GPT-3.5-Turbo-1106/0125** and **Claude-2.1**, as well as **Phi-3**, which is trained for reasoning tasks. 
+We also observe notable improvements in **GPT-3.5-Turbo-1106/0125** and **Claude-2.1**, as well as **Phi-3**, which is trained for reasoning tasks.
 
 <img src="/assets/img/blog/category_hard/elo_comparison_2.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 85%"></img>
-<p style="color:gray; text-align: center;">Figure 2. Comparison between Chatbot Arena Category English vs Hard Prompts (English). We set mixtral-8x7b-instruct-v0.1 as anchor model.</p>
 
+<p style="color:gray; text-align: center;">Figure 2. Comparison between Chatbot Arena Category English vs Hard Prompts (English). We set mixtral-8x7b-instruct-v0.1 as anchor model.</p>
 
 ### How to Define Hard Prompts?
 
@@ -73,21 +73,22 @@ A few weeks ago, we introduce the [Arena-Hard](https://lmsys.org/blog/2024-04-19
 We employ Meta's **Llama-3-70B-Instruct** to help us label over 1 million Arena prompts on whether certain critieria are met. Note that we do not use LLM as judges to evalute model answers. We use the preference votes casted by Arena users to rank models. Figure 3 shows the criteria breakdown (i.e., how many prompts satisfy each criteria). We observe the most common criteria are Specificity, Domain Knowledge, and Real-world Application, while the relatively rare criteria are Problem-Solving and Complexity.
 
 <img src="/assets/img/blog/category_hard/key_criteria_breakdown.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 85%"></img>
+
 <p style="color:gray; text-align: center;">Figure 3. The percentage of each criteria within 1 million Chatbot Arena data.</p>
 
 We then calculate its Hardness Score by how many criteria are satisfied and present the distribution in Figure 3. Interestingly, we find that approximately 20% of prompts have a score of 6 or higher. You can find several examples below to demonstrate what a hard prompt looks like in the [Example Section](#example).
 
 <img src="/assets/img/blog/category_hard/hardness_breakdown.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 85%"></img>
-<p style="color:gray; text-align: center;">Figure 4. The percentage of prompts with different hardness score within 1 million Chatbot Arena data.</p>
 
+<p style="color:gray; text-align: center;">Figure 4. The percentage of prompts with different hardness score within 1 million Chatbot Arena data.</p>
 
 We use prompts with a score of 6 or higher to create the "Hard Prompts" category and calculate two leaderboards: **Hard Prompt (English)** and **Hard Prompts (Overall)**.
 
 Below is screenshot of the leaderboard for **Hard Prompts (English)** category (as of May 17, 2024). You can find the latest version at [https://leaderboard.lmsys.org](https://leaderboard.lmsys.org) (-> Category dropdown).
 
 <img src="/assets/img/blog/category_hard/leaderboard.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 95%"></img>
-<p style="color:gray; text-align: center;">Figure 5. The leaderboard for Hard Prompts (English) category as of May 17, 2024.</p>
 
+<p style="color:gray; text-align: center;">Figure 5. The leaderboard for Hard Prompts (English) category as of May 17, 2024.</p>
 
 We are commited to continuously enhance the Chatbot Arena leaderboard and share insights with the broader community. We welcome you to contribute more challenging prompts and look forward to seeing how the latest advancements in language models perform!
 
@@ -98,9 +99,10 @@ To improve the overall quality of prompts in Chatbot Arena, we also implement a 
 We have also open-sourced this de-duplication script on [Github](https://github.com/lm-sys/FastChat/tree/main/fastchat/serve/monitor) and publish the vote data with de-duplication tags in the [notebook](https://colab.research.google.com/drive/1KdwokPjirkTmpO_P1WByFNFiqxWQquwH#scrollTo=CP35mjnHfpfN). We will continue to monitor the impact of this de-duplication process on the leaderboard and make adjustments as necessary to ensure the diversity and quality of our dataset.
 
 ## Citation
+
 ```
 @misc{li2024crowdsourced,
-      title={From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline}, 
+      title={From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline},
       author={Tianle Li and Wei-Lin Chiang and Evan Frick and Lisa Dunlap and Tianhao Wu and Banghua Zhu and Joseph E. Gonzalez and Ion Stoica},
       year={2024},
       eprint={2406.11939},
@@ -127,6 +129,7 @@ We have also open-sourced this de-duplication script on [Github](https://github.
 ```
 
 ## Example
+
 We present 10 examples of user prompt with increasing hardness score. The labeled criteria are inside the bracket.
 
 **Prompt 1:**
@@ -135,13 +138,11 @@ We present 10 examples of user prompt with increasing hardness score. The labele
 
 hello
 
-
 **Prompt 2:**
 
 [Real World]
 
 what is cake
-
 
 **Prompt 3:**
 
@@ -149,41 +150,35 @@ what is cake
 
 How to pickup a girl?
 
-
 **Prompt 4:**
 
 [Specificity, Creativity, Real World]
 
 writen ten different sentences that end with word "apple"
 
-
 **Prompt 5:**
 
 [Specificity, Creativity, Real World]
 
-Writing prompt: write the start of a short story / a man with an iphone is transported back to 1930s USA. 
+Writing prompt: write the start of a short story / a man with an iphone is transported back to 1930s USA.
 
-
-**Prompt 6:** 
+**Prompt 6:**
 
 [Specificity, Domain Knowledge, Complexity, Problem-solving, Technical Accuracy, Real World]
 
 tell me how to make a hydroponic nutrient solution at home to grow lettuce with precise amount of each nutrient
 
-
-**Prompt 7:** 
-
-[Specificity, Domain Knowledge, Complexity, Problem-solving, Technical Accuracy, Real World]
-
-Solve the integral $\int_{-\infty}^{+\infty} exp(-x^2) dx $ step-by-step with detailed explanation
-
-
-**Prompt 8:** 
+**Prompt 7:**
 
 [Specificity, Domain Knowledge, Complexity, Problem-solving, Technical Accuracy, Real World]
 
-write me GLSL code which can gennrate at least 5 colors and 2 waves of particles cross each other	
+Solve the integral $\int\_{-\infty}^{+\infty} exp(-x^2) dx $ step-by-step with detailed explanation
 
+**Prompt 8:**
+
+[Specificity, Domain Knowledge, Complexity, Problem-solving, Technical Accuracy, Real World]
+
+write me GLSL code which can gennrate at least 5 colors and 2 waves of particles cross each other
 
 **Prompt 9:**
 
@@ -205,8 +200,7 @@ Question: Is this possible? Could it be a robust solution that works the way I h
 
 I have come across a few different guides in my DuckDuckGo-ing, I understand it has to do with setting a mark in iptables and assigning them to a table using ip route. However I haven't managed to get it to work yet, and many of these guides are for VPNs and they all seem to be slightly different to each other. So I thought I would ask about my own specific use case
 
-
-**Prompt 10:** 
+**Prompt 10:**
 
 [Specificity, Domain Knowledge, Complexity, Problem-solving, Creativity, Technical Accuracy, Real World]
 
