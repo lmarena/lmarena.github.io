@@ -21,3 +21,10 @@ which will replace the css files in the `_site/assets/css/` folder with the purg
 We will write blog posts in the distill format. See [this example](https://alshedivat.github.io/al-folio/blog/2021/distill/) for an example, and [this template](https://github.com/alshedivat/al-folio/blob/master/_posts/2018-12-22-distill.md?plain=1) for code.
 
 This template was taken from [AI-Folio](https://github.com/alshedivat/al-folio).
+
+## Commands
+
+Format the code
+```
+npx prettier . --write
+```
