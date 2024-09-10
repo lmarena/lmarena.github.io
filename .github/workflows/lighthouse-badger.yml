@@ -14,7 +14,7 @@ name: "Lighthouse Badger"
 
 # INPUTS as Secrets (env) for not manually triggered workflows
 env:
-  URLS: https://alshedivat.github.io/al-folio/
+  URLS: https://chatbot-arena.github.io
   TOKEN_NAME: ${{ secrets.LIGHTHOUSE_BADGER_TOKEN }}
   # If any of the following env is blank, a default value is used instead
   REPO_BRANCH: "${{ github.repository }} master" # target repository & branch e.g. 'dummy/mytargetrepo main'
