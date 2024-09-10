@@ -1,0 +1,10 @@
+@media (prefers-color-scheme: dark) {
+    .MathJax {
+      color: #ffffff !important;
+    }
+  }
+  
+  body.dark-mode .MathJax {
+    color: #ffffff !important;
+  }
+  
