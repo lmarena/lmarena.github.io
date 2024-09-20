@@ -18,4 +18,8 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Chatbot Arena is an open-source research project developed by members from LMSYS and UC Berkeley SkyLab. Our mission is to build an open platform to evaluate LLMs by human preference in the real-world. We open-source our FastChat project at GitHub and release chat and human feedback dataset. We invite everyone to join us!
+Chatbot Arena is an open-source platform for evaluating LLMs by human preference. 
+
+Follow us on [X](https://x.com/lmsysorg) and [GitHub](https://github.com/chatbot-arena), or reach out over e-mail at `lmarena.ai@gmail.com`.
+
+We are always looking for more contributors, so please get in touch if you are interested in helping out!
