@@ -18,7 +18,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Chatbot Arena is an open-source platform for evaluating LLMs by human preference. 
+Chatbot Arena is an open-source platform for evaluating LLMs by human preference.
 
 Follow us on [X](https://x.com/lmsysorg) and [GitHub](https://github.com/chatbot-arena), or reach out over e-mail at `lmarena.ai@gmail.com`.
 
