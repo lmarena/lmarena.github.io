@@ -20,7 +20,7 @@ social: true # includes social icons at the bottom of the page
 
 Chatbot Arena is an open-source platform for evaluating large language models by human preference, developed by researchers from UC Berkeley [SkyLab](https://sky.cs.berkeley.edu/) and [LMSYS](https://lmsys.org). Join us at [lmarena.ai](https://lmarena.ai) to vote for your top models and contribute to the live leaderboard!
 
-We welcome contributions from the community. If you're interested in getting involved, we'd love to hear from you!
+We always welcome contributions from the community. If you're interested in getting involved, we'd love to hear from you!
 
 #### Open-source contributors
 - Leads: [Wei-Lin Chiang](https://infwinston.github.io/), [Anastasios Angelopoulos](https://people.eecs.berkeley.edu/~angelopoulos/)
