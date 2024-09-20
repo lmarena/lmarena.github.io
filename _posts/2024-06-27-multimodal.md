@@ -370,4 +370,4 @@ Note that we currently only consider conversations which pass our moderation fil
 
 ### What's next?
 
-Along with rolling out some fun new categories for the multimodal leaderboard, we look forward to adding multi-image support and supporting new modalities such as PDFs, video, and audio. Please feel free to join our [Discord](https://discord.gg/HSWAKCrnFx) and give us any feedback about what feature you want next!
+Along with rolling out some fun new categories for the multimodal leaderboard, we look forward to adding multi-image support and supporting new modalities such as PDFs, video, and audio. Please feel free to join our [Discord](https://discord.gg/6GXcFg3TH8) and give us any feedback about what feature you want next!
