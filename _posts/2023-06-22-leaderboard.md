@@ -155,7 +155,7 @@ th:nth-child(1) .arrow-down {
 <tr> <td><a target="_blank" href="https://www.anthropic.com/index/introducing-claude"> Claude-v1 </a></td>  <td>7.90</td>  <td>1178</td>  <td>75.6</td>  <td>Proprietary</td> </tr>
 <tr> <td><a target="_blank" href="https://www.anthropic.com/index/introducing-claude"> Claude-instant-v1 </a></td>  <td>7.85</td>  <td>1156</td>  <td>61.3</td>  <td>Proprietary</td> </tr>
 <tr> <td><a target="_blank" href="https://huggingface.co/lmsys/vicuna-33b-v1.3"> Vicuna-33B </a></td>  <td>7.12</td>  <td>-</td>  <td>59.2</td>  <td>Non-commercial</td> </tr>
-<tr> <td><a target="_blank" href="https://huggingface.co/WizardLM/WizardLM-30B-V1.0"> WizardLM-30B </a></td>  <td>7.01</td>  <td>-</td>  <td>58.7</td>  <td>Non-commercial</td> </tr>
+<tr> <td><a target="_blank" href="https://huggingface.co/WizardLM"> WizardLM-30B </a></td>  <td>7.01</td>  <td>-</td>  <td>58.7</td>  <td>Non-commercial</td> </tr>
 <tr> <td><a target="_blank" href="https://huggingface.co/timdettmers/guanaco-33b-merged"> Guanaco-33B </a></td>  <td>6.53</td>  <td>1065</td>  <td>57.6</td>  <td>Non-commercial</td> </tr>
 <tr> <td><a target="_blank" href="https://huggingface.co/allenai/tulu-30b"> Tulu-30B </a></td>  <td>6.43</td>  <td>-</td>  <td>58.1</td>  <td>Non-commercial</td> </tr>
 <tr> <td><a target="_blank" href="https://huggingface.co/timdettmers/guanaco-65b-merged"> Guanaco-65B </a></td>  <td>6.41</td>  <td>-</td>  <td>62.1</td>  <td>Non-commercial</td> </tr>
@@ -272,8 +272,8 @@ We next analyze the multi-turn scores of selected models, presented in Table 2.
 <tr><td><a href="https://www.anthropic.com/index/introducing-claude" target="_blank">Claude-v1</a></td> <td>8.15</td> <td>7.65</td> <td>-0.50</td> </tr>
 <tr><td><a href="https://chat.openai.com/" target="_blank">GPT-3.5-turbo</a></td> <td>8.08</td> <td>7.81</td> <td>-0.26</td> </tr>
 <tr><td><a href="https://github.com/lm-sys/FastChat#vicuna-weights" target="_blank">Vicuna-33B</a></td> <td>7.46</td> <td>6.79</td> <td>-0.67</td> </tr>
-<tr><td><a href="https://huggingface.co/WizardLM/WizardLM-30B-V1.0" target="_blank">WizardLM-30B</a></td> <td>7.13</td> <td>6.89</td> <td>-0.24</td> </tr>
-<tr><td><a href="https://huggingface.co/WizardLM/WizardLM-13B-V1.0" target="_blank">WizardLM-13B</a></td> <td>7.12</td> <td>5.59</td> <td>-1.53</td> </tr>
+<tr><td><a href="https://huggingface.co/WizardLM/" target="_blank">WizardLM-30B</a></td> <td>7.13</td> <td>6.89</td> <td>-0.24</td> </tr>
+<tr><td><a href="https://huggingface.co/WizardLM/" target="_blank">WizardLM-13B</a></td> <td>7.12</td> <td>5.59</td> <td>-1.53</td> </tr>
 <tr><td><a href="https://huggingface.co/timdettmers/guanaco-33b-merged" target="_blank">Guanaco-33B</a></td> <td>6.88</td> <td>6.18</td> <td>-0.71</td> </tr>
 <tr><td><a href="https://github.com/lm-sys/FastChat#vicuna-weights" target="_blank">Vicuna-13B</a></td> <td>6.81</td> <td>5.96</td> <td>-0.85</td> </tr>
 <tr><td><a href="https://cloud.google.com/vertex-ai/docs/release-notes#May_10_2023" target="_blank">PaLM2-Chat-Bison</a></td> <td>6.71</td> <td>6.09</td> <td>-0.63</td> </tr>
