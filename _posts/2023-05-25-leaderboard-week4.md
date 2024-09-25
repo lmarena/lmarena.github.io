@@ -11,7 +11,7 @@ authors:
       name: LMSYS Org
 ---
 
-In this update, we are excited to welcome the following models joining the [Chatbot Arena](https://lmsys.org/blog/2023-05-03-arena/):
+In this update, we are excited to welcome the following models joining the [Chatbot Arena](https://blog.lmarena.ai/blog/2023/arena/):
 
 1. Google PaLM 2, chat-tuned with the code name [chat-bison@001](https://cloud.google.com/vertex-ai/docs/release-notes#May_10_2023) on Google Cloud Vertex AI
 2. Anthropic Claude-instant-v1
