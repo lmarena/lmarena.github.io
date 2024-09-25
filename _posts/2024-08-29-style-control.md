@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: Does style matter?
+title: Does Style Matter?
 description: Disentangling style and substance in Chatbot Arena
 giscus_comments: true
 date: 2024-08-29
