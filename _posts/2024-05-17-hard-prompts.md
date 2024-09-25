@@ -19,7 +19,7 @@ authors:
 
 ### Background
 
-Introducing **Hard Prompts**, a new and challenging category in the Chatbot Arena [Leaderboard](https://leaderboard.lmsys.org).
+Introducing **Hard Prompts**, a new and challenging category in the Chatbot Arena [Leaderboard](https://lmarena.ai/?leaderboard).
 
 Over the past few months, the community has shown a growing interest in more challenging prompts that push the limits of current language models.
 To meet this demand, we are excited to introduce the **Hard Prompts** category. This category features user-submitted prompts from the Arena that are specifically designed to be more complex, demanding, and rigorous. Carefully curated, these prompts test the capabilities of the latest language models, providing valuable insights into their strengths and weaknesses in tackling challenging tasks. We believe this new category will offer insights into the models' performance on more difficult tasks.
@@ -42,7 +42,7 @@ We also observe notable improvements in **GPT-3.5-Turbo-1106/0125** and **Claude
 
 ### How to Define Hard Prompts?
 
-A few weeks ago, we introduce the [Arena-Hard](https://lmsys.org/blog/2024-04-19-arena-hard/) pipeline to identify a collection of high-quality prompts from Chatbot Arena. Each user prompt is evaluated against the 7 Key Criteria defined in the Table below.
+A few weeks ago, we introduce the [Arena-Hard](https://blog.lmarena.ai/blog/2024/arena-hard/) pipeline to identify a collection of high-quality prompts from Chatbot Arena. Each user prompt is evaluated against the 7 Key Criteria defined in the Table below.
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid black;">
   <tr style="background-color: black; color: white;">
@@ -85,7 +85,7 @@ We then calculate its Hardness Score by how many criteria are satisfied and pres
 
 We use prompts with a score of 6 or higher to create the "Hard Prompts" category and calculate two leaderboards: **Hard Prompt (English)** and **Hard Prompts (Overall)**.
 
-Below is screenshot of the leaderboard for **Hard Prompts (English)** category (as of May 17, 2024). You can find the latest version at [https://leaderboard.lmsys.org](https://leaderboard.lmsys.org) (-> Category dropdown).
+Below is screenshot of the leaderboard for **Hard Prompts (English)** category (as of May 17, 2024). You can find the latest version at [https://lmarena.ai/?leaderboard](https://lmarena.ai/?leaderboard) (-> Category dropdown).
 
 <img src="/assets/img/blog/category_hard/leaderboard.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 95%"></img>
 
@@ -122,7 +122,7 @@ We have also open-sourced this de-duplication script on [Github](https://github.
 
 @misc{arenahard2024,
     title = {From Live Data to High-Quality Benchmarks: The Arena-Hard Pipeline},
-    url = {https://lmsys.org/blog/2024-04-19-arena-hard/},
+    url = {https://blog.lmarena.ai/blog/2024/arena-hard/},
     author = {Tianle Li*, Wei-Lin Chiang*, Evan Frick, Lisa Dunlap, Banghua Zhu, Joseph E. Gonzalez, Ion Stoica},
     month = {April},
     year = {2024}

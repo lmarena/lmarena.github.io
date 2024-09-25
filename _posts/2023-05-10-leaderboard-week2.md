@@ -11,7 +11,7 @@ authors:
       name: LMSYS Org
 ---
 
-We release an updated leaderboard with more models and new data we collected last week, after the announcement of the anonymous [Chatbot Arena](https://lmsys.org/blog/2023-05-03-arena/). We are actively iterating on the design of the arena and leaderboard scores.
+We release an updated leaderboard with more models and new data we collected last week, after the announcement of the anonymous [Chatbot Arena](https://blog.lmarena.ai/blog/2023/arena/). We are actively iterating on the design of the arena and leaderboard scores.
 
 In this update, we have added 4 new yet strong players into the Arena, including three **proprietary models** and one open-source model. They are:
 

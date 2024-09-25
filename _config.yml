@@ -129,7 +129,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Chatbot Arena # blog_name will be displayed in your blog page
-blog_description: an open platform for human preference evals
+blog_description: An Open Platform for Human Preference Evals
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 

@@ -122,6 +122,24 @@ blockquote {
   }
 }
 
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 400;
+}
+
+body {
+  font-family: 'Avenir Next', monospace;
+}
+
 // Checklist
 
 ul.task-list {
@@ -166,10 +184,11 @@ ul.task-list input[type="checkbox"] {
 
   .card-title {
     color: var(--global-text-color);
+    font-size: larger;
   }
 
   .card-body {
-    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    padding: 1rem 1rem 1rem 1rem;
   }
 }
 
@@ -500,7 +519,6 @@ footer.sticky-bottom {
 // Blog
 
 .header-bar {
-  border-bottom: 1px solid var(--global-divider-color);
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 3rem;

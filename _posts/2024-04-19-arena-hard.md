@@ -858,7 +858,7 @@ If you find Arena-Hard-Auto or BenchBuilder useful, please cite our papers below
 
 @misc{arenahard2024,
     title = {From Live Data to High-Quality Benchmarks: The Arena-Hard Pipeline},
-    url = {https://lmsys.org/blog/2024-04-19-arena-hard/},
+    url = {https://blog.lmarena.ai/blog/2024/arena-hard/},
     author = {Tianle Li*, Wei-Lin Chiang*, Evan Frick, Lisa Dunlap, Banghua Zhu, Joseph E. Gonzalez, Ion Stoica},
     month = {April},
     year = {2024}

@@ -21,7 +21,7 @@ authors:
 
 In this blog post, we share the latest update on Chatbot Arena leaderboard, which now includes more open models and three metrics:
 
-1. **Chatbot Arena Elo**, based on 42K anonymous votes from [Chatbot Arena](https://lmsys.org/blog/2023-05-03-arena/) using the Elo rating system.
+1. **Chatbot Arena Elo**, based on 42K anonymous votes from [Chatbot Arena](https://blog.lmarena.ai/blog/2023/arena/) using the Elo rating system.
 2. **MT-Bench score**, based on a challenging multi-turn benchmark and GPT-4 grading, proposed and validated in our [Judging LLM-as-a-judge paper](https://arxiv.org/abs/2306.05685).
 3. **MMLU**, a widely adopted [benchmark](https://arxiv.org/abs/2009.03300).
 
