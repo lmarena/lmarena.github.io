@@ -30,6 +30,7 @@ Building an affordable and reliable benchmark for LLM chatbots has become a crit
 Traditional benchmarks are often static or close-ended (e.g., MMLU multi-choice QA), which do not satisfy the above requirements. On the other hand, models are evolving faster than ever, underscoring the need to build benchmarks with high separability.
 
 We introduce Arena-Hard – a data pipeline to build high-quality benchmarks from live data in [Chatbot Arena](https://arxiv.org/abs/2403.04132), which is a crowd-sourced platform for LLM evals. To measure its quality, we propose two key metrics:
+
 1. Agreement to Human preference: whether the benchmark score has high agreement to human preference.
 2. Separability: whether the benchmark can confidently separate models.
 
@@ -113,11 +114,11 @@ li::before {
   }
 </style>
 
-
 <img src="/assets/img/blog/arena_hard/arena-hard-vs-mt_bench.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: left;">Figure 1: Comparison between MT-bench and Arena Hard Auto v0.1. The latter offers significantly better separability between models and tighter confidence intervals. GPT-4-0314 has no variance in Arena-hard-Auto-v0.1 because it's used as the anchor model.</p>
 
 Links:
+
 - Evaluate your model on Arena-Hard-Auto-v0.1: [Link](https://github.com/lm-sys/arena-hard-auto)
 - Browse Arena-Hard-Auto-v0.1 prompts: [Link](https://huggingface.co/spaces/lmsys/arena-hard-browser)
 - Statistic Notebook Google Colab: [Link](https://colab.research.google.com/drive/1ar6XLWREN_dXEh404WNOxroFVUe_4njp?usp=sharing)
@@ -128,14 +129,15 @@ We explain more technical details in the following sections.
 ## Key Objectives of LLM benchmarks
 
 We outline a few key properties that an LLM chatbot benchmark should possess to provide a meaningful measurement of capabilities between models:
+
 1. Agreement to human preference: It should correlate with human preference in real-world use cases
 2. Separability: It should provide confidence interval on benchmark score and separate models with high confidence
 3. Freshness: It should use new, unseen prompts to avoid potential test leakage
 
-
 We define **agreement** of Benchmark A with respect to a reference Benchmark B by the below formulation:
 
 For a given model pair (which B can separate with confidence)
+
   <ul>
       <li>If A can confidently separate the 2 given models</li>
       <ul>
@@ -149,13 +151,14 @@ An agreement score of 1 implies benchmark A confidently agrees on the preference
 
 We define **separability** by whether a benchmark can separate given model pairs with derived confidence intervals (via bootstrapping). This metric can also serve to measure the variances in ranking outputs provided by a benchmark. We quantify this metric by the percentage of model pairs which have non-overlapping confidence intervals of the benchmark scores.
 
-We use a set of top-20 models* on [Chatbot Arena](https://lmarena.ai/?leaderboard) (April 13, 2024) that are presented on [AlpacaEval leaderboard](https://tatsu-lab.github.io/alpaca_eval/) to calculate separability and agreement per benchmark. We consider the human preference ranking by Chatbot Arena (English only) as the reference to calculate agreement.
+We use a set of top-20 models\* on [Chatbot Arena](https://lmarena.ai/?leaderboard) (April 13, 2024) that are presented on [AlpacaEval leaderboard](https://tatsu-lab.github.io/alpaca_eval/) to calculate separability and agreement per benchmark. We consider the human preference ranking by Chatbot Arena (English only) as the reference to calculate agreement.
 
 In Table 1, Arena-hard-Auto-v0.1 shows the highest separability (87.4%) against widely adopted LLM benchmarks and offers highest agreement (89.1%) to Chatbot Arena. It is also cheap and fast to run ($25).
 
 Interestingly, we find Spearman Correlation, a popular metric for measuring correlations between rankings, may be an unreliable metric for ranking correlation as it does not consider variance of the rankings, and therefore fails to adequately punish essential ranking granularities of the top models we care about most. For example, when considering 95% CI, MT-bench’s agreement to Chatbot Arena drops from 91.3% to 22.6%.
 
-You can find full statistics in the result section. 
+You can find full statistics in the result section.
+
 <p style="color:gray; text-align: center;">Table 1. Separability and agreement per benchmark.</p>
 
 <table class="tg" style="justify-content: center;">
@@ -242,6 +245,7 @@ Next, we elaborate how to build the prompt selection pipeline to ensure data qua
 ## Arena-Hard Pipeline
 
 We build a pipeline that automatically extracts quality prompts from a dataset of 200,000 user queries collected via Chatbot Arena. This process involves ensuring:
+
 - Diversity: Prompt set should cover a wide range of real-world topics
 - Prompt quality: Each prompt should possess high quality to benchmark LLMs. we define several key criteria below (see Table 2)
 
@@ -277,15 +281,12 @@ To ensure prompt diversity, we adopt a topic modeling pipeline in [BERTopic](htt
   </tr>
 </table>
 
-
 An LLM Judge (GPT-3.5-Turbo, GPT-4-Turbo) annotates each prompt from 0 to 7 to indicate how many criteria are met. We then score each cluster by the average score of its prompts. Below, we show examples of topic clusters ranging from low to high mean scores. We can observe clusters with higher scores often correlate to challenging topics or tasks for LLMs like game development or mathematical proofs. On the other hand, clusters with lower scores point to trivial or ambiguous questions like "Design Styles and Influences".
 
 <img src="/assets/img/blog/arena_hard/cluster_distribution.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 3: Chatbot Arena clusters sorted by their scores.</p>
 
 To see whether the prompt score correlates with separability, we sample 50 prompts per score and compare the responses from GPT-4 and Llama-70b, with GPT-4-Turbo as judge. We observe a strong correlation between high potential score and the win-rate of GPT-4 over Llama-70b. A similar trend is also observed in other model pairs such as Claude Sonnet vs Haiku and Mistral-large vs Mixtral.
-
-
 
 <img src="/assets/img/blog/arena_hard/hard_score_line.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 4: Win-rate between model pairs becomes more separable as the "7 Key Criteria" score increases.</p>
@@ -613,8 +614,7 @@ We also compare two strongest LLMs: GPT-4-1106-Preview and Claude-3 Opus as the 
 </table>
 </div>
 
-
-We further compare GPT-4 and Claude Judges using our proposed metrics of separability and agreement in Table 4, and find that the GPT-4-turbo Judge is significantly better across all metrics. 
+We further compare GPT-4 and Claude Judges using our proposed metrics of separability and agreement in Table 4, and find that the GPT-4-turbo Judge is significantly better across all metrics.
 
 <table style="border-collapse: collapse; border: 1px solid black">
   <caption>Table 4: Statistical comparisons between LLM Judges and Human</caption>
@@ -647,6 +647,7 @@ We further compare GPT-4 and Claude Judges using our proposed metrics of separab
 <caption>*Brier Score (lower is better), a statistical scoring function for measuring the accuracy of probabilistic accuracy. (see section View Benchmarking as a Forecasting Problem for more information)</caption>
 
 We manually compared different judgment examples between GPT-4-Turbo and Claude as a judge. We found that when the two judges disagreed, it could usually be broken down into two main categories:
+
 1. Conservative scoring
 2. Differing perspectives on the user's prompt
 
@@ -655,7 +656,7 @@ We find that Claude-3-Opus is much less likely to give harsh scores – it is pa
 <img src="/assets/img/blog/arena_hard/score_strength.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 5: Score Strength</p>
 
-There is also a small subset of prompts in which Claude-3-Opus and GPT-4-Turbo judge with fundamentally different perspectives. For example, given a coding question, Claude-3-Opus may choose the response that provides the most educational value to the user, offering a simplistic structure without relying on external libraries. GPT-4-Turbo, however, may prioritize the response that provides the most practical answer, regardless of its educational value to the user.  While both interpretations are valid judging criteria, we find GPT-4-Turbo’s perspective may be more correlated with the average user.
+There is also a small subset of prompts in which Claude-3-Opus and GPT-4-Turbo judge with fundamentally different perspectives. For example, given a coding question, Claude-3-Opus may choose the response that provides the most educational value to the user, offering a simplistic structure without relying on external libraries. GPT-4-Turbo, however, may prioritize the response that provides the most practical answer, regardless of its educational value to the user. While both interpretations are valid judging criteria, we find GPT-4-Turbo’s perspective may be more correlated with the average user.
 
 Despite the observed differences between Claude-3-Opus and GPT-4-Turbo judgment styles, we find the judges have an overall soft agreement rate of 80%. Two judgments “soft agree” if they are at most distance one apart, or in other words they do not contradict.
 
@@ -668,10 +669,9 @@ LLM as judges are known to suffer from verbosity bias ([Length-Controlled Alpaca
 <img src="/assets/img/blog/arena_hard/verbose_scatterplot.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%">
 <p style="color:gray; text-align: center;">Figure 6: Verbosity scatterplot comparing Arena-Hard-Auto-v0.1 and MT Bench.</p>
 
-To further examine potential verbosity bias, we conduct an ablation on three different system prompts (original, chatty, detailed) with GPT-3.5-Turbo. We observe that both GPT-4-Turbo and Claude-3-Opus judges may be affected by longer outputs, while Claude being significantly more impacted with a “more detailed” system prompt as GPT-3.5-Turbo reaches a win-rate of over 40% against GPT-4-0314. 
+To further examine potential verbosity bias, we conduct an ablation on three different system prompts (original, chatty, detailed) with GPT-3.5-Turbo. We observe that both GPT-4-Turbo and Claude-3-Opus judges may be affected by longer outputs, while Claude being significantly more impacted with a “more detailed” system prompt as GPT-3.5-Turbo reaches a win-rate of over 40% against GPT-4-0314.
 
 Interestingly, the “chatty” system prompt doesn’t affect much on the win-rate by both judges, despite the longer average #tokens. This suggests output length is not the only factor. It is possible that more detailed answers are also more helpful and thus preferred by LLM judges.
-
 
 <p style="color:gray; text-align: center;">Table 5. Length Bias Comparison Between GPT and Claude as Judge</p>
 <div style="display: flex; justify-content: center; font-family: Consolas, monospace;">
@@ -775,7 +775,6 @@ We find that even with temperature=0, GPT-4-Turbo may still generate slightly di
 We also observe potential self-bias in LLM judges (e.g., Claude Judge prefers Claude answers).
 In addition, the prompt selection process could be biased by the LLMs. The benchmark also does not evaluate multi-turn interactions.
 
-
 ## Viewing Benchmarking as a Forecasting Problem
 
 In this section we attempt to combine both confidence and correlation into one standardized metric for benchmarking.
@@ -797,15 +796,16 @@ In this section we attempt to combine both confidence and correlation into one s
 </table>
 <caption>*20K human preference battles randomly sampled from Chatbot Arena between the 20 top models.</caption>
 
-Model developers generally use benchmarks for model selection, not ground truth certification of performance.  Benchmarks serve as a cheap and lightweight proxy for more expensive and complex evaluations like ground truth Bradley Terry Coefficients derived from human preference. Thus, we expect benchmarks to tell us, as model developers, some confidence bound on what a model’s real world performance will be. In this sense, a benchmark serves as a forecast for true long-run performance.
+Model developers generally use benchmarks for model selection, not ground truth certification of performance. Benchmarks serve as a cheap and lightweight proxy for more expensive and complex evaluations like ground truth Bradley Terry Coefficients derived from human preference. Thus, we expect benchmarks to tell us, as model developers, some confidence bound on what a model’s real world performance will be. In this sense, a benchmark serves as a forecast for true long-run performance.
 
 Forecasting is a delicate balance between confidence and uncertainty. Therefore, a good benchmark should show confidence when separating clearly unequal models, but should demonstrate uncertainty when ranking differences between legitimately similar models. One might argue we only need to look at how confident a given benchmark is at separating model pairs. A good benchmark is not necessarily always confident at separating models– you don’t want your benchmark to be confidently incorrect. For example, given a pair of models A and B and benchmark 1 and 2. Let’s assume ground truth is model A is better than model B. We bootstrap both benchmark 1 and 2 and retrieve their confidence intervals for both model’s performances. Benchmark 1 confidently predicts model B is better than A while Benchmark 2 predicts model B is better than A with low confidence. In this case, we should say Benchmark 2 is actually better than Benchmark 1 at predicting this pair of models. This is to say, high confidence should be rewarded only when the answer is correct, and low confidence is better when incorrect.
 
-In this problem context, we introduce the prediction criteria as simply the binary indicator **1**$(\pi_a < \pi_b)$ for some model pair ($\pi_a$ and $\pi_b$).  The forecast gives a probability that this indicator is true, $P(\pi_a < \pi_b)$.  A higher probability forecast indicates greater confidence that **1**$(\pi_a < \pi_b)$ will be true.  We can generate these probability predictions using bootstrapped score mean and variance, which in turn define a gaussian distribution. We then resolve the ground truth label for **1**$(\pi_a < \pi_b)$ using Chatbot Arena's Bradley Terry coefficients.
+In this problem context, we introduce the prediction criteria as simply the binary indicator **1**$(\pi_a < \pi_b)$ for some model pair ($\pi_a$ and $\pi_b$). The forecast gives a probability that this indicator is true, $P(\pi_a < \pi_b)$. A higher probability forecast indicates greater confidence that **1**$(\pi_a < \pi_b)$ will be true. We can generate these probability predictions using bootstrapped score mean and variance, which in turn define a gaussian distribution. We then resolve the ground truth label for **1**$(\pi_a < \pi_b)$ using Chatbot Arena's Bradley Terry coefficients.
 
 A well-defined fair-in-expectation loss for forecasting is [Brier Score](https://en.wikipedia.org/wiki/Brier_score). Brier score rewards confidence when forecasts are correct while punishing confident errors. We can calculate the loss over a benchmark prediction of **1**$(\pi_a < \pi_b)$ for each model pair with respect to the Chatbot Area ground truth scores to quantify a benchmark’s forecasting performance. Here we assume Chatbot Arena as “ground truth” as both Alpaca 2.0 LC and Arena Hard Auto are advertised as an inexpensive alternative to Chatbot Arena as an evaluation pipeline. We will conduct future study on correlation comparison where we instead use Chatbot Arena's Bradley Terry coefficient derived from similar distributions as the given benchmark.
 
 We find that Arena Hard Auto averages much lower forecasting loss, demonstrating that it is both accurate in score, and accurate in confidence level.
+
 <div style="display: flex;">
   <div style="width: 48%;">
     <img src="/assets/img/blog/arena_hard/forecast_arena_20k.png" style="width:100%">
@@ -823,20 +823,23 @@ We find that Arena Hard Auto averages much lower forecasting loss, demonstrating
   </div>
 </div>
 
-Above is the predicted model predicted probability against the bootstrapped arena “ground truth” probability (jittered to show clusters).  While both Alpaca eval and Arena Hard Auto have large clusters around (0,0) and (1,1) signifying good forecasting, Arena Hard Auto has lighter clusters on (0,1) and (1,0), if any, revealing less overconfidence. MT Bench has heavy tails along the top and bottom, revealing underconfidence. However, none of these benchmarks show an “ideal” y=x curve (with dense ends) expected with a perfectly calibrated forecast, signifying room for future research.
+Above is the predicted model predicted probability against the bootstrapped arena “ground truth” probability (jittered to show clusters). While both Alpaca eval and Arena Hard Auto have large clusters around (0,0) and (1,1) signifying good forecasting, Arena Hard Auto has lighter clusters on (0,1) and (1,0), if any, revealing less overconfidence. MT Bench has heavy tails along the top and bottom, revealing underconfidence. However, none of these benchmarks show an “ideal” y=x curve (with dense ends) expected with a perfectly calibrated forecast, signifying room for future research.
 
 ## Future
-We hope to study deeper into the above limitations and biases in the later technical report. We are also working on diving deeper into the statistics for more studies on how to measure the quality of benchmarks. Lastly, we also hope to upgrade Arena-Hard frequently. So expect frequent new benchmarks! 
 
+We hope to study deeper into the above limitations and biases in the later technical report. We are also working on diving deeper into the statistics for more studies on how to measure the quality of benchmarks. Lastly, we also hope to upgrade Arena-Hard frequently. So expect frequent new benchmarks!
 
 ## Acknowledgment
+
 We thank Matei Zaharia, Yann Dubois, Anastasios Angelopoulos, Lianmin Zheng, Lewis Tunstall, Nathan Lambert, Xuechen Li, Naman Jain, Ying Sheng, Maarten Grootendorst for their valuable feedback. We thank Siyuan Zhuang and Dacheng Li for the valuable review and debug of the code. We thank Microsoft [AFMR](https://www.microsoft.com/en-us/research/collaboration/accelerating-foundation-models-research/) for Azure OpenAI credits support. We also thank Together.ai & Anyscale for open model endpoint support.
 
 ## Citation
+
 If you find Arena-Hard-Auto or BenchBuilder useful, please cite our papers below.
+
 ```
 @misc{li2024crowdsourced,
-      title={From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline}, 
+      title={From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline},
       author={Tianle Li and Wei-Lin Chiang and Evan Frick and Lisa Dunlap and Tianhao Wu and Banghua Zhu and Joseph E. Gonzalez and Ion Stoica},
       year={2024},
       eprint={2406.11939},
@@ -862,8 +865,8 @@ If you find Arena-Hard-Auto or BenchBuilder useful, please cite our papers below
 }
 ```
 
-
 ## Appendix
+
 <img src="/assets/img/blog/arena_hard/heatmap.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 100%">
 <p style="color:gray; text-align: center;">Appendix Figure 1: Similarity Heatmap of 50 Arena Hard Auto v0.1 Clusters</p>
 
