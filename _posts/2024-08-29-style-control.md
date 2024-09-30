@@ -418,7 +418,7 @@ To address these limitations, we are looking forward to implementing _causal inf
 @misc{stylearena2024,
     title = {Does Style Matter? Disentangling style and substance in Chatbot Arena},
     url = {https://blog.lmarena.ai/blog/2024/style-control/},
-    author = {Tianle Li*, Anastasios Angelopoulos*, Wei-Lin Chiang*},
+    author = {Tianle Li* and Anastasios Angelopoulos* and Wei-Lin Chiang*},
     month = {August},
     year = {2024}
 }
