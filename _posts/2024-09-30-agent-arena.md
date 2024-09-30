@@ -1,5 +1,5 @@
 
-# Agent Arena: A Platform for Evaluating and Comparing LLM Agents
+# Gorilla X LMSYS Agent Arena: A Platform for Evaluating and Comparing LLM Agents
 
 ## Author(s):
 [Nithik Yekollu](https://www.linkedin.com/in/nithik-yekollu-7298671a8/), [Arth Bohra](https://www.linkedin.com/in/arthbohra/), [Ashwin Chirumamilla](https://www.linkedin.com/in/ashwin-chirumamilla-91103b1b5/), [Kai Wen](https://www.linkedin.com/in/kaiwen129/), [Sai Kolasani](https://www.linkedin.com/in/saikolasani/), [Wei-Lin Chiang](https://infwinston.github.io/), [Anastasios Angelopoulos](https://people.eecs.berkeley.edu/~angelopoulos/), [Joseph Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Ion Stoica](https://people.eecs.berkeley.edu/~istoica/), [Shishir G. Patil](https://people.eecs.berkeley.edu/~shishirpatil/)
@@ -31,12 +31,13 @@ Therefore, we decided to release **🤖 Agent Arena**, an interactive sandbox wh
 
 On top of providing benefit to our users, we also release live leaderboards and rankings of LLM providers, frameworks, and tools by domain, along with a prompt hub of over 1000+ tested tasks. We hope that this will provide a valuable resource for the community to understand the capabilities of the latest LLMs and tools. Additionally, we believe these rankings can help inform provider and framework development, helping them understand where they stand on various use-cases and how they can improve.
 
-This blog post will delve into the key elements of Agent Arena, including the definition of agents, the ranking methodology, model tuning, examples of agent use cases, and a roadmap for future developments.
+This blog post will delve into the key elements of Agent Arena, including the definition of agents, the ranking methodology, model tuning, examples of agent use cases, and a roadmap for future developments. Along with this blog, we are also releasing 2,000 real world agent battles and their corresponding user preference.
 
 **Quick Links:**
 - **Arena:** [Agent-Arena](https://www.agent-arena.com/)
 - **Leaderboard:** [Agent Leaderboard](https://www.agent-arena.com/leaderboard) 
 - **User Prompts:** [Prompt Hub](https://www.agent-arena.com/users)
+- **Agent Battle Data:** [Agent Battle Data]()
 
 ## 🦜 What are Agents?
 
@@ -89,95 +90,40 @@ The rating system in Agent Arena is designed to reflect the cumulative performan
 
 Check out the latest rankings for each category on our leaderboard: [Agent Arena Leaderboard](https://www.agent-arena.com/leaderboard).
 
-### ⚖️ Explaining the Elo: Bradley-Terry Model and Subcomponent Modifications
+### ⚖️ Explaining the Elo: Bradley-Terry Model and Subcomponent Modifications: Evaluating Agents with the Extended Bradley-Terry Model
 
-The Bradley-Terry (BT) model is a well-established probabilistic method used to rank entities based on pairwise comparisons. In the context of **Agent Arena**, this model serves as the backbone for evaluating and ranking Large Language Model (LLM) agents. In our system, we assess not just the overall agent performance but also break it down into its core subcomponents—like models, tools, and frameworks. 🛠️
+Agent Arena uses the [Bradley-Terry extension](https://blog.lmarena.ai/blog/2024/redteam-arena/), which allows us to compare different agents based on their subcomponents, including tools, models, and frameworks. Instead of just evaluating the full agents, we also assess the performance of each individual subcomponent. This allows us to more accurately pinpoint where an agent's strength lies. For example, our first agent could be a combination of LangChain, Brave-Search, and GPT-4o-2024-08-06, while the second agent could be LlamaIndex, Wikipedia, and Claude-3-5-Sonnet-20240620.
 
-### 🔢 Traditional Elo System
-The traditional Elo system is widely known for ranking entities, especially in competitive settings like chess. It computes ratings dynamically as agents compete. The formula is simple but powerful:
+Therefore, we propose the following observation model for the Extended Bradley-Terry Model. Given `P_1`,
 
-```
-ELO_New = ELO_Old + K × (Result - Expected_Score)
-```
+For each battle $i \in [n]$, we have a prompt and two agents, encoded as the following:
 
-Where:
-- **K** controls the magnitude of rating changes after each battle (in Agent Arena, we use K = 4).
-- **Result** is 1 if the agent wins, 0 if it loses, or 0.5 for a tie.
-- **Expected_Score** is the calculated likelihood of an agent winning based on its current rating.
+- `Agent A`: The first agent being compared with an elo of `E_A` and with the subcomponents `(A_T, A_M, A_F)`
+- `Agent B`: The second agent being compared, having an elo of `E_B` and with the subcomponents `(B_T, B_M, B_F)`
+- `Y_i`: Outcome of the battle (1 for win, 0 for loss)
 
 #### 🧑‍💻 Example: LangChain Brave-Search Agent vs. LlamaIndex Wikipedia Agent
-Consider the **LangChain Brave-Search Agent** (initial Elo: 1600) facing off against the **LlamaIndex Wikipedia Agent** (initial Elo: 1500). The expected score for Brave-Search, calculated based on their Elo difference, would be:
 
-```
-Expected_Score_Brave = 1 / (1 + 10^((1500 - 1600) / 400)) ≈ 0.64
-```
+Let's walk through an example to illustrate how the Extended Bradley-Terry Model works in practice. Take the following agents and their subcomponents:
 
-This implies Brave-Search is expected to win 64% of the time. If Brave-Search wins, its new rating will be:
+- `Agent_A` is the LangChain Brave-Search Agent, using the following subcomponents: `{ Brave-Search (A_T), LangChain (A_F), and GPT-4o-2024-08-06 (A_M) }` and an Elo of 1600.
+- `Agent B` is the LlamaIndex Wikipedia Agent, with the subcomponents: `{Wikipedia (B_T), LlamaIndex (B_F), and Claude-3-5-Sonnet-20240620 (B_M)}` and an Elo of 1500.
 
-```
-ELO_Brave_New = 1600 + 4 × (1 - 0.64) = 1601.44
-```
+In a traditional Elo system, we would have calculated the probability of the Brave-Search agent winning 64% of the time. Then given the actual outcome of the battle, `Y_1`, assuming that the Brave-Search agent wins, the new rating of the agents would be 1601.44 and 1498.56, respectively.
 
-If Brave-Search loses, the rating drops accordingly, and the Wikipedia agent's rating adjusts upward.
+In the Bradley-Terry model, however, we calculate the ratings by minimizing the following loss function given the real-world battle outcome: `Y_i`:
 
-### 🔄 Subcomponent Battles: Tools, Models, and Frameworks
-In Agent Arena, each agent is a composite of various components, including tools, models, and frameworks. Instead of just evaluating the full agents, we also assess the performance of each individual subcomponent. This allows us to more accurately pinpoint where an agent's strength lies. Here's an example:
+$$
+L = -\sum_{i=1}^{n} Y_i \cdot \log\left(\frac{1}{1 + e^{E_A - E_B}}\right) + (1 - Y_i) \cdot \log\left(\frac{1}{1 + e^{E_B - E_A}}\right)
+$$
 
-- **LangChain Brave-Search Agent**: LangChain (Framework), Brave-Search (Tool), GPT-4o-2024-08-06 (Model)
-- **LlamaIndex Wikipedia Agent**: LlamaIndex (Framework), Wikipedia (Tool), Claude-3-5-Sonnet-20240620 (Model)
+Finally, to get a holistic evaluation of an agent, we combine all its subcomponents into a single analysis. Instead of treating each subcomponent as an isolated entity, we consider their interaction within the broader agent architecture. For each battle, we build a design matrix `X` that represents all the subcomponents involved. Here, let's assume that A, the Brave-Search agent, wins the battle; in that case the design matrix would look like this:
 
-#### 📊 Traditional BT Model with Subcomponent Comparisons
-Using a traditional Bradley-Terry setup, we could treat each subcomponent battle independently. For example, when comparing **Brave-Search** against **Wikipedia**, the probability that Brave-Search wins would be:
+$$
+X = [ +\log(A_T), +\log(A_M), +\log(A_F), -\log(B_T), -\log(B_M), -\log(B_F) ]
+$$
 
-```
-P(Brave wins) = exp(score_Brave) / (exp(score_Brave) + exp(score_Wikipedia))
-```
-
-#### 🔄 Combined Subcomponent Rankings: Models + Tools + Frameworks
-However, to get a holistic evaluation of an agent, we combine all its subcomponents into a single analysis. Instead of treating each subcomponent as an isolated entity, we consider their interaction within the broader agent architecture. For each battle, we build a design matrix `X` that represents all the subcomponents involved:
-
-```
-X = [ +log(BASE), +log(BASE), +log(BASE), -log(BASE), -log(BASE), -log(BASE) ]
-```
-
-Here, `+log(BASE)` represents the subcomponents (tool, model, framework) used by the winning agent, while `-log(BASE)` represents those used by the losing agent.
-
-##### 🛠️ Example: LangChain Brave-Search Agent vs. LlamaIndex Wikipedia Agent
-If Brave-Search wins the battle, the design matrix would look like this:
-
-```
-Components: [LangChain, Brave-Search, GPT-4o] vs. [LlamaIndex, Wikipedia, Claude]
-X = [ +log(BASE), +log(BASE), +log(BASE), -log(BASE), -log(BASE), -log(BASE) ]
-```
-
-This allows us to evaluate the collective contribution of the subcomponents (tools, models, frameworks) in a single calculation. We then apply **logistic regression with regularization** to control for overfitting and confounding effects caused by frequent pairings.
-
-### 📉 Regularization: Handling Data Imbalance
-Given the diversity of agent configurations, certain agents may not battle frequently with others that have different components. This can lead to data sparsity. To counteract this, we use **L1 regularization (Lasso)**, which helps select the most important subcomponents while avoiding overfitting. The regularization formula is:
-
-```
-Minimize: - [∑ Y_i log(P_i) + (1 - Y_i) log(1 - P_i)] + λ ∑|β_j|
-```
-
-Where:
-- **Y_i** is the battle outcome (1 for win, 0 for loss).
-- **P_i** is the predicted probability of winning.
-- **λ** is the regularization parameter that controls sparsity.
-
-#### 🔎 Traditional Loss vs. Subcomponent Combined Loss
-In a traditional BT model, the loss function calculates the difference between the predicted and actual outcomes for each battle, represented as:
-
-```
-BCELoss(Sigmoid(X × β), Y)
-```
-
-However, for the new approach, the loss function takes into account the combined influence of models, tools, and frameworks in a battle:
-
-```
-BCELoss(Sigmoid(X^LLM B_LLM + X^Tool B_Tool + X^Framework B_Framework, Y))
-```
-
-This approach reflects how each subcomponent contributes to the overall result, providing more accurate rankings.
+This allows us to evaluate the collective contribution of the subcomponents (tools, models, frameworks) in a single calculation. We then apply **logistic regression with regularization** to control for overfitting and confounding effects caused by frequent pairings. For the extended Bradley Terry formulation, we use **L2 regularization**, which helps select the most important subcomponents while avoiding overfitting.
 
 ### ✅ Conclusion: Fairer Rankings Across All Components
 By using this combined approach, Agent Arena ensures more accurate rankings across agents and their subcomponents. 🔄 This method provides clearer insights into each agent's performance and contributions, preventing the bias that can occur from frequent pairings or overused configurations.
