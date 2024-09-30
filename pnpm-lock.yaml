@@ -1,59 +1,62 @@
-lockfileVersion: "9.0"
+lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 importers:
+
   .:
     devDependencies:
-      "@shopify/prettier-plugin-liquid":
-        specifier: ^1.4.0
+      '@shopify/prettier-plugin-liquid':
+        specifier: ^1.5.0
         version: 1.5.0(prettier@3.1.1)
       prettier:
-        specifier: 3.1.1
+        specifier: ^3.1.1
         version: 3.1.1
 
 packages:
-  "@shopify/liquid-html-parser@2.0.3":
-    resolution: { integrity: sha512-aIkZ5TJWG7/ztd1sZm5XNpBNTG3B+Q0gv3WN/QahmNQzm2wmKYSHiRLOA8JALAnOGTmH0uqOJ7jzdqoATcZSxw== }
 
-  "@shopify/prettier-plugin-liquid@1.5.0":
-    resolution: { integrity: sha512-CuWjUnBCvq/RTmubEa5RfwW2oP2gYfTXaJ39t4apAYm//1v5Ftvv1bbhEnoEZwCjPshaAJLhSzP9dvCel4cebw== }
+  '@shopify/liquid-html-parser@2.0.3':
+    resolution: {integrity: sha512-aIkZ5TJWG7/ztd1sZm5XNpBNTG3B+Q0gv3WN/QahmNQzm2wmKYSHiRLOA8JALAnOGTmH0uqOJ7jzdqoATcZSxw==}
+
+  '@shopify/prettier-plugin-liquid@1.5.0':
+    resolution: {integrity: sha512-CuWjUnBCvq/RTmubEa5RfwW2oP2gYfTXaJ39t4apAYm//1v5Ftvv1bbhEnoEZwCjPshaAJLhSzP9dvCel4cebw==}
     peerDependencies:
       prettier: ^2.0.0 || ^3.0.0
 
   html-styles@1.0.0:
-    resolution: { integrity: sha512-cDl5dcj73oI4Hy0DSUNh54CAwslNLJRCCoO+RNkVo+sBrjA/0+7E/xzvj3zH/GxbbBLGJhE0hBe1eg+0FINC6w== }
+    resolution: {integrity: sha512-cDl5dcj73oI4Hy0DSUNh54CAwslNLJRCCoO+RNkVo+sBrjA/0+7E/xzvj3zH/GxbbBLGJhE0hBe1eg+0FINC6w==}
 
   isarray@1.0.0:
-    resolution: { integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ== }
+    resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
 
   isobject@2.1.0:
-    resolution: { integrity: sha512-+OUdGJlgjOBZDfxnDjYYG6zp487z0JGNQq3cYQYg5f5hKR+syHMsaztzGeml/4kGG55CSpKSpWTY+jYGgsHLgA== }
-    engines: { node: ">=0.10.0" }
+    resolution: {integrity: sha512-+OUdGJlgjOBZDfxnDjYYG6zp487z0JGNQq3cYQYg5f5hKR+syHMsaztzGeml/4kGG55CSpKSpWTY+jYGgsHLgA==}
+    engines: {node: '>=0.10.0'}
 
   line-column@1.0.2:
-    resolution: { integrity: sha512-Ktrjk5noGYlHsVnYWh62FLVs4hTb8A3e+vucNZMgPeAOITdshMSgv4cCZQeRDjm7+goqmo6+liZwTXo+U3sVww== }
+    resolution: {integrity: sha512-Ktrjk5noGYlHsVnYWh62FLVs4hTb8A3e+vucNZMgPeAOITdshMSgv4cCZQeRDjm7+goqmo6+liZwTXo+U3sVww==}
 
   ohm-js@16.6.0:
-    resolution: { integrity: sha512-X9P4koSGa7swgVQ0gt71UCYtkAQGOjciJPJAz74kDxWt8nXbH5HrDOQG6qBDH7SR40ktNv4x61BwpTDE9q4lRA== }
-    engines: { node: ">=0.12.1" }
+    resolution: {integrity: sha512-X9P4koSGa7swgVQ0gt71UCYtkAQGOjciJPJAz74kDxWt8nXbH5HrDOQG6qBDH7SR40ktNv4x61BwpTDE9q4lRA==}
+    engines: {node: '>=0.12.1'}
 
   prettier@3.1.1:
-    resolution: { integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw== }
-    engines: { node: ">=14" }
+    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
+    engines: {node: '>=14'}
     hasBin: true
 
 snapshots:
-  "@shopify/liquid-html-parser@2.0.3":
+
+  '@shopify/liquid-html-parser@2.0.3':
     dependencies:
       line-column: 1.0.2
       ohm-js: 16.6.0
 
-  "@shopify/prettier-plugin-liquid@1.5.0(prettier@3.1.1)":
+  '@shopify/prettier-plugin-liquid@1.5.0(prettier@3.1.1)':
     dependencies:
-      "@shopify/liquid-html-parser": 2.0.3
+      '@shopify/liquid-html-parser': 2.0.3
       html-styles: 1.0.0
       prettier: 3.1.1
 
