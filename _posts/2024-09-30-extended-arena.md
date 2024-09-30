@@ -1,10 +1,10 @@
 ---
 layout: distill
 title: Statistical Extensions of the Bradley-Terry and Elo Models
-description: 
+description:
 giscus_comments: true
 date: 2024-09-30
-featured: false 
+featured: false
 thumbnail: assets/img/blog/extended_arena/logo.png
 authors:
   - name: Anastasios Angelopoulos*
@@ -13,19 +13,20 @@ authors:
       name: UC Berkeley
   - name: Wei-Lin Chiang*
     url: "https://infwinston.github.io/"
-  - name: Shishir Patil 
+  - name: Shishir Patil
     url: "https://shishirpatil.github.io/"
 ---
 
 Based on our [previous](http://blog.lmarena.ai/blog/2023/leaderboard-elo-update/) [posts](http://blog.lmarena.ai/blog/2024/style-control/), you know that Chatbot Arena uses the Bradley-Terry model for the purposes of statistical inference on the model strength. Recently, we have developed some extensions of the Bradley-Terry model, and the closely related Elo model, for the purpose of binary-comparison inference problems. Our extensions target the case where each of the two players in the comparison may contain more than one subsystem that contributes to their strength. We will develop these extensions in the batch form (Extended Bradley-Terry) and in the online form (Extended Elo).
 
 ## Setup
+
 Let $$\ell : [0,1] \times \{0,1\} \to \mathbb{R}$$ denote the binary cross-entropy loss, where the first argument is the predicted probability, and the second argument is the ground-truth binary outcome. As a reminder, for a prediction $$\hat{y} \in [0,1]$$ and a binary label $$y \in \{0,1\}$$, the binary cross-entropy loss is defined as
 
 $$\ell(\hat{y}, y) = -y \log(\hat{y}) - (1-y) \log(1-\hat{y}).$$
 
 Furthermore, let $$M_{A}, M_{B} \in \mathbb{N}$$, $$d_{m_{A}, -1}, d_{m_B, 1} \in \mathbb{N}$$ for all $$m_{A} \in [M_{A}]$$ and $$m_B \in [M_B]$$, and $$d_{\rm total} = \sum\limits_{m_{A} \in [M_{A}]} d_{m_{A}, A} + \sum\limits_{m_{B} \in [M_{B}]} d_{m_{B}, B}$$.
-Next, define the set 
+Next, define the set
 
 $$\mathcal{X} = \{ x \in \{-1, 0, 1\}^{d_{\rm total}} : | \{j : x_j = -1 \} | = M_{A} \text{ and } | \{j : x_j = 1 \} | = M_{B}\}.$$
 
@@ -47,7 +48,7 @@ The standard Bradley-Terry model is recovered when $$M_A=M_B=1$$.
 As a side note, we normally report these coefficients after multiplying them by $$400$$ and adding $$1000$$, so that the coefficients are in the same range as the Elo ratings in chess.
 This is a purely cosmetic transformation and does not affect the model's predictions.
 
-## Extended Arena Score 
+## Extended Arena Score
 
 To estimate $$\theta^*$$ given a sample $$(X_1,Y_1), \ldots, (X_n,Y_n)$$, we calculate the population logistic regression solution,
 
@@ -63,7 +64,7 @@ arrive.
 The Extended Online Arena Score amounts to running online logistic regression on the same feature set.
 The algorithm is as follows:
 
-$$ \theta^{(t+1)} = \theta^{(t)} - \eta \nabla \ell(\sigma(X_t^\top \theta^{(t)}), Y_t) - \lambda \nabla \|\theta^{(t)}\|_p,$$
+$$ \theta^{(t+1)} = \theta^{(t)} - \eta \nabla \ell(\sigma(X_t^\top \theta^{(t)}), Y_t) - \lambda \nabla \|\theta^{(t)}\|\_p,$$
 
 where $$\eta > 0$$ is the learning rate, and $$\nabla \|\cdot\|_p$$ is any valid subgradient of the $$\ell_p$$ norm.
 The benefit, and drawback, of the online score is that it never converges.
