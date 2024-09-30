@@ -415,6 +415,14 @@ To address these limitations, we are looking forward to implementing _causal inf
 ## Citation
 
 ```
+@misc{stylearena2024,
+    title = {Does Style Matter? Disentangling style and substance in Chatbot Arena},
+    url = {https://blog.lmarena.ai/blog/2024/style-control/},
+    author = {Tianle Li*, Anastasios Angelopoulos*, Wei-Lin Chiang*},
+    month = {August},
+    year = {2024}
+}
+
 @misc{chiang2024chatbot,
     title={Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference},
     author={Wei-Lin Chiang and Lianmin Zheng and Ying Sheng and Anastasios Nikolas Angelopoulos and Tianle Li and Dacheng Li and Hao Zhang and Banghua Zhu and Michael Jordan and Joseph E. Gonzalez and Ion Stoica},
@@ -424,5 +432,4 @@ To address these limitations, we are looking forward to implementing _causal inf
     primaryClass={cs.AI}
 }
 ```
-
 ---
