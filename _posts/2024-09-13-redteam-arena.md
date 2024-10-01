@@ -54,7 +54,7 @@ _Observation model._ Let $$T$$ be the number of battles (“time-steps”), $$M$
 - $$X_i^{\rm Prompt} \in \{0,1\}^R$$, a one-hot vector with 1 on the entry of the prompt sampled in battle $$i$$.
 - $$Y_i \in \{0,1\}$$, a binary outcome taking the value 1 if the player won (or forfeited) and 0 otherwise.
 
-We then compute the [Extended Online Arena Score](https://blog.lmarena.ai/2024/extended-arena), with the feature $$X_i$$ being the concatenation of $$X_i^{\rm Model}$$, $$X_i^{\rm Player}$$, and $$X_i^{\rm Prompt}$$, and the label $$Y_i$$ being the outcome of battle $$i$$.
+We then compute the [Extended Online Arena Score](https://blog.lmarena.ai/blog/2024/extended-arena/), with the feature $$X_i$$ being the concatenation of $$X_i^{\rm Model}$$, $$X_i^{\rm Player}$$, and $$X_i^{\rm Prompt}$$, and the label $$Y_i$$ being the outcome of battle $$i$$.
 
 That’s it! After updating the model coefficients in this way, we report them in the tables in the [RedTeam Arena](https://redarena.ai/leaderboard).
 
