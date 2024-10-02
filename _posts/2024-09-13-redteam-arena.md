@@ -40,7 +40,7 @@ This is not a bug bounty program, and it is not your grandma’s jailbreak arena
 
 We need your help. Join our jailbreaking game at [redarena.ai](https://redarena.ai). All the code is open-sourced on [Github](https://github.com/redteaming-arena/redteam-arena). You can open issues and also send feedback on [Discord](https://discord.gg/6GXcFg3TH8). You are welcome to propose new games, or new bad words on X (just tag @[lmsysorg](https://x.com/lmsysorg) and @[elder_plinius](https://x.com/elder_plinius) so we see it)!
 
-## The Leaderboard: Extended Elo
+## The Leaderboard
 
 <img src="/assets/img/blog/redteam_arena/leaderboard.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 100%"/>
 <p style="color:gray; text-align: center;">Figure 2. Leaderboard screenshot. Latest version at <a href="https://redarena.ai/leaderboard">redarena.ai/leaderboard</a></p>
@@ -54,24 +54,9 @@ _Observation model._ Let $$T$$ be the number of battles (“time-steps”), $$M$
 - $$X_i^{\rm Prompt} \in \{0,1\}^R$$, a one-hot vector with 1 on the entry of the prompt sampled in battle $$i$$.
 - $$Y_i \in \{0,1\}$$, a binary outcome taking the value 1 if the player won (or forfeited) and 0 otherwise.
 
-We then model the win probability of the player as
-\begin{equation}
-\mathbb{P}(Y*i = 1 | X_i^{\rm Model}, X_i^{\rm Player}, X_i^{\rm Prompt}) = \frac{e^{X_i^{\rm Player}\beta^{\rm Player}}}{e^{X_i^{\rm Player}\beta^{\rm Player}} + e^{X_i^{\rm Model}\beta^{\rm Model} + X_i^{\rm Prompt}\beta^{\rm Prompt}}}.
-\end{equation}
-This form might look familiar, since it is the same type of model as the Arena Score: a logistic model. This is just a logistic model with a different, \_additive* structure—the model scores $$\beta^{\rm Model}$$ and prompt scores $$\beta^{\rm Prompt}$$ combine additively to generate a notion of total strength for the model-prompt pair. The player scores $$\beta^{\rm Player}$$ have a similar interpretation as the standard Elo score, and we let $$\beta$$ denote the concatenation $$(\beta^{\rm Player}, \beta^{\rm Model}, \beta^{\rm Prompt})$$. For lack of a better term, we call this model “Extended Elo”.
+We then compute the [Extended Online Arena Score](https://blog.lmarena.ai/blog/2024/extended-arena/), with the feature $$X_i$$ being the concatenation of $$X_i^{\rm Model}$$, $$X_i^{\rm Player}$$, and $$X_i^{\rm Prompt}$$, and the label $$Y_i$$ being the outcome of battle $$i$$.
 
-What problem is this new model solving that the old Elo algorithm couldn’t? The answer is in the efficiency of estimation. The standard Elo algorithm could apply in our setting by simply calling every model-prompt pair a distinct “opponent” for the purposes of calculating the leaderboard. However, this approach has two issues:
-It cannot disentangle the effectiveness of the prompt versus that of the model. There is a single coefficient for the pair. Instead, extended Elo can assign _strength to each subpart_.
-There are $$M\times R$$ model-prompt pairs, and only $$M+R$$ distinct models and prompts. Therefore, asymptotically if $$M$$ and $$R$$ grow proportionally, the extended Elo procedure has a quadratic sample-size saving over the standard Elo procedure.
-
-Now, we solve this logistic regression problem _online_. That is, letting $$\ell(x,y;\beta)$$ be the binary cross-entropy loss, we use the iteration
-\begin{equation}
-\beta*n = \beta*{n-1} - \eta \nabla*\beta \ell(X*{n-1}, Y*{n-1}; \beta*{n-1}),
-\end{equation}
-for some learning rate $$\eta$$.
-This is a generalization of the Elo update. In fact, if one removes the prompt coefficient, it reduces exactly to the Elo update between players and models, as if these were 1-1 games.
-
-That’s it! After updating the model coefficients in this way, we report them in the tables in the [RedTeam Arena](https://redarena.ai/leaderboard). We also have more plans for this approach: extended Elo can be used not just for 1v2 leaderboards, like this one, but any $$N$$v$$M$$-player leaderboards in order to attribute notions of strength to each subpart using binary human preference feedback.
+That’s it! After updating the model coefficients in this way, we report them in the tables in the [RedTeam Arena](https://redarena.ai/leaderboard).
 
 ## What’s next?
 
