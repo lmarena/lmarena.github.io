@@ -78,7 +78,7 @@ Agent Arena employs a comprehensive ranking system that evaluates agents based o
 
 The rating system in Agent Arena is designed to reflect the cumulative performance of agents across a wide range of tasks, taking into account factors such as:
 
-![Leaderboard 1](/assets/img/blog/agent-arena/blog_post_14_leaderboard1.jpeg)
+![Leaderboard 1](/assets/img/blog/agent-arena/blog_post_14_leaderboard1.png)
 *The leaderboards analyzing the subcomponents of the agents*
 
 - **Model performance:** Evaluating the effectiveness of the underlying LLM models (e.g., GPT-4, Claude, Llama 3.1).
