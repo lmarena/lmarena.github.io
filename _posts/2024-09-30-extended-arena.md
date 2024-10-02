@@ -64,7 +64,7 @@ arrive.
 The Extended Online Arena Score amounts to running online logistic regression on the same feature set.
 The algorithm is as follows:
 
-$$ \theta^{(t+1)} = \theta^{(t)} - \eta \nabla \ell(\sigma(X_t^\top \theta^{(t)}), Y_t) - \lambda \nabla \|\theta^{(t)}\|\_p,$$
+$$ \theta^{(t+1)} = \theta^{(t)} - \eta \nabla \ell(\sigma(X_t^\top \theta^{(t)}), Y_t) - \lambda \nabla \|\theta^{(t)}\|_p,$$
 
 where $$\eta > 0$$ is the learning rate, and $$\nabla \|\cdot\|_p$$ is any valid subgradient of the $$\ell_p$$ norm.
 The benefit, and drawback, of the online score is that it never converges.
