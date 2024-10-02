@@ -36,7 +36,7 @@ And saving the best for the last, along with this blog, we are also releasing 2,
 - **Arena:** [Agent-Arena](https://www.agent-arena.com/)
 - **Leaderboard:** [Agent Leaderboard](https://www.agent-arena.com/leaderboard) 
 - **User Prompts:** [Prompt Hub](https://www.agent-arena.com/users)
-- **Agent Battle Data:** [Agent Battle Data]()
+- **Agent Battle Data:** [Agent Battle Data](https://github.com/ShishirPatil/gorilla/blob/main/agent-arena/evalutation/agent_ratings_V0.json)
 
 ## 🦜 What are Agents?
 
