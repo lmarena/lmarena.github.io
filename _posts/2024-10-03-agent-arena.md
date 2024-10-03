@@ -9,28 +9,26 @@
 
 ## Introduction
 
-With the rapid growth of Large Language Model (LLM) agents, the need for a unified and systematic way to evaluate them has become paramount. 
+With the growing interest in Large Language Model (LLM) agents, there is a need for a unified and systematic way to evaluate agents. 
 
-LLM Agents are being used across a diverse set of use-cases, from search and code generation to complex tasks like finance and research. We take the view that LLM agents consist of three components - LLM models (e.g GPT-4, Claude, Llama 3.1), frameworks (LangChain, LlamaIndex, CrewAI, etc), and tools (code interpreters, APIs like Brave Search or Yahoo Finance).
+LLM Agents are being used across a diverse set of use-cases, from search and code generation to complex tasks like finance and research. We take the view that LLM agents consist of three components - LLM models (e.g GPT-4, Claude, Llama 3.1), frameworks (LangChain, LlamaIndex, CrewAI, etc), and tools (code interpreters, APIs like Brave Search or Yahoo Finance). For example, an agent to summarize an earnings report, might be powered by a GPT-4o model, use PDFReader as tool to read pdf of earnings reports, and be orchestrated by langchain! Agent-arena captures and ranks user-preferences for agents as a unit, and for each of the three sub-components, providing insights to model-developers, tool-developers, and more critically, users of LLM agents!  
 
-With so many emerging providers in each of these categories, with often nuanced differences in capability and performance, there are endless combinations of agents that can be built, but no definitive way to evaluate them against each other.
+Agents come with many nuances in model and framework evaluation. For example, let's say I wanted to build a financial assistant that retrieves the top performing stocks of the week.
 
-It's important to clarify the point about the nuances in model and framework evaluation. For example, let's say I wanted to build a financial assistant that retrieves the top performing stocks of the week.
-
-> **❓What model should I use?** One model have been trained on far more financial data 💸, while another may excel in reasoning ♟️ and computation ➗.
+> **❓What model should I use?** One model have been trained on far more financial data ��, while another may excel in reasoning ♟️ and computation ➗.
 
 > **❓ And what about frameworks?** One platform might have more API integrations but another might index the internet better.
 
-> **❓ What tools should I use?** Do I need tools that return stock prices 📈 or APIs that can return news 📰 about the market for this specific use-case.
+> **❓ What tools should I use?** Do I need tools that return stock prices �� or APIs that can return news �� about the market for this specific use-case.
 
 As this example illustrates, there is much to think about when designing an agentic workflow - and this is only one use-case out of potentially dozens in the financial domain alone. Different use-cases will call for different combinations of models, tools, and frameworks.
 
-We are delighted to release **🤖 Agent Arena**, an interactive sandbox where users can compare, visualize, and rate agentic workflows **personalized to their needs**. Agent Arena allows users to choose their own combinations of tasks, LLM providers, frameworks, tools, etc and also vote on their performance. We enable users to see how different agents perform against each other in a structured and systematic way. By doing this, we believe that users can make more informed decisions regarding their *agentic stack*. Further, with the Agent Arena we wish to showcase the shortcomings and impressive advacements of the state of agents!
+We are delighted to release **�� Agent Arena**, an interactive sandbox where users can compare, visualize, and rate agentic workflows **personalized to their needs**. Agent Arena allows users to choose from a combinations of tasks, LLM providers, frameworks, tools, etc and also vote on their performance. We enable users to see how different agents perform against each other in a structured and systematic way. By doing this, we believe that users can make more informed decisions regarding their *agentic stack*. Further, with the Agent Arena we wish to showcase the shortcomings and impressive advacements of the state of agents!
 
 Agent Arena also consists of live leaderboard and ranking of LLM models, frameworks, and tools grouped by domain.  Additionally, we believe these rankings can help inform model, tooling, and framework developers, helping them understand where they stand on various use-cases and how they can improve. Also recognizing that user-vote based elections are affected by selection-bias, as a new feature, Agent Arena also includes a Prompt Hub, where you can subscribe to specific prompt-experts and see their invidual opinions on various tasks. **You** can also publish your set of prompts!
 
-This blog post will look into the key elements of Agent Arena, including the definition of agents, the ranking methodology, model tuning, examples of agent use cases, and a roadmap for future developments. 
-And saving the best for the last, along with this blog, we are also releasing 2,000 real world agent battles and pair-wise user preferences!! We'll continue to periodically release more battle data!  
+This blog post will look into the key elements of Agent Arena, including the definition of agents, the novel ranking algorithm, model tuning, examples of agent use cases, and a roadmap for future developments. 
+And saving the best for the last, along with this blog, we are also releasing 2,000 real-world, pair-wise agent battles, and user preferences!! We'll continue to periodically release more battle data!  
 
 **Quick Links:**
 - **Arena:** [Agent-Arena](https://www.agent-arena.com/)
@@ -38,13 +36,10 @@ And saving the best for the last, along with this blog, we are also releasing 2,
 - **User Prompts:** [Prompt Hub](https://www.agent-arena.com/users)
 - **Agent Battle Data:** [Agent Battle Data](https://github.com/ShishirPatil/gorilla/blob/main/agent-arena/evalutation/agent_ratings_V0.json)
 
-## 🦜 What are Agents?
+## �� What are Agents?
 
-In Agent Arena, agents are defined as entities that can perform complex tasks by leveraging various subcomponents, namely LLM models, tools, and frameworks. The agents we consider are sourced from established frameworks like LangChain, LlamaIndex, CrewAI, Composio, and assistants provided by OpenAI and Anthropic. Each of these agents displays key characteristics such as chain-of-thought reasoning, tool use, and function calling, which enable them to execute complex tasks efficiently. For the platform, we utilized models that support function calling and tool use, which are critical aspects for LLM agents.
+In Agent Arena, agents are defined as entities that can perform complex tasks by leveraging various subcomponents. We define each agent to be made up to three components - LLM models, tools, and frameworks. The agents we consider are sourced from established frameworks like LangChain, LlamaIndex, CrewAI, Composio, and assistants provided by OpenAI and Anthropic. Each of these agents may display characteristics such as chain-of-thought reasoning, tool use, and function calling, which enable them to execute complex tasks efficiently. For the platform, we utilized models that support function calling and tool use, which are critical aspects for LLM agents.
 
-Additionally, certain frameworks, such as LlamaIndex, did not support function calling for models that inherently have this capability, like the Llama 3.1 models. As a result, we excluded those specific framework-model combinations from the platform.
-
-![What is an Agent](/assets/img/blog/agent-arena/blog_post_14_what_is_agent.png)
 *LLM agents leverage various tools like code interpreters and external APIs to enhance their problem-solving abilities and execute complex tasks efficiently*
 
 For example, LangChain and LlamaIndex agents come equipped with specific toolkits that enhance their problem-solving capabilities. OpenAI's assistants, such as code interpreters and file processing models, also qualify as agents due to their demonstrated ability to interpret code, process files, and call external functions. Anthropic's agents are integrated with external tools, and similar examples from other frameworks further enhance their utility for specific tasks.
