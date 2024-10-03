@@ -21,7 +21,7 @@ authors:
   - name: Shishir G. Patil
 ---
 
-<img src="/assets/img/blog/agent-arena/blog_post_14_arena_demo.gif" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
+<img src="https://jmp.sh/XcFKgof5" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 1: Agent Arena: Evaluating and Comparing LLM Agents Across Models, Tools, and Frameworks</p>
 
 With the growing interest in Large Language Model (LLM) agents, there is a need for a unified and systematic way to evaluate agents. 
