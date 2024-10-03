@@ -84,7 +84,7 @@ Check out the latest rankings for each category on our leaderboard: [Agent Arena
 
 ### ⚖️ Evaluating Agents with the Extended Bradley-Terry Model
 
-Agent Arena uses the [Bradley-Terry extension](https://blog.lmarena.ai/blog/2024/redteam-arena/), which allows us to compare different agents based on their subcomponents, including tools, models, and frameworks. Instead of just evaluating the agents atomically, we also assess the performance of each individual subcomponent. This allows us to more accurately pinpoint where an agent's strength lies. For example, our first agent could be a combination of LangChain, Brave-Search, and GPT-4o-2024-08-06, while the second agent could be LlamaIndex, Wikipedia, and Claude-3-5-Sonnet-20240620.
+Agent Arena uses the [Bradley-Terry extension](https://blog.lmarena.ai/blog/2024/extended-arena/), which allows us to compare different agents based on their subcomponents, including tools, models, and frameworks. Instead of just evaluating the agents atomically, we also assess the performance of each individual subcomponent. This allows us to more accurately pinpoint where an agent's strength lies. For example, our first agent could be a combination of LangChain, Brave-Search, and GPT-4o-2024-08-06, while the second agent could be LlamaIndex, Wikipedia, and Claude-3-5-Sonnet-20240620.
 
 Therefore, we propose the following observation model for the Extended Bradley-Terry Model. Given `P_1`,
 
