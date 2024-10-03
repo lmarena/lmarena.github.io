@@ -1,13 +1,25 @@
-
-# Gorilla X LMSYS Agent Arena: A Platform for Evaluating and Comparing LLM Agents
-
-## Author(s):
-[Nithik Yekollu](https://www.linkedin.com/in/nithik-yekollu-7298671a8/), [Arth Bohra](https://www.linkedin.com/in/arthbohra/), [Ashwin Chirumamilla](https://www.linkedin.com/in/ashwin-chirumamilla-91103b1b5/), [Kai Wen](https://www.linkedin.com/in/kaiwen129/), [Sai Kolasani](https://www.linkedin.com/in/saikolasani/), [Wei-Lin Chiang](https://infwinston.github.io/), [Anastasios Angelopoulos](https://people.eecs.berkeley.edu/~angelopoulos/), [Joseph Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Ion Stoica](https://people.eecs.berkeley.edu/~istoica/), [Shishir G. Patil](https://people.eecs.berkeley.edu/~shishirpatil/)
-
-![Agent Arena introductory image](/assets/img/blog/agent-arena/blog_post_14_arena_demo.gif)
-*Agent Arena: Evaluating and Comparing LLM Agents Across Models, Tools, and Frameworks*
-
-## Introduction
+---
+layout: distill
+title: Agent Arena
+description: A Platform for Evaluating and Comparing LLM Agents Across Models, Tools, and Frameworks
+giscus_comments: true
+date: 2024-10-03
+featured: false
+thumbnail: assets/img/blog/agent-arena/blog_post_14_arena_demo.gif
+authors:
+  - name: Nithik Yekollu
+    affiliations:
+      name: UC Berkeley
+  - name: Arth Bohra
+  - name: Ashwin Chirumamilla
+  - name: Kai Wen
+  - name: Sai Kolasani
+  - name: Wei-Lin Chiang
+  - name: Anastasios N. Angelopoulos
+  - name: Joseph Gonzalez
+  - name: Ion Stoica
+  - name: Shishir G. Patil
+---
 
 With the growing interest in Large Language Model (LLM) agents, there is a need for a unified and systematic way to evaluate agents. 
 
@@ -82,11 +94,11 @@ The rating system in Agent Arena is designed to reflect the cumulative performan
 
 Check out the latest rankings for each category on our leaderboard: [Agent Arena Leaderboard](https://www.agent-arena.com/leaderboard).
 
-### ⚖️ Evaluating Agents with the Extended Bradley-Terry Model
+### ⚖️ Evaluating Agents with the Extended Arena Score
 
-Agent Arena uses the [Bradley-Terry extension](https://blog.lmarena.ai/blog/2024/redteam-arena/), which allows us to compare different agents based on their subcomponents, including tools, models, and frameworks. Instead of just evaluating the agents atomically, we also assess the performance of each individual subcomponent. This allows us to more accurately pinpoint where an agent's strength lies. For example, our first agent could be a combination of LangChain, Brave-Search, and GPT-4o-2024-08-06, while the second agent could be LlamaIndex, Wikipedia, and Claude-3-5-Sonnet-20240620.
+Agent Arena uses the [extended Arena score](https://blog.lmarena.ai/blog/2024/extended-arena/), which allows us to compare different agents based on their subcomponents, including tools, models, and frameworks. Instead of just evaluating the agents atomically, we also assess the performance of each individual subcomponent. This allows us to more accurately pinpoint where an agent's strength lies. For example, our first agent could be a combination of LangChain, Brave-Search, and GPT-4o-2024-08-06, while the second agent could be LlamaIndex, Wikipedia, and Claude-3-5-Sonnet-20240620.
 
-Therefore, we propose the following observation model for the Extended Bradley-Terry Model. Given `P_1`,
+Therefore, we propose the following observation model for the Extended Arena Score. Given `P_1`,
 
 For each battle $i \in [n]$, we have a prompt and two agents, encoded as the following:
 
@@ -101,23 +113,9 @@ Let's walk through an example to illustrate how the Extended Bradley-Terry Model
 - `Agent_A` is the LangChain Brave-Search Agent, using the following subcomponents: `{ Brave-Search (A_T), LangChain (A_F), and GPT-4o-2024-08-06 (A_M) }` and an Elo of 1600.
 - `Agent B` is the LlamaIndex Wikipedia Agent, with the subcomponents: `{Wikipedia (B_T), LlamaIndex (B_F), and Claude-3-5-Sonnet-20240620 (B_M)}` and an Elo of 1500.
 
-In a traditional Elo system, we would have calculated the probability of the Brave-Search agent winning 64% of the time. Then given the actual outcome of the battle, `Y_1`, assuming that the Brave-Search agent wins, the new rating of the agents would be 1601.44 and 1498.56, respectively.
+To get a holistic evaluation of an agent, we combine all its subcomponents into a single analysis. Instead of treating each subcomponent as an isolated entity, we consider their interaction within the broader agent architecture. For each battle, we build a design matrix `X` that represents all the subcomponents involved. 
+This allows us to evaluate the collective contribution of the subcomponents (tools, models, frameworks) in a single calculation. We then apply logistic regression with L2 regularization to control for overfitting and confounding effects caused by frequent pairings. By using this combined approach, Agent Arena ensures more accurate rankings across agents and their subcomponents. 🔄 This method provides clearer insights into each agent's performance and contributions, preventing the bias that can occur from frequent pairings or overused configurations. See the [blog](https://blog.lmarena.ai/blog/2024/extended-arena/) for additional mathematical details!
 
-In the Bradley-Terry model, however, we calculate the ratings by minimizing the following loss function given the real-world battle outcome: `Y_i`:
-
-$$
-L = -\sum_{i=1}^{n} Y_i \cdot \log\left(\frac{1}{1 + e^{E_A - E_B}}\right) + (1 - Y_i) \cdot \log\left(\frac{1}{1 + e^{E_B - E_A}}\right)
-$$
-
-Finally, to get a holistic evaluation of an agent, we combine all its subcomponents into a single analysis. Instead of treating each subcomponent as an isolated entity, we consider their interaction within the broader agent architecture. For each battle, we build a design matrix `X` that represents all the subcomponents involved. Here, let's assume that A, the Brave-Search agent, wins the battle; in that case the design matrix would look like this:
-
-$$
-X = [ +\log(A_T), +\log(A_M), +\log(A_F), -\log(B_T), -\log(B_M), -\log(B_F) ]
-$$
-
-This allows us to evaluate the collective contribution of the subcomponents (tools, models, frameworks) in a single calculation. We then apply logistic regression with L2 regularization to control for overfitting and confounding effects caused by frequent pairings. 
-
-By using this combined approach, Agent Arena ensures more accurate rankings across agents and their subcomponents. 🔄 This method provides clearer insights into each agent's performance and contributions, preventing the bias that can occur from frequent pairings or overused configurations.
 🎉 As a result, our system generates a real-time, continuously updating leaderboard that not only reflects the agents' overall performance but also their specific subcomponent strengths. 🏆
 Check out our live leaderboards for agents, tools, models, and frameworks [here](https://www.agent-arena.com/leaderboard)!
 
