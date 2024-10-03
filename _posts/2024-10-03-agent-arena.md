@@ -5,7 +5,7 @@ description: A Platform for Evaluating and Comparing LLM Agents Across Models, T
 giscus_comments: true
 date: 2024-10-03
 featured: false
-thumbnail: assets/img/blog/agent-arena/blog_post_14_arena_demo.gif
+thumbnail: assets/img/blog/agent-arena/blog_post_14_cover.png
 authors:
   - name: Nithik Yekollu
     affiliations:
