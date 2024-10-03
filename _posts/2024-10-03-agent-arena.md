@@ -21,6 +21,9 @@ authors:
   - name: Shishir G. Patil
 ---
 
+<img src="/assets/img/blog/agent-arena/blog_post_14_arena_demo.gif" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
+<p style="color:gray; text-align: center;">Figure 1: Agent Arena: Evaluating and Comparing LLM Agents Across Models, Tools, and Frameworks</p>
+
 With the growing interest in Large Language Model (LLM) agents, there is a need for a unified and systematic way to evaluate agents. 
 
 LLM Agents are being used across a diverse set of use-cases, from search and code generation to complex tasks like finance and research. We take the view that LLM agents consist of three components - LLM models (e.g GPT-4, Claude, Llama 3.1), frameworks (LangChain, LlamaIndex, CrewAI, etc), and tools (code interpreters, APIs like Brave Search or Yahoo Finance). For example, an agent to summarize an earnings report, might be powered by a GPT-4o model, use PDFReader as tool to read pdf of earnings reports, and be orchestrated by langchain! Agent-arena captures and ranks user-preferences for agents as a unit, and for each of the three sub-components, providing insights to model-developers, tool-developers, and more critically, users of LLM agents!  
@@ -59,7 +62,7 @@ For example, LangChain and LlamaIndex agents come equipped with specific toolkit
 ## The Agent Arena Platform
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_agent_arena_flowchart.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 1: A high-level overview of agent comparisons based on user goals, models, frameworks, and performance metrics like execution time and ELO</p>
+<p style="color:gray; text-align: center;">Figure 2: A high-level overview of agent comparisons based on user goals, models, frameworks, and performance metrics like execution time and ELO</p>
 
 
 At its core, Agent Arena allows for goal-based agent comparisons. On a high level, users will first input a task that they want to accomplish. Then, an LLM automatically assign relevant agents based on the task. These agents are then tasked with completing the goal, with the agent's actions and *chain of thought* being streamed to the user in real-time. Once the agents have completed the task, the user can compare the outputs side-by-side and vote on which agent performed better.
@@ -88,7 +91,7 @@ The rating system in Agent Arena is designed to reflect the cumulative performan
 
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_leaderboard1.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 2: The leaderboards analyzing the subcomponents of the agents</p>
+<p style="color:gray; text-align: center;">Figure 3: The leaderboards analyzing the subcomponents of the agents</p>
 
 - **Model performance:** Evaluating the effectiveness of the underlying LLM models (e.g., GPT-4, Claude, Llama 3.1).
 - **Tool efficiency:** Ranking the tools agents use to complete tasks (e.g., code interpreters, APIs like Brave Search or Yahoo Finance).
@@ -127,13 +130,13 @@ Check out our live leaderboards for agents, tools, models, and frameworks [here]
 The Agent Arena also comes with a prompt hub that has over 1000+ tasks that have been tested and verified to work on the platform. Users will be able to search for similar use cases as theirs and observe how different prompts are executed and perform. Furthermore, the platform also enables users to post their prompts to the community. This public view of prompts that are being evaluates through agent arena provides strong infrastructure and data for future anayltics for future agent development and evaluation. 
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_prompthub.jpeg" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 3: The prompt hub featuring registered users in the arena</p>
+<p style="color:gray; text-align: center;">Figure 4: The prompt hub featuring registered users in the arena</p>
 
 ### 🏠 Prompt Hub Overview
 The prompt hub is a way for users to interact with other users and see a unique view of the individual and domain specific use cases that users demand with agents. This is a great way to see user activity at a granular level and see what specifically users are using agents to do and how to prioritize future agent development.
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_prompthub_example_v2.jpeg" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 4: View, like, and dislike individual user prompts</p>
+<p style="color:gray; text-align: center;">Figure 5: View, like, and dislike individual user prompts</p>
 
 ### 🧑‍💻 Individual User View
 Additionaly, users can provide feedback to other users on their individual prompts through the prompt hub by liking and disliking individual prompts. This provides an additional data point for future for prompt analytics to potentially evaluate domain-specific performance of various agents in the arena.
@@ -144,7 +147,7 @@ Additionaly, users can provide feedback to other users on their individual promp
 Your choice of model, framework, and tools will often differ greatly depending on domain applications and use cases. Domain-specific agent developer will need to find the optimal combination of these factors to maximize performance. The vision of the future is that eventually, agents will become accurate enough to the point where we will allow them to make informed and perhaps critical decisions without the need for a human in the loop. While there's ways to go, here are a few industries that could get shaken up by agents:
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_example_run.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 5: Example flow of LLM agents providing projections and insights on GE stock prices based on relevant earnings and competitors</p>
+<p style="color:gray; text-align: center;">Figure 6: Example flow of LLM agents providing projections and insights on GE stock prices based on relevant earnings and competitors</p>
 
 ### Real-World Agent Workflows: Interesting User Scenarios
 In the following section, we showcase some of the most interesting real-world examples from the Agent Arena. These examples represent diverse user scenarios where agents were tasked with solving specific challenges, highlighting the variety of models, frameworks, and tools employed. Each prompt illustrates the agents' thought process, execution, and areas for improvement, offering insights for both developers and users.
