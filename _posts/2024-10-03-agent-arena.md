@@ -102,7 +102,7 @@ Agent Arena uses the [extended Arena score](https://blog.lmarena.ai/blog/2024/ex
 
 Therefore, we propose the following observation model for the Extended Arena Score. Given `P_1`,
 
-For each battle $i \in [n]$, we have a prompt and two agents, encoded as the following:
+For each battle $$i \in [n]$$, we have a prompt and two agents, encoded as the following:
 
 - `Agent A`: The first agent being compared with an elo of `E_A` and with the subcomponents `(A_T, A_M, A_F)`
 - `Agent B`: The second agent being compared, having an elo of `E_B` and with the subcomponents `(B_T, B_M, B_F)`
