@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://blog.lmarena.ai/sitemap.xml
+Sitemap: https://lmarena.github.io/sitemap.xml
