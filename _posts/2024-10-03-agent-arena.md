@@ -24,9 +24,9 @@ authors:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6G7WAdHXKlQ?si=CaksiYMS6m_s_ALP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <p style="color:gray; text-align: center;">Figure 1: Agent Arena: Evaluating and Comparing LLM Agents Across Models, Tools, and Frameworks</p>
 
-With the growing interest in Large Language Model (LLM) agents, there is a need for a unified and systematic way to evaluate agents. 
+With the growing interest in Large Language Model (LLM) agents, there is a need for a unified and systematic way to evaluate agents.
 
-LLM Agents are being used across a diverse set of use-cases, from search and code generation to complex tasks like finance and research. We take the view that LLM agents consist of three components - LLM models (e.g GPT-4, Claude, Llama 3.1), frameworks (LangChain, LlamaIndex, CrewAI, etc), and tools (code interpreters, APIs like Brave Search or Yahoo Finance). For example, an agent to summarize an earnings report, might be powered by a GPT-4o model, use PDFReader as tool to read pdf of earnings reports, and be orchestrated by langchain! Agent-arena captures and ranks user-preferences for agents as a unit, and for each of the three sub-components, providing insights to model-developers, tool-developers, and more critically, users of LLM agents!  
+LLM Agents are being used across a diverse set of use-cases, from search and code generation to complex tasks like finance and research. We take the view that LLM agents consist of three components - LLM models (e.g GPT-4, Claude, Llama 3.1), frameworks (LangChain, LlamaIndex, CrewAI, etc), and tools (code interpreters, APIs like Brave Search or Yahoo Finance). For example, an agent to summarize an earnings report, might be powered by a GPT-4o model, use PDFReader as tool to read pdf of earnings reports, and be orchestrated by langchain! Agent-arena captures and ranks user-preferences for agents as a unit, and for each of the three sub-components, providing insights to model-developers, tool-developers, and more critically, users of LLM agents!
 
 Agents come with many nuances in model and framework evaluation. For example, let's say I wanted to build a financial assistant that retrieves the top performing stocks of the week.
 
@@ -38,16 +38,17 @@ Agents come with many nuances in model and framework evaluation. For example, le
 
 As this example illustrates, there is much to think about when designing an agentic workflow - and this is only one use-case out of potentially dozens in the financial domain alone. Different use-cases will call for different combinations of models, tools, and frameworks.
 
-We are delighted to release **🤖 Agent Arena**, an interactive sandbox where users can compare, visualize, and rate agentic workflows **personalized to their needs**. Agent Arena allows users to choose from a combinations of tasks, LLM providers, frameworks, tools, etc and also vote on their performance. We enable users to see how different agents perform against each other in a structured and systematic way. By doing this, we believe that users can make more informed decisions regarding their *agentic stack*. Further, with the Agent Arena we wish to showcase the shortcomings and impressive advacements of the state of agents!
+We are delighted to release **🤖 Agent Arena**, an interactive sandbox where users can compare, visualize, and rate agentic workflows **personalized to their needs**. Agent Arena allows users to choose from a combinations of tasks, LLM providers, frameworks, tools, etc and also vote on their performance. We enable users to see how different agents perform against each other in a structured and systematic way. By doing this, we believe that users can make more informed decisions regarding their _agentic stack_. Further, with the Agent Arena we wish to showcase the shortcomings and impressive advacements of the state of agents!
 
-Agent Arena also consists of live leaderboard and ranking of LLM models, frameworks, and tools grouped by domain.  Additionally, we believe these rankings can help inform model, tooling, and framework developers, helping them understand where they stand on various use-cases and how they can improve. Also recognizing that user-vote based elections are affected by selection-bias, as a new feature, Agent Arena also includes a Prompt Hub, where you can subscribe to specific prompt-experts and see their invidual opinions on various tasks. **You** can also publish your set of prompts!
+Agent Arena also consists of live leaderboard and ranking of LLM models, frameworks, and tools grouped by domain. Additionally, we believe these rankings can help inform model, tooling, and framework developers, helping them understand where they stand on various use-cases and how they can improve. Also recognizing that user-vote based elections are affected by selection-bias, as a new feature, Agent Arena also includes a Prompt Hub, where you can subscribe to specific prompt-experts and see their invidual opinions on various tasks. **You** can also publish your set of prompts!
 
-This blog post will look into the key elements of Agent Arena, including the definition of agents, the novel ranking algorithm, model tuning, examples of agent use cases, and a roadmap for future developments. 
-And saving the best for the last, along with this blog, we are also releasing 2,000 real-world, pair-wise agent battles, and user preferences!! We'll continue to periodically release more battle data!  
+This blog post will look into the key elements of Agent Arena, including the definition of agents, the novel ranking algorithm, model tuning, examples of agent use cases, and a roadmap for future developments.
+And saving the best for the last, along with this blog, we are also releasing 2,000 real-world, pair-wise agent battles, and user preferences!! We'll continue to periodically release more battle data!
 
 **Quick Links:**
+
 - **Arena:** [Agent-Arena](https://www.agent-arena.com/)
-- **Leaderboard:** [Agent Leaderboard](https://www.agent-arena.com/leaderboard) 
+- **Leaderboard:** [Agent Leaderboard](https://www.agent-arena.com/leaderboard)
 - **User Prompts:** [Prompt Hub](https://www.agent-arena.com/users)
 - **Agent Battle Data:** [Agent Battle Data](https://github.com/ShishirPatil/gorilla/blob/main/agent-arena/evalutation/agent_ratings_V0.json)
 
@@ -55,7 +56,7 @@ And saving the best for the last, along with this blog, we are also releasing 2,
 
 In Agent Arena, agents are defined as entities that can perform complex tasks by leveraging various subcomponents. We define each agent to be made up to three components - LLM models, tools, and frameworks. The agents we consider are sourced from established frameworks like LangChain, LlamaIndex, CrewAI, Composio, and assistants provided by OpenAI and Anthropic. Each of these agents may display characteristics such as chain-of-thought reasoning, tool use, and function calling, which enable them to execute complex tasks efficiently. For the platform, we utilized models that support function calling and tool use, which are critical aspects for LLM agents.
 
-*LLM agents leverage various tools like code interpreters and external APIs to enhance their problem-solving abilities and execute complex tasks efficiently*
+_LLM agents leverage various tools like code interpreters and external APIs to enhance their problem-solving abilities and execute complex tasks efficiently_
 
 For example, LangChain and LlamaIndex agents come equipped with specific toolkits that enhance their problem-solving capabilities. OpenAI's assistants, such as code interpreters and file processing models, also qualify as agents due to their demonstrated ability to interpret code, process files, and call external functions. Anthropic's agents are integrated with external tools, and similar examples from other frameworks further enhance their utility for specific tasks.
 
@@ -64,8 +65,7 @@ For example, LangChain and LlamaIndex agents come equipped with specific toolkit
 <img src="/assets/img/blog/agent-arena/blog_post_14_agent_arena_flowchart.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 2: A high-level overview of agent comparisons based on user goals, models, frameworks, and performance metrics like execution time and ELO</p>
 
-
-At its core, Agent Arena allows for goal-based agent comparisons. On a high level, users will first input a task that they want to accomplish. Then, an LLM automatically assign relevant agents based on the task. These agents are then tasked with completing the goal, with the agent's actions and *chain of thought* being streamed to the user in real-time. Once the agents have completed the task, the user can compare the outputs side-by-side and vote on which agent performed better.
+At its core, Agent Arena allows for goal-based agent comparisons. On a high level, users will first input a task that they want to accomplish. Then, an LLM automatically assign relevant agents based on the task. These agents are then tasked with completing the goal, with the agent's actions and _chain of thought_ being streamed to the user in real-time. Once the agents have completed the task, the user can compare the outputs side-by-side and vote on which agent performed better.
 
 The evaluation process includes voting on agent performance, with users assessing which agent met the task's requirements more effectively. This user-driven evaluation contributes to an evolving leaderboard system, which ranks agents based on their relative performance across multiple tasks and competitions. This comparison is not limited to the agents as a whole but extends to the individual components (i.e., LLM models, tools, and frameworks) that comprise each agent.
 
@@ -73,12 +73,12 @@ In the sections below, we will look into the core components of Agent Arena, inc
 
 ## The Router System: Agent Matching and Task Assignment
 
-A central element of Agent Arena is its router system, which is powered by GPT-4o currently. We plan to cycle between all models, and also judge each model's ability to route prompts to the most relevant agents! The router's primary function is to match users' specified goals with the most suitable agents available on the platform. 
+A central element of Agent Arena is its router system, which is powered by GPT-4o currently. We plan to cycle between all models, and also judge each model's ability to route prompts to the most relevant agents! The router's primary function is to match users' specified goals with the most suitable agents available on the platform.
 
-The router operates by analyzing the user's input (the goal or task) and selects two agents that are optimally suited to complete that task. This selection process factors in the agents' historical performance across similar tasks, as well as their configurations in terms of models, tools, and frameworks. 
+The router operates by analyzing the user's input (the goal or task) and selects two agents that are optimally suited to complete that task. This selection process factors in the agents' historical performance across similar tasks, as well as their configurations in terms of models, tools, and frameworks.
 
-For example, a user might provide the following: `input("Tell me about whats going on in NVIDIA in the last week.")` The router would then select two suitable options given the available agents and the leaderboard ELOs. For this use-case, the router might select the agent ```agent_a = Agent(model="GPT-4o", tools=["Yahoo Finance", "Matplotlib"], framework="Langchain")``` 
-to analyze the stock information about NVIDIA. On the other side, to compare against Agent A, the router might select the combination: ```agent_b = Agent(model="Claude", tools=["Yahoo News"], framework="CrewAI")``` 
+For example, a user might provide the following: `input("Tell me about whats going on in NVIDIA in the last week.")` The router would then select two suitable options given the available agents and the leaderboard ELOs. For this use-case, the router might select the agent `agent_a = Agent(model="GPT-4o", tools=["Yahoo Finance", "Matplotlib"], framework="Langchain")`
+to analyze the stock information about NVIDIA. On the other side, to compare against Agent A, the router might select the combination: `agent_b = Agent(model="Claude", tools=["Yahoo News"], framework="CrewAI")`
 to observe the goal from the perspective of news.
 
 This comparison is fruitful because it allows the platform and the user to understand the nuances in the agents' capabilities and the different ways they can approach the same task. Then, they themselves can vote for which style they like better.
@@ -88,7 +88,6 @@ This comparison is fruitful because it allows the platform and the user to under
 Agent Arena employs a comprehensive ranking system that evaluates agents based on their performance in head-to-head comparisons. The leaderboard ranks agents not only based on their overall performance but also by breaking down the performance of individual components such as LLM models, tools, and frameworks. The ranking process is informed by both user evaluations and an ELO-based rating system, commonly used in competitive ranking environments, where agent performance is dynamically adjusted after each task or comparison.
 
 The rating system in Agent Arena is designed to reflect the cumulative performance of agents across a wide range of tasks, taking into account factors such as:
-
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_leaderboard1.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 3: The leaderboards analyzing the subcomponents of the agents</p>
@@ -118,29 +117,29 @@ Let's walk through an example to illustrate how the Extended Bradley-Terry Model
 - `Agent_A` is the LangChain Brave-Search Agent, using the following subcomponents: `{ Brave-Search (A_T), LangChain (A_F), and GPT-4o-2024-08-06 (A_M) }` and an Elo of 1600.
 - `Agent B` is the LlamaIndex Wikipedia Agent, with the subcomponents: `{Wikipedia (B_T), LlamaIndex (B_F), and Claude-3-5-Sonnet-20240620 (B_M)}` and an Elo of 1500.
 
-To get a holistic evaluation of an agent, we combine all its subcomponents into a single analysis. Instead of treating each subcomponent as an isolated entity, we consider their interaction within the broader agent architecture. For each battle, we build a design matrix `X` that represents all the subcomponents involved. 
+To get a holistic evaluation of an agent, we combine all its subcomponents into a single analysis. Instead of treating each subcomponent as an isolated entity, we consider their interaction within the broader agent architecture. For each battle, we build a design matrix `X` that represents all the subcomponents involved.
 This allows us to evaluate the collective contribution of the subcomponents (tools, models, frameworks) in a single calculation. We then apply logistic regression with L2 regularization to control for overfitting and confounding effects caused by frequent pairings. By using this combined approach, Agent Arena ensures more accurate rankings across agents and their subcomponents. 🔄 This method provides clearer insights into each agent's performance and contributions, preventing the bias that can occur from frequent pairings or overused configurations. See the [blog](https://blog.lmarena.ai/blog/2024/extended-arena/) for additional mathematical details!
 
 🎉 As a result, our system generates a real-time, continuously updating leaderboard that not only reflects the agents' overall performance but also their specific subcomponent strengths. 🏆
 Check out our live leaderboards for agents, tools, models, and frameworks [here](https://www.agent-arena.com/leaderboard)!
 
-
 ## The Prompt Hub
 
-The Agent Arena also comes with a prompt hub that has over 1000+ tasks that have been tested and verified to work on the platform. Users will be able to search for similar use cases as theirs and observe how different prompts are executed and perform. Furthermore, the platform also enables users to post their prompts to the community. This public view of prompts that are being evaluates through agent arena provides strong infrastructure and data for future anayltics for future agent development and evaluation. 
+The Agent Arena also comes with a prompt hub that has over 1000+ tasks that have been tested and verified to work on the platform. Users will be able to search for similar use cases as theirs and observe how different prompts are executed and perform. Furthermore, the platform also enables users to post their prompts to the community. This public view of prompts that are being evaluates through agent arena provides strong infrastructure and data for future anayltics for future agent development and evaluation.
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_prompthub.jpeg" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 4: The prompt hub featuring registered users in the arena</p>
 
 ### 🏠 Prompt Hub Overview
+
 The prompt hub is a way for users to interact with other users and see a unique view of the individual and domain specific use cases that users demand with agents. This is a great way to see user activity at a granular level and see what specifically users are using agents to do and how to prioritize future agent development.
 
 <img src="/assets/img/blog/agent-arena/blog_post_14_prompthub_example_v2.jpeg" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 5: View, like, and dislike individual user prompts</p>
 
 ### 🧑‍💻 Individual User View
-Additionaly, users can provide feedback to other users on their individual prompts through the prompt hub by liking and disliking individual prompts. This provides an additional data point for future for prompt analytics to potentially evaluate domain-specific performance of various agents in the arena.
 
+Additionaly, users can provide feedback to other users on their individual prompts through the prompt hub by liking and disliking individual prompts. This provides an additional data point for future for prompt analytics to potentially evaluate domain-specific performance of various agents in the arena.
 
 ## 💼 Case Studies
 
@@ -150,9 +149,11 @@ Your choice of model, framework, and tools will often differ greatly depending o
 <p style="color:gray; text-align: center;">Figure 6: Example flow of LLM agents providing projections and insights on GE stock prices based on relevant earnings and competitors</p>
 
 ### Real-World Agent Workflows: Interesting User Scenarios
+
 In the following section, we showcase some of the most interesting real-world examples from the Agent Arena. These examples represent diverse user scenarios where agents were tasked with solving specific challenges, highlighting the variety of models, frameworks, and tools employed. Each prompt illustrates the agents' thought process, execution, and areas for improvement, offering insights for both developers and users.
 
 #### Education & Personalized Tutoring 📚
+
 > "Generate a step-by-step solution and explanation for this high school physics problem: A 5 kg object is dropped from a height of 10 meters. How long does it take to hit the ground?"
 
 <details>
@@ -203,6 +204,7 @@ In the following section, we showcase some of the most interesting real-world ex
 In education-focused scenarios, LLM agents have the potential to offer rich, step-by-step explanations that guide students through complex problems, such as physics calculations. In the example of determining how long it takes for a 5 kg object to fall from 10 meters, the agents approached the problem using basic equations of motion. However, while Agent A (anthropic calculator tool, claude-3-opus-20240229) provided a thorough breakdown of the solution, the simplicity of its approach highlighted a need for more nuanced handling of kinematics, such as adaptive responses that dynamically adjust based on user queries. Meanwhile, Agent B (langchain Wolfram Alpha, claude-3-haiku-20240307) leveraged Wolfram Alpha but struggled with obtaining relevant data from the tool, indicating gaps in API integration that hinder real-time computational accuracy. These cases show opportunities for fine-tuning the agents' interaction with APIs and frameworks, ensuring that agents not only retrieve correct data but also process and apply it efficiently to real-world scenarios. Improving the fluidity and depth of these calculations, especially when leveraging multiple APIs, can bring enhanced precision and adaptability in educational contexts, enriching the learning experience and making the agent more capable of handling varied educational queries.
 
 #### Business Data Analytics 💸
+
 > "Given this .csv file of last year's sales data, generate insights of what products to scale up."
 
 <details>
@@ -251,6 +253,7 @@ In education-focused scenarios, LLM agents have the potential to offer rich, ste
 In business data analytics, LLM agents can offer valuable insights by processing large datasets, such as CSV files containing sales data, to uncover trends and make strategic recommendations. In this example, Agent A (sql agent plotter langchain, gpt-4o-2024-05-13) struggled with an error, misinterpreting the CSV file as a SQLite database, which highlights limitations in the agent’s error-handling capabilities and its adaptability to different file formats. Although the agent attempted to switch tools and correct the process, it was clear that a more seamless integration between SQL and file-processing tools was needed to maintain workflow fluidity. Meanwhile, Agent B (langchain Pandas DataFrame, gpt-4o-2024-08-06) effectively analyzed the sales data, identifying top-performing products like “Laptop” and “Smartphone” based on sales revenue, and suggested scaling up "Headphones" and "Keyboard" due to high sales volume. However, Agent B could benefit from deeper contextual understanding by linking sales patterns with external factors such as seasonality or promotions. These examples underscore the need for agents to better handle complex datasets, enhance error resilience, and offer more context-aware analysis, especially when switching between tools or working with diverse data formats. Improving these areas would significantly enhance the agent’s ability to deliver more robust, actionable insights, particularly in complex business scenarios.
 
 #### Social Media Management / Content Creation 📸
+
 > "Schedule daily Instagram posts for a week, promoting our upcoming sale using relevant hashtags and current influencer trends."
 
 <details>
@@ -302,7 +305,6 @@ These agents, while functional, demonstrate that more specialized frameworks tai
 #### Medical Diagnostics 👩‍⚕️
 
 > "Given this file containing a patient’s medical history, cross-reference it with recent research papers to recommend the most up-to-date treatment options for chronic migraines."
-
 
 <details>
 <summary>Prompt Execution</summary>
@@ -398,7 +400,6 @@ Both agents highlight the need for better integration of real-time data sources 
 
 > "Plan a day trip to Carmel-by-the-Sea from San Francisco. Optimize the itinerary by choosing the most fuel-efficient routes with the most sights to see."
 
-
 <details>
 <summary>Prompt Execution</summary>
 <pre>
@@ -453,7 +454,6 @@ By providing a systematic way to run agents, compare them against each other, vi
 
 To reach this vision, we have laid out a comprehensive roadmap of feature development and improvement. The general theme of these changes will be to improve the personalization of the arena to individual users along with expanding the available analytics.
 
-
 ### 📈 Increasing the Number of LLM & Framework Providers on the Platform
 
 One of the primary goals of the Agent Arena is to show users all of the combinations of agents that they can build, so they can definitely know which options are the best suited for their use-cases. While we currently offer the main providers in each category, we hope to expand our selection to include more niche providers that are specialized in certain tasks.
@@ -465,6 +465,7 @@ In order to make the platform as useful as possible, we want to ensure that user
 ### 🪜 Enabling multi-turn prompts
 
 Most agentic tasks involve multiple steps of reasoning and action from the agent. This requires keeping track of the state of the context of the task. For example, take the following task:
+
 > Task: "Search for the top 5 performing stocks this year in the S&P 500 and then find the latest news about them."
 
 This task requires the agent to first find the top 5 stocks, keep it somewhere in backend 'memory',and then call another set of individual tools to find the latest news about them. This is a multi-turn prompt, and other examples can start to involve 5+ steps. We plan on releasing this feature in the upcoming few months for users.
@@ -473,24 +474,19 @@ This task requires the agent to first find the top 5 stocks, keep it somewhere i
 
 The current implementation of the platform has left several domains of agent use-cases unexplored. More specifically, we hope to start integrating with APIs like Jira, Github, GSuite and other tools to enable users to actually run agents on their personal data. While this will involve a lot of security and privacy considerations, we believe this is a critical step in making the platform more useful to users.
 
-
-
 ### 📊 Improving the Recommendation Algorithm
 
 Based on user preferences and the providers/frameworks they like, we plan on improving the routing of goals to more relevant agents for the user. Additionally, we will include two different modes of routing: one that is more exploratory and one that is more focused on the user's preferences.
-
 
 ## Conclusion
 
 Agent Arena is a platform to evaluate and compare LLM agents. By offering a comprehensive ranking system and tools to test agents from various frameworks, the platform allows users to make informed decisions about the best models and tools for their specific needs. With continuous improvements and expansions planned, Agent Arena is set to play a pivotal role in shaping the future of LLM agent evaluation.
 
-
 We invite researchers, developers, and AI enthusiasts to explore Agent Arena, contribute to its growth, and help shape the future of agent-based AI systems. Together, we can push the boundaries of what's possible with LLM agents and unlock new potentials in AI-driven problem-solving.
 
-
 ## Citation
-We hope you enjoyed this blog post. We would love to hear from you on [Discord](https://discord.gg/grXXvj9Whz), [Twitter (#GorillaLLM)](https://x.com/shishirpatil_/status/1661780076277678082), and [GitHub](https://github.com/ShishirPatil/gorilla/).
 
+We hope you enjoyed this blog post. We would love to hear from you on [Discord](https://discord.gg/grXXvj9Whz), [Twitter (#GorillaLLM)](https://x.com/shishirpatil_/status/1661780076277678082), and [GitHub](https://github.com/ShishirPatil/gorilla/).
 
 If you would like to cite Agent Arena:
 
