@@ -36,11 +36,13 @@ To summarize:
 &nbsp;
 
 <embed src="/assets/img/blog/preference_proxy_evaluations/ppe_image.svg" type="image/svg+xml" style="width:100%; height:auto;" />
-<p style="color:gray; text-align: center;"><sub>Figure 1: Human preference scores on two different metrics use by PPE: Accuracy and Spearman correlation.  We notice that the two metrics appear to measure different aspects of the preference proxy. Accuracy may be better for tasks that rank individual responses (like training). Spearman correlation may be better for tasks that rank models (like evaluation). See the later section <i>Studying the Correlation of PPE with Downstream Performance</i> for details on how various metrics correlate to RLHF outcomes.</sub></p>
+<p style="color:gray; text-align: center;"><sub>Figure 1: Human preference scores on two different metrics use by PPE: Accuracy and Spearman correlation.  We notice that the two metrics appear to measure different aspects of the preference proxy. Accuracy may be better for tasks that rank individual responses (like training). Spearman correlation may be better for tasks that rank models (like evaluation). See the later section <i>Studying the Correlation of PPE with Downstream Performance</i> for details on how various metrics correlate to RLHF outcomes. Note: LLM judges in the figure use the Arena-Hard judge prompt.</sub></p>
 
 &nbsp;
 
 Our code can be found on [Github](https://github.com/lmarena/PPE).
+
+Our paper is available on [Arxiv](https://arxiv.org/abs/2410.14872).
 
 &nbsp;
 
@@ -136,6 +138,22 @@ Additionally, we observe that measuring the lower bound score may correlate more
 # Conclusion
 
 PPE is another step towards rigorous evaluations of reward models and LLM-Judges before deployment to expensive model training and evaluation pipelines. For reward models specifically, we take extra care to ensure that PPE correlates to downstream RLHF-ed LLM performance. Moreover, PPE is a natural framework in which to evaluate LLM judges. We reasoned that a well-aligned LLM judge should be able to reconstruct the preferences we have sourced with high fidelity. For example, LLM judges used for automatic evaluation should be able to rank models in the human preference set with high confidence and correlation. LLM judges used to replicate individual human preferences should do so at high accuracy, just like reward models. Moving forward, we seek to keep creating, updating, and finding new ways in which to ensure that our preference proxy signals are in alignment with our desired outcomes.
+
+&nbsp;
+
+# Citation
+
+```
+@misc{frick2024evaluaterewardmodelsrlhf,
+      title={How to Evaluate Reward Models for RLHF}, 
+      author={Evan Frick and Tianle Li and Connor Chen and Wei-Lin Chiang and Anastasios N. Angelopoulos and Jiantao Jiao and Banghua Zhu and Joseph E. Gonzalez and Ion Stoica},
+      year={2024},
+      eprint={2410.14872},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2410.14872}, 
+}
+```
 
 &nbsp;
 
