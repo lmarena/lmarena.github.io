@@ -123,11 +123,13 @@ Turning to the right-hand side of [Figure 2](#figure2), the accuracy of the rewa
 
 Overall, accuracy on the human preference dataset is more correlated than the correctness metrics. This is because correctness and human preference do not necessarily align. Moreover, the information contained in Loss, Max score, and End score may not prove relevant in DPO, which is off-policy. Those employing RLHF algorithms that have a higher risk of over-optimization may find these alternative measures helpful. However, when calculating correlation against style controlled ELOs<sup>\*</sup> we notice a slight decrease in correlations on the human preference dataset. Notably, the correctness preference measurements show no change, suggesting correctness preference may be more robust towards reward model preference quality, response style aside. Style-controlled correlation heatmaps are shown in Appendix [Style Control](#style-control).
 
-<sup>*</sup> Style controlled ELOs are calculated as detailed in our previous blog, [*Does Style Matter?\*](/blog/2024/style-control/)
+<sup>*</sup> Style controlled ELOs are calculated as detailed in our previous blog, [*Does Style Matter?*](/blog/2024/style-control/)
 
 &nbsp;
 <a id="figure4"></a>
 <img src="/assets/img/blog/preference_proxy_evaluations/AggregationPlots.png" style="width:100%; height:auto" />
+
+<p style="color:gray; text-align: center;"><sub>Figure 4:  Spearman Correlation, Confidence Agreement, and Accuracy metrics: For each metric, we take the quantiles of category scores (Hard, Easy, Instruction Following, Coding, Math, and Similar). The Pearson Correlation is calculated relative to Post-RLHF Human Preference Elo ratings for each quantile. Notably, accuracy peaks at 0.80 correlation at low quantile aggregation.</sub></p>
 
 &nbsp;
 
