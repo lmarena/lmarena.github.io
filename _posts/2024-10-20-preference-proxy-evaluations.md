@@ -96,44 +96,42 @@ See Appendix [Correctness Preference Metrics](#correctness-preference-metrics) f
 
 # Validating post-RLHF LLM outcomes
 
-We aim to see how well PPE predict the performance of reward models in training LLMs. To do this, we RLHF-tune a base LLM using several reward models and evaluate the resulting LLMs by measuring real-world human preference (ELO ratings). The experiment uses Llama-3.1-8B-Instruct, with RLHF via Direct Preference Optimization (DPO). Results are collected from 12,190 human votes in Chatbot Arena, and final ELO scores depend solely on the reward model used.
+We aim to see how well PPE predict the performance of reward models in training LLMs. To do this, we RLHF-tune a base LLM using several reward models and evaluate the resulting LLMs by measuring real-world human preference (Arena Scores). The experiment uses Llama-3.1-8B-Instruct, with RLHF via Direct Preference Optimization (DPO). Results are collected from 12,190 human votes in Chatbot Arena, and final Arena Scores depend solely on the reward model used.
 
 We selected nine reward models based on popularity and performance. We built a dataset of 8,000 prompts and 128,000 model responses collected from the base model from which each reward model picked a preferred response per prompt, creating a training set of "chosen" and "rejected" responses. Using DPO, we trained Llama-3.1-8B-Instruct for each reward model to assess downstream real-world human preference.
 
-We deployed our trained DPO models to Chatbot Arena for real-world human evaluation. These models were paired against each other for blind comparison. A total of 12,190 votes were collected, averaging 2,032 battles per model and 190 battles per unique model pair. The resulting ELO scores, calculated using the Bradley-Terry model, are shown in Table 1 above highlighting the downstream RLHF performance of each reward model based on human preferences.
-
-The resulting ELO scores are detailed in Appendix [Post-RLHF ELOs](#post-rlhf-elos).
+We deployed our trained DPO models to Chatbot Arena for real-world human evaluation. These models were paired against each other for blind comparison. A total of 12,190 votes were collected, averaging 2,032 battles per model and 190 battles per unique model pair. The resulting Arena Scores, calculated using the Bradley-Terry model, are detailed in Appendix [Post-RLHF Arena Scores](#post-rlhf-arena-scores), highlighting the downstream RLHF performance of each reward model based on human preferences.
 
 # Studying the Correlation of PPE with Downstream Performance
 
 <a id="figure2"></a>
 <img src="/assets/img/blog/preference_proxy_evaluations/MainHeatmaps.png" style="width:100%; height:auto; text-align: center;"/>
 
-<p style="color:gray; text-align: center;"><sub>Figure 2: Pearson correlations of different metrics toward downstream human preference ELO. Left: Pearson correlation between the ranking of models on 5 specific benchmarks and 5 different metrics and their respective post-DPO ELO rankings on real human preference. Right: Pearson correlation between the ranking of models on 7 categories and 7 metrics on the Human Preference Dataset.</sub></p>
+<p style="color:gray; text-align: center;"><sub>Figure 2: Pearson correlations of different metrics toward downstream human preference. Left: Pearson correlation between the ranking of models on 5 specific benchmarks and 5 different metrics and their respective post-DPO Arena Score rankings on real human preference. Right: Pearson correlation between the ranking of models on 7 categories and 7 metrics on the Human Preference Dataset.</sub></p>
 
 <a id="figure3"></a>
 <img src="/assets/img/blog/preference_proxy_evaluations/RewardBenchHeatmap.png" 
      style="display: block; margin: 0 auto; width: 50%; height: auto;" />
 
-<p style="color:gray; text-align: center;"><sub>Figure 3: Pearson correlation between the ranking of models in RewardBench and their respective post-DPO Elo rankings on real human preference.</sub></p>
+<p style="color:gray; text-align: center;"><sub>Figure 3: Pearson correlation between the ranking of models in RewardBench and their respective post-DPO Arena Score rankings on real human preference.</sub></p>
 
 On correctness metrics (left plot in [Figure 2](#figure2)) we make several observations: (1) Mean across all domains is well correlated across all metrics, but exhibits higher correlation with AUC and Accuracy scores. (2) Math is the best individual benchmark domain in terms of predictive power. (3) ROC AUC score draws higher correlation across all benchmarks, even on benchmarks that are otherwise uncorrelated.
 
-Turning to the right-hand side of [Figure 2](#figure2), the accuracy of the reward model is the best predictor of the fine-tuned LLM's preference score. Row-wise Pearson Correlation, Confidence Agreement, and Separability show some correlative power to downstream ELO but do not exceed accuracy. Meanwhile, metrics like the Spearman correlation and Kendall correlation have nearly zero correlation with the final ELO achieved by the post-DPO models. One possible reason for this trend is that accuracy measures expected preference correctness per preference pair--- a much more granular scale. Other metrics involve aggregating reward model signals over higher-order preferences, such as preference for each model, as measured by correlation metrics. We consider these metrics as low granularity. Medium granularity metrics, such as Row-wise Pearson Correlation aggregate reward model signal, but do so over smaller subsets of preferences.
+Turning to the right-hand side of [Figure 2](#figure2), the accuracy of the reward model is the best predictor of the fine-tuned LLM's preference score. Row-wise Pearson Correlation, Confidence Agreement, and Separability show some correlative power to downstream scores but do not exceed accuracy. Meanwhile, metrics like the Spearman correlation and Kendall correlation have nearly zero correlation with the final Arena Scores achieved by the post-DPO models. One possible reason for this trend is that accuracy measures expected preference correctness per preference pair--- a much more granular scale. Other metrics involve aggregating reward model signals over higher-order preferences, such as preference for each model, as measured by correlation metrics. We consider these metrics as low granularity. Medium granularity metrics, such as Row-wise Pearson Correlation aggregate reward model signal, but do so over smaller subsets of preferences.
 
-Overall, accuracy on the human preference dataset is more correlated than the correctness metrics. This is because correctness and human preference do not necessarily align. Moreover, the information contained in Loss, Max score, and End score may not prove relevant in DPO, which is off-policy. Those employing RLHF algorithms that have a higher risk of over-optimization may find these alternative measures helpful. However, when calculating correlation against style controlled ELOs<sup>\*</sup> we notice a slight decrease in correlations on the human preference dataset. Notably, the correctness preference measurements show no change, suggesting correctness preference may be more robust towards reward model preference quality, response style aside. Style-controlled correlation heatmaps are shown in Appendix [Style Control](#style-control).
+Overall, accuracy on the human preference dataset is more correlated than the correctness metrics. This is because correctness and human preference do not necessarily align. Moreover, the information contained in Loss, Max score, and End score may not prove relevant in DPO, which is off-policy. Those employing RLHF algorithms that have a higher risk of over-optimization may find these alternative measures helpful. However, when calculating correlation against style controlled Arena Scores<sup>\*</sup> we notice a slight decrease in correlations on the human preference dataset. Notably, the correctness preference measurements show no change, suggesting correctness preference may be more robust towards reward model preference quality, response style aside. Style-controlled correlation heatmaps are shown in Appendix [Style Control](#style-control).
 
-<sup>\*</sup> Style controlled ELOs are calculated as detailed in our previous blog, [_Does Style Matter?_](/blog/2024/style-control/)
+<sup>\*</sup> Style controlled Arena Scores are calculated as detailed in our previous blog, [_Does Style Matter?_](/blog/2024/style-control/)
 
 &nbsp;
 <a id="figure4"></a>
 <img src="/assets/img/blog/preference_proxy_evaluations/AggregationPlots.png" style="width:100%; height:auto" />
 
-<p style="color:gray; text-align: center;"><sub>Figure 4:  Spearman Correlation, Confidence Agreement, and Accuracy metrics: For each metric, we take the quantiles of category scores (Hard, Easy, Instruction Following, Coding, Math, and Similar). The Pearson Correlation is calculated relative to Post-RLHF Human Preference Elo ratings for each quantile. Notably, accuracy peaks at 0.80 correlation at low quantile aggregation.</sub></p>
+<p style="color:gray; text-align: center;"><sub>Figure 4:  Spearman Correlation, Confidence Agreement, and Accuracy metrics: For each metric, we take the quantiles of category scores (Hard, Easy, Instruction Following, Coding, Math, and Similar). The Pearson Correlation is calculated relative to Post-RLHF Human Preference Arena Score ratings for each quantile. Notably, accuracy peaks at 0.80 correlation at low quantile aggregation.</sub></p>
 
 &nbsp;
 
-Additionally, we observe that measuring the lower bound score may correlate more to downstream RLHF performance than the average score or upper bound score. In [Figure 4](#figure4), we first re-scale each category's scores to be mean 0 and SD 1, then we vary the quantile of the aggregation strategy across human preference dataset categories (Hard Prompts, Easy Prompts, etc). In this case, the 0 quantile is the minimum, and the 1 quantile is the maximum. We find that in nearly every metric, decreasing the quantile increases correlation with downstream ELO. We posit this represents the requirement that reward models be robust under all input distributions to mitigate reward-hacking. Any domain weakness in a reward model can be exploited by the LLM during training.
+Additionally, we observe that measuring the lower bound score may correlate more to downstream RLHF performance than the average score or upper bound score. In [Figure 4](#figure4), we first re-scale each category's scores to be mean 0 and SD 1, then we vary the quantile of the aggregation strategy across human preference dataset categories (Hard Prompts, Easy Prompts, etc). In this case, the 0 quantile is the minimum, and the 1 quantile is the maximum. We find that in nearly every metric, decreasing the quantile increases correlation with downstream Arena Scores. We posit this represents the requirement that reward models be robust under all input distributions to mitigate reward-hacking. Any domain weakness in a reward model can be exploited by the LLM during training.
 
 &nbsp;
 
@@ -262,13 +260,13 @@ Reward Model Best of K Performance Across Benchmarks
 
 Area Under ROC Curve for Reward Models across Benchmarks
 
-### Post-RLHF ELOs
+### Post-RLHF Arena Scores
 
 <table>
   <thead>
     <tr>
       <th>Model</th>
-      <th>ELO</th>
+      <th>Arena Score</th>
       <th>95% CI Lower</th>
       <th>95% CI Upper</th>
     </tr>
@@ -348,17 +346,17 @@ Area Under ROC Curve for Reward Models across Benchmarks
     </tr>
   </tbody>
 </table>
-Post DPO performance on Chatbot Arena Overall Category. "Model" is the reward model used to train the base model. Models marked with "*" are baseline unaltered models. The best non-base model ELO is bolded.
+Post DPO performance on Chatbot Arena Overall Category. "Model" is the reward model used to train the base model. Models marked with "*" are baseline unaltered models. The best non-base model Arena Score is bolded.
 
 ### Style Control
 
 <a id="figure5"></a>
 <img src="/assets/img/blog/preference_proxy_evaluations/SCMainHeatmaps.png" style="width:100%; height:auto; text-align: center;"/>
 
-<p style="color:gray; text-align: center;"><sub>Figure 5: Pearson correlations between various metrics and styled-controlled human preference ELO scores. Left: Correlations between metrics on the Correctness Dataset and Post-RLHF human preference ELO. Right: Correlations between metrics on the Human Preference Dataset and Post-RLHF human preference ELO.</sub></p>
+<p style="color:gray; text-align: center;"><sub>Figure 5: Pearson correlations between various metrics and styled-controlled human preference Arena Scores. Left: Correlations between metrics on the Correctness Dataset and Post-RLHF human preference Arena Scores. Right: Correlations between metrics on the Human Preference Dataset and Post-RLHF human preference Arena Scores.</sub></p>
 
 <a id="figure6"></a>
 <img src="/assets/img/blog/preference_proxy_evaluations/RewardBenchHeatmap.png" 
      style="display: block; margin: 0 auto; width: 50%; height: auto;" />
 
-<p style="color:gray; text-align: center;"><sub>Figure 6: Pearson correlation between the ranking of models in RewardBench and their respective style-controlled Post-DPO Elo rankings on real human preference.</sub></p>
+<p style="color:gray; text-align: center;"><sub>Figure 6: Pearson correlation between the ranking of models in RewardBench and their respective style-controlled Post-DPO Arena Score rankings on real human preference.</sub></p>
