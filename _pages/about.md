@@ -18,7 +18,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Chatbot Arena is an open-source platform for evaluating large language models by human preference, developed by researchers from UC Berkeley [SkyLab](https://sky.cs.berkeley.edu/) and [LMSYS](https://lmsys.org). Join us at [lmarena.ai](https://lmarena.ai) to vote for your top models and contribute to the live leaderboard!
+Chatbot Arena is an open-source platform for evaluating large language models by human preference, created by researchers from UC Berkeley [SkyLab](https://sky.cs.berkeley.edu/) and [LMSYS](https://lmsys.org). Join us at [lmarena.ai](https://lmarena.ai) to vote for your top models and contribute to the live leaderboard!
 
 We always welcome contributions from the community. If you're interested in getting involved, we'd love to hear from you!
 
@@ -34,5 +34,5 @@ We always welcome contributions from the community. If you're interested in gett
 
 #### Contact us
 
-- Follow our [X](https://x.com/lmsysorg), [Discord](https://discord.gg/6GXcFg3TH8) or email us at `lmarena.ai@gmail.com`
+- Follow our [X](https://x.com/lmarena_ai), [Discord](https://discord.gg/6GXcFg3TH8) or email us at `lmarena.ai@gmail.com`
 - File issues on [GitHub](https://github.com/lm-sys/FastChat)
