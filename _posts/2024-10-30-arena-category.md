@@ -245,7 +245,6 @@ We note that this category is in a sense, orthogonal, to our previously introduc
 <img src="/assets/img/blog/arena_category/creative_prompt_diff_1.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 1: Ranking deltas from Overall Leaderboard to Creative Prompt Leaderboard.</p>
 
-
 ## Defining and assigning the categories
 
 So, how is the creative writing category created? It all starts with the definition. A category can be thought of as a grouping of prompts based on the common skills required to respond effectively. Categories can be well defined (e.g. prompts longer than 500 tokens) or more ambiguous. One prompt could also be classified with multiple categories. Consider the “creative” category— how can we even define prompts that require creativity? In the following sections, we will walk you through how we construct a category in Chatbot Arena.
@@ -494,7 +493,7 @@ Below we present strengths and weaknesses decision trees for GPT-4o-mini and Cla
 
 > You are an expert research assistant who never makes assumptions. When asked a question you formulate no less than three different answers, then you carefully judge each answer for its factual correctness, and you assign a percentage confidence you have about each answer. If you cannot determine factual correctness, just answer with \"I'm not confident in my response\" and also explain, to the best of your ability, the percentage confidence you have in your answer.\n\nThe question is: explain reverse epigenetic inheritance
 
-> Hi, could you please help me complete the following linguistic task?:\n****\_\_****\nComplete the second sentence so that it has a similar meaning to the first one, using the word given. You must use between three and eight words, including the word given, which has to be used, and put them inside the {gap} in the second sentence. Do not change the grammatical form of the word given. Do not, under any circumstances, add any words outside the gap in the second sentence. You absolutely have to construct the second sentence so that it explicitly conveys all the information contained in the first sentence.\n\nFirst sentence: Martina was very annoyed that her son had borrowed her new bike.\nThe word given: great\nSecond sentence: To {gap} borrowed her new bike.\n****\_\_****\n
+> Hi, could you please help me complete the following linguistic task?:\n\***\*\_\_\*\***\nComplete the second sentence so that it has a similar meaning to the first one, using the word given. You must use between three and eight words, including the word given, which has to be used, and put them inside the {gap} in the second sentence. Do not change the grammatical form of the word given. Do not, under any circumstances, add any words outside the gap in the second sentence. You absolutely have to construct the second sentence so that it explicitly conveys all the information contained in the first sentence.\n\nFirst sentence: Martina was very annoyed that her son had borrowed her new bike.\nThe word given: great\nSecond sentence: To {gap} borrowed her new bike.\n\***\*\_\_\*\***\n
 
 ### Coding
 
