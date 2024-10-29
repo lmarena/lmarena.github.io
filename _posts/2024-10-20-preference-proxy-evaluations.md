@@ -5,7 +5,7 @@ description: A New Benchmark for Evaluating Reward Models and LLM Judges
 
 giscus_comments: true
 date: 2024-10-20
-featured: true
+featured: false
 thumbnail: assets/img/blog/preference_proxy_evaluations/pfp.png
 authors:
   - name: Evan Frick
