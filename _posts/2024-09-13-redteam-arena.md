@@ -4,7 +4,7 @@ title: RedTeam Arena
 description: An Open-Source, Community-driven Jailbreaking Platform
 giscus_comments: true
 date: 2024-09-13
-featured: true
+featured: false
 thumbnail: assets/img/blog/redteam_arena/logo.png
 authors:
   - name: Anastasios Angelopoulos*
