@@ -12,10 +12,16 @@ authors:
     url: "https://codingwithtim.github.io/"
     affiliations:
       name: UC Berkeley
-  - name: Yifan Song
-    url: "https://www.linkedin.com/in/yf-song/"
   - name: Wei-Lin Chiang
     url: "https://infwinston.github.io/"
+  - name: Yifan Song
+    url: "https://www.linkedin.com/in/yf-song/"
+  - name: Naman Jain
+    url: "https://naman-ntc.github.io/"
+  - name: Lisa Dunlap
+    url: "https://www.lisabdunlap.com/"
+  - name: Dacheng Li
+    url: "https://dachengli1.github.io/"
   - name: Evan Frick
     url: "https://efrick2002.github.io/"
   - name: Anastasios N. Angelopoulos
