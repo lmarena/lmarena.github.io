@@ -4,7 +4,13 @@ For careful documentation of this template, see [here](https://github.com/alshed
 
 ## Dev workflow
 
-First run `bundle install`. Then run `bundle exec jekyll serve` to start a local server. To build for production, run `bundle exec jekyll build` and copy `_site` to the server.
+Install ruby and bundle:
+```
+conda install -c conda-forge ruby compilers make imagemagick
+gem install bundler
+```
+
+Run `bundle install` and `bundle exec jekyll serve` to start a local server. To build for production, run `bundle exec jekyll build` and copy `_site` to the server.
 
 If you also want to remove unused css classes from your file, run:
 
