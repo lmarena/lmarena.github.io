@@ -346,6 +346,10 @@ We’d love your help in enhancing Chatbot Arena! Whether it’s tuning and impr
 
 Together, we can shape the future of LLM evaluation and create tools that truly serve the community. Let’s push the boundaries and make Chatbot Arena the best it can be!
 
+## Acknowledgment
+
+We thank [Fireworks AI](https://fireworks.ai/) for their fast open model endpoint supports.
+
 ## Appendix
 
 ### More Category Definitions
