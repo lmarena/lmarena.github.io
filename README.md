@@ -5,6 +5,7 @@ For careful documentation of this template, see [here](https://github.com/alshed
 ## Dev workflow
 
 Install ruby and bundle:
+
 ```
 conda install -c conda-forge ruby compilers make imagemagick
 gem install bundler
