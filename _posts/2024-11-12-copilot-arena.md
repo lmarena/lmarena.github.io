@@ -25,7 +25,7 @@ authors:
     url: "https://people.eecs.berkeley.edu/~istoica/"
   - name: Chris Donahue
     url: "https://chrisdonahue.com/"
-  - name: Ameet Talwalakar
+  - name: Ameet Talwalkar
     url: "https://www.cs.cmu.edu/~atalwalk/"
 ---
 
@@ -240,7 +240,7 @@ During real development processes, developers frequently modify or expand on exi
 ```bibtex
 @misc{chi2024copilot,
     title={Copilot Arena},
-    author={Wayne Chi and Valerie Chen and Wei-Lin Chiang and Anastasios N. Angelopoulos and Naman Jain and Tianjun Zhang and Ion Stoica and Chris Donahue and Ameet Talwalakar}
+    author={Wayne Chi and Valerie Chen and Wei-Lin Chiang and Anastasios N. Angelopoulos and Naman Jain and Tianjun Zhang and Ion Stoica and Chris Donahue and Ameet Talwalkar}
     year={2024},
 }
 ```
