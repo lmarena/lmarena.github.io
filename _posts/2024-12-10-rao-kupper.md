@@ -19,6 +19,7 @@ authors:
 ---
 
 ## Introduction
+
 I am sure many of us often find ourselves uncertain whether model A or model B is better. In those cases, we are saved by the "Tie" or "Tie (BothBad)" buttons on Chatbot Arena. In fact, more than ~35% of Chatbot Arena votes are ties. Currently, Chatbot Arena handles ties by treating them as half a win and half a loss when minimizing the Binary Cross Entropy Loss (which is equivalent to maximizing the log likelihood of the Bradley-Terry coefficients). However, the resulting Bradley-Terry (BT) model is not able to produce a probability of ties, which makes it harder for us to validate the leaderboard. However, there is a lesser known extension to the Bradley-Terry model called the Rao-Kupper model which directly and explicitly models the probability of ties. In this blog, we implement this model and study its effect on Chatbot Arena.
 
 ## Background on Statistical Modeling of Ties
@@ -27,15 +28,14 @@ In the large statistical literature on learning to rank from pairwise comparison
 Here, we will explain and analyze the Rao-Kupper model, which assumes that there is a latent strength parameter for each model, and that the probability of a tie between two models is a function of the difference in their strengths.
 The ideas, of course, extend to any of these generalizations.
 
-
 ### Rao-Kupper Model
 
-Consider $$M$$ models, $$m_1, ..., m_M$$. 
+Consider $$M$$ models, $$m_1, ..., m_M$$.
 The Bradley-Terry model states that, for two models $$m_A$$ and $$m_B$$,
 
 $$\mathbb{P}(m_A \text{ beats } m_B) = \frac{e^{\beta_{m_A}}}{e^{\beta_{m_A}} + e^{\beta_{m_B}}}$$
 
-and 
+and
 
 $$\mathbb{P}(m_B \text{ beats } m_A) = 1-\mathbb{P}(m_A \text{ beats } m_B),$$
 
@@ -43,10 +43,10 @@ for some vector of so-called Bradley-Terry coefficients, $$\beta \in \mathbb{R}^
 
 As you can see, the BT model cannot give a probability that $$m_A \text{ ties with } m_B$$---it is simply not defined.
 Having said that, we still use ties when we estimate the BT coefficients.
-In particular, the Chatbot Arena Score treats a tie has half a win and half a loss when minimizing the binary cross-entropy loss. 
+In particular, the Chatbot Arena Score treats a tie has half a win and half a loss when minimizing the binary cross-entropy loss.
 The resulting Bradley-Terry model is still not able to produce a probability of ties, but the ties are accounted for in the estimation of the coefficients.
 
-The Rao-Kupper model goes one step further by introducing an explicit probability that $$m_A$$ can tie with $$m_B$$. 
+The Rao-Kupper model goes one step further by introducing an explicit probability that $$m_A$$ can tie with $$m_B$$.
 In particular, the model introduces a threshold parameter, $$\eta \geq 0$$, that represents the minimum difference between two models that can be distinguished by a human rater. When the differences fall within this threshold, the Rao-Kupper model will predict it is a tie.
 More formally, Rao-Kupper defines the probability of winning and tying as
 
@@ -100,7 +100,7 @@ This is the chart displayed on the Chatbot Arena website.
 
 <p style="color:gray; text-align: center;">Figure 3. Chatbot Arena's win probability between model pairs on battles excluding ties.</p>
 
-We show the Bradley-Terry and Rao-Kupper model below. We keep the color scale consistent, so you can directly compare the color between the matrices. Left matrix is the win probability predicted by Bradley-Terry model and the right matrix is the win probability conditioned on no tie produced by Rao-Kupper model. 
+We show the Bradley-Terry and Rao-Kupper model below. We keep the color scale consistent, so you can directly compare the color between the matrices. Left matrix is the win probability predicted by Bradley-Terry model and the right matrix is the win probability conditioned on no tie produced by Rao-Kupper model.
 Comparing both to the actual Chatbot Arena matrix, we can see Rao-Kupper is slightly more calibrated than Bradley-Terry on a cell-by-cell level.
 
 <img src="/assets/img/blog/rao_kupper/maps/bradley_terry.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 100%"/>
@@ -108,7 +108,7 @@ Comparing both to the actual Chatbot Arena matrix, we can see Rao-Kupper is slig
 <img src="/assets/img/blog/rao_kupper/maps/rao_kupper_no_ties.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 100%"/>
 <p style="color:gray; text-align: center;">Figure 5. Predicted win probability conditioned on not being a tie of model pairs from Rao-Kupper model fitted on Chatbot Arena data.</p>
 
-Numerically, we also observed Rao-Kupper to be more calibrated. 
+Numerically, we also observed Rao-Kupper to be more calibrated.
 We compared the mean absolute difference between the actual win probability matrix against the matrix produced by each model:
 
 ```
@@ -120,11 +120,10 @@ So what happens if you don't exclude tie? What does the win probability matrix l
 $$\frac{\text{# of Win}}{\text{# of Win + Loss + Ties}}$$
 , which mostly is less than $$0.5$$.
 
-
 <img src="/assets/img/blog/rao_kupper/maps/human_overall.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 100%"/>
 <p style="color:gray; text-align: center;">Figure 6. Predicted win probability of model pairs from Bradley-Terry model on all data.</p>
 
-Now, look at the win probability predicted by the Bradley-Terry model and the Rao-Kupper model. 
+Now, look at the win probability predicted by the Bradley-Terry model and the Rao-Kupper model.
 The Rao-Kupper gets much closer to the actual win rate.
 The reason for this is simple: the Bradley-Terry model is missing a factor in the denominator corresponding to the number of ties, so of course, the number is inflated.
 In other words, the BT model is essentially modeling the win rate _conditionally on not tying_.
@@ -134,7 +133,6 @@ Meanwhile, because the RK model models ties, it aligns better with the _marginal
 <p style="color:gray; text-align: center;">Figure 7. Predicted win probability of model pairs from Bradley-Terry model fitted on Chatbot Arena data.</p>
 <img src="/assets/img/blog/rao_kupper/maps/rao_kupper.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 100%"/>
 <p style="color:gray; text-align: center;">Figure 8. Predicted win probability of model pairs from Rao-Kupper model fitted on Chatbot Arena data.</p>
-
 
 Finally, another benefit of the Rao-Kupper model is the ability to predict the tie probability directly.
 The BT model does not have this ability.
@@ -150,10 +148,9 @@ There are some variations in the human win-rate matrix that look like they are d
 
 <p style="color:gray; text-align: center;">Figure 10. The predicted tie probabilities between model pairs from Rao-Kupper model fitted on Chatbot Arena data.</p>
 
-
 ### Implementation
-Below is an example implementation of Rao-Kupper model that can be intergrated into FastChat's rating utility [file](fastchat/serve/monitor/rating_systems.py), which contains mathematical functions we used for computing elo and bradley-terry coefficients for Chatbot Arena leaderboard. The implementation below requires a few other functions and imports within the FastChat's rating uility [file](fastchat/serve/monitor/rating_systems.py).
 
+Below is an example implementation of Rao-Kupper model that can be intergrated into FastChat's rating utility [file](https://github.com/lm-sys/FastChat/blob/main/fastchat/serve/monitor/rating_systems.py), which contains mathematical functions we used for computing elo and bradley-terry coefficients for Chatbot Arena leaderboard. The implementation below requires a few other functions and imports within the FastChat's rating uility [file](https://github.com/lm-sys/FastChat/blob/main/fastchat/serve/monitor/rating_systems.py).
 
 ```python
 def RK_Loss(ratings, labels, weights=None, eps=1e-6):
@@ -161,13 +158,13 @@ def RK_Loss(ratings, labels, weights=None, eps=1e-6):
 
     coefs = ratings[:-1]
     eta = torch.exp(ratings[-1]) # eta > 0
-    
+
     model_idx = labels[:, :2]
     tie_ind = labels[:, -1]
-    
+
     paired_coefs = coefs[model_idx]
     paired_delta_logit = paired_coefs[:, 0] - paired_coefs[:, 1]
-    
+
     # compute RK probabilities
     p_w = torch.sigmoid(paired_delta_logit - eta)
     p_l = torch.sigmoid(-1 * paired_delta_logit - eta)
@@ -179,13 +176,13 @@ def RK_Loss(ratings, labels, weights=None, eps=1e-6):
 
     # mathematically p_t < 1 always but bfloat rounding...
     p = torch.clamp(p, min=1e-3)
-    
+
     if weights:
         return -torch.log(p + eps).dot(weights)
     else:
         return -torch.log(p + eps).mean()
-    
-    
+
+
 def fit_rk(labels, n_models, tol=1e-6):
     labels = torch.tensor(labels, dtype=torch.long)
 
@@ -210,9 +207,9 @@ def compute_rk(df, base=10.0, scale=400.0, init_rating=1000, tol=1e-6):
     idx = data.winner.map(lambda x: x == "model_b").astype(int).to_numpy()
 
     ordered_matchups = np.take_along_axis(matchups, indices=np.stack([idx, (1 - idx)]).T, axis=-1)
-    labels = np.column_stack([ordered_matchups, 
+    labels = np.column_stack([ordered_matchups,
                               data.winner.map(lambda x: "tie" in x).astype(int).to_numpy()])
-    
+
     ratings = fit_rk(labels, n_models, tol)
 
     scaled_ratings = scale_and_offset(ratings, models, scale, init_rating=init_rating)
@@ -220,6 +217,7 @@ def compute_rk(df, base=10.0, scale=400.0, init_rating=1000, tol=1e-6):
 ```
 
 ### Citation
+
 ```
 @misc{li2024raokupperarena,
     title = {Predicting Ties in Chatbot Arena: the Rao-Kupper Model},
