@@ -3,7 +3,7 @@ layout: distill
 title: Code Editing in Copilot Arena
 description: Copilot Arena's Code Editing Leaderboard and Insights
 giscus_comments: true
-date: 2024-11-12
+date: 2025-01-23
 featured: true
 thumbnail: assets/img/blog/copilot_arena/leaderboard_pfp.png
 authors:
