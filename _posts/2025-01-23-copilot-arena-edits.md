@@ -31,7 +31,7 @@ authors:
 
 ## Introduction
 
-AI coding assistants are no longer limited to providing simple code completions, frequently providing the ability to directly *edit* code as well. Copilot Arena is no different: Copilot Arena enables not only paired [code completions](https://blog.lmarena.ai/blog/2024/copilot-arena/) but also paired code edits as well. Unlike code completions---which automatically appear after short pauses---code edits are manually triggered by highlighting a code snippet and then writing a short task description. In Copilot Arena specifically, two suggestions (presented as code diffs) are provided and the user is able to vote between them.
+AI coding assistants are no longer limited to providing simple code completions, frequently providing the ability to directly _edit_ code as well. Copilot Arena is no different: Copilot Arena enables not only paired [code completions](https://blog.lmarena.ai/blog/2024/copilot-arena/) but also paired code edits as well. Unlike code completions---which automatically appear after short pauses---code edits are manually triggered by highlighting a code snippet and then writing a short task description. In Copilot Arena specifically, two suggestions (presented as code diffs) are provided and the user is able to vote between them.
 
 To date, Copilot Arena has been downloaded over 8.5k times on the VSCode Marketplace! We recently released the Copilot Arena live leaderboard for code completions on lmarena.ai and now the code edit leaderboard, which has 3K votes across 6 top models.
 
@@ -92,10 +92,6 @@ As an initial set of models, we selected 6 of the best models across multiple mo
   </table>
 </div>
 <p style="color:gray; text-align: center;">Table 1. Elo ratings and median latency of six popular models based on over 3K votes. We color rows based on tiers determined by confidence intervals. Each model has at least 1K votes.</p>
-
-
-
-
 
 Table 1 presents the current code completion leaderboard and stratifies them into tiers. Here are our main takeaways:
 
@@ -185,15 +181,12 @@ svg.selectAll("bar")
 
 <p style="color:gray; text-align: center;">Table 1. Average response lengths for each model</p>
 
-
-- We inspect whether response token length per model is correlated with preferences. Interestingly, we tend to see that people tend to prefer shorter responses. This is the *opposite* effect compared to what has been observed in prior work where people tend to prefer longer responses. This may however be correlated with model quality.
+- We inspect whether response token length per model is correlated with preferences. Interestingly, we tend to see that people tend to prefer shorter responses. This is the _opposite_ effect compared to what has been observed in prior work where people tend to prefer longer responses. This may however be correlated with model quality.
 
 <img src="/assets/img/blog/copilot_arena_edits/winrate_matrix.png" alt="Model win rate matrix" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 1. Fraction of model A wins for all battles</p>
 
 We follow the same leaderboard computation as the latest version of Chatbot Arena, which is based on learning Bradley-Terry coefficients that minimize loss when predicting whether one model will beat the other. Please check out this blog post for a more in-depth description.
-
-
 
 ## How do people use code edits?
 
@@ -228,12 +221,12 @@ The main categories include:
 7. Documentation and explanation
    - E.g., "explain this code", "add docstring"
 
+<!-- prettier-ignore-start -->
 <div class="l-page">
   <div id="waffle-container" style="width: 100%; height: 700px; display: flex; justify-content: center;">
     <svg id="waffle-chart"></svg>
   </div>
 </div>
-
 <d-figure>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
@@ -386,6 +379,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 </d-figure>
+
+<!-- prettier-ignore-end -->
 
 <p style="color:gray; text-align: center;">Figure 4. Distribution of code edit activities based on user prompts. Each square represents 1% of the total activities.</p>
 
