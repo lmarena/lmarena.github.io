@@ -31,7 +31,7 @@ authors:
 
 ## Introduction
 
-AI coding assistants are no longer limited to providing simple code completions, frequently providing the ability to directly _edit_ code as well. Copilot Arena is no different: Copilot Arena enables not only paired [code completions](https://blog.lmarena.ai/blog/2024/copilot-arena/) but also paired code edits as well. Unlike code completions---which automatically appear after short pauses---code edits are manually triggered by highlighting a code snippet and then writing a short task description. In Copilot Arena specifically, two suggestions (presented as code diffs) are provided and the user is able to vote between them.
+AI coding assistants are no longer limited to providing simple code completions, frequently providing the ability to directly *edit* code as well. Copilot Arena is no different: Copilot Arena enables not only paired [code completions](https://blog.lmarena.ai/blog/2024/copilot-arena/) but also paired code edits as well. Unlike code completions---which automatically appear after short pauses---code edits are manually triggered by highlighting a code snippet and then writing a short task description. In Copilot Arena specifically, two suggestions (presented as code diffs) are provided and the user is able to vote between them.
 
 To date, Copilot Arena has been downloaded over 8.5k times on the VSCode Marketplace! We recently released the Copilot Arena live leaderboard for code completions on lmarena.ai and now the code edit leaderboard, which has 3K votes across 6 top models.
 
@@ -92,6 +92,10 @@ As an initial set of models, we selected 6 of the best models across multiple mo
   </table>
 </div>
 <p style="color:gray; text-align: center;">Table 1. Elo ratings and median latency of six popular models based on over 3K votes. We color rows based on tiers determined by confidence intervals. Each model has at least 1K votes.</p>
+
+
+
+
 
 Table 1 presents the current code completion leaderboard and stratifies them into tiers. Here are our main takeaways:
 
@@ -181,12 +185,15 @@ svg.selectAll("bar")
 
 <p style="color:gray; text-align: center;">Table 1. Average response lengths for each model</p>
 
-- We inspect whether response token length per model is correlated with preferences. Interestingly, we tend to see that people tend to prefer shorter responses. This is the _opposite_ effect compared to what has been observed in prior work where people tend to prefer longer responses. This may however be correlated with model quality.
+
+- We inspect whether response token length per model is correlated with preferences. Interestingly, we tend to see that people tend to prefer shorter responses. This is the *opposite* effect compared to what has been observed in prior work where people tend to prefer longer responses. This may however be correlated with model quality.
 
 <img src="/assets/img/blog/copilot_arena_edits/winrate_matrix.png" alt="Model win rate matrix" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 1. Fraction of model A wins for all battles</p>
 
 We follow the same leaderboard computation as the latest version of Chatbot Arena, which is based on learning Bradley-Terry coefficients that minimize loss when predicting whether one model will beat the other. Please check out this blog post for a more in-depth description.
+
+
 
 ## How do people use code edits?
 
@@ -241,30 +248,30 @@ document.addEventListener('DOMContentLoaded', function() {
     { category: 'Test code', count: 16, percentage: 0.2, color: '#fb7185' }
   ];
 
-// Basic setup
-const svg = d3.select("#waffle-chart");
-const margin = { top: 50, right: 50, bottom: 150, left: 50 };
-const width = 700; // Increased overall width
-const height = 500;
-const chartWidth = 400; // Fixed chart width
+  // Basic setup
+  const svg = d3.select("#waffle-chart");
+  const margin = { top: 50, right: 50, bottom: 150, left: 50 };
+  const width = 700;  // Increased overall width
+  const height = 500;
+  const chartWidth = 400;  // Fixed chart width
+  
+  svg.attr("width", width)
+     .attr("height", height + margin.top + margin.bottom);
 
-svg.attr("width", width)
-.attr("height", height + margin.top + margin.bottom);
+  const g = svg.append("g")
+     .attr("transform", `translate(${(width - chartWidth) / 2},${margin.top})`);
 
-const g = svg.append("g")
-.attr("transform", `translate(${(width - chartWidth) / 2},${margin.top})`);
+  // Create 10x10 grid
+  const squareSize = chartWidth / 10;
+  const squarePadding = 2;
+  let currentSquare = 0;
+  const squares = [];
 
-// Create 10x10 grid
-const squareSize = chartWidth / 10;
-const squarePadding = 2;
-let currentSquare = 0;
-const squares = [];
-
-for (let row = 0; row < 10; row++) {
-for (let col = 0; col < 10; col++) {
-let currentPercentage = 0;
-let currentCategory = null;
-
+  for (let row = 0; row < 10; row++) {
+    for (let col = 0; col < 10; col++) {
+      let currentPercentage = 0;
+      let currentCategory = null;
+      
       for (const item of data) {
         currentPercentage += item.percentage;
         if (currentSquare < currentPercentage) {
@@ -272,7 +279,7 @@ let currentCategory = null;
           break;
         }
       }
-
+      
       squares.push({
         row,
         col,
@@ -281,103 +288,101 @@ let currentCategory = null;
         count: currentCategory.count,
         percentage: currentCategory.percentage
       });
-
+      
       currentSquare++;
     }
+  }
 
-}
+  // Create tooltip div
+  const tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("position", "absolute")
+    .style("background-color", "white")
+    .style("border", "1px solid #ddd")
+    .style("border-radius", "3px")
+    .style("padding", "10px")
+    .style("pointer-events", "none");
 
-// Create tooltip div
-const tooltip = d3.select("body").append("div")
-.attr("class", "tooltip")
-.style("opacity", 0)
-.style("position", "absolute")
-.style("background-color", "white")
-.style("border", "1px solid #ddd")
-.style("border-radius", "3px")
-.style("padding", "10px")
-.style("pointer-events", "none");
+  // Add squares for each data point
+  g.selectAll(".square")
+    .data(squares)
+    .join("rect")
+    .attr("class", "square")
+    .attr("x", d => d.col * (squareSize + squarePadding))
+    .attr("y", d => d.row * (squareSize + squarePadding))
+    .attr("width", squareSize - 2)
+    .attr("height", squareSize - 2)
+    .attr("fill", d => d.color)
+    .on("mouseover", (event, d) => {
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", .9);
+      tooltip.html(`${d.category}: ${d.count}`)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+    });
 
-// Add squares for each data point
-g.selectAll(".square")
-.data(squares)
-.join("rect")
-.attr("class", "square")
-.attr("x", d => d.col _ (squareSize + squarePadding))
-.attr("y", d => d.row _ (squareSize + squarePadding))
-.attr("width", squareSize - 2)
-.attr("height", squareSize - 2)
-.attr("fill", d => d.color)
-.on("mouseover", (event, d) => {
-tooltip.transition()
-.duration(200)
-.style("opacity", .9);
-tooltip.html(`${d.category}: ${d.count}`)
-.style("left", (event.pageX + 10) + "px")
-.style("top", (event.pageY - 28) + "px");
-})
-.on("mouseout", () => {
-tooltip.transition()
-.duration(500)
-.style("opacity", 0);
-});
+  // Add title
+  svg.append("text")
+     .attr("x", width / 2)
+     .attr("y", 30)
+     .attr("text-anchor", "middle")
+     .style("font-size", "16px")
+     .style("font-weight", "bold")
+     .text("Code Activities Distribution");
 
-// Add title
-svg.append("text")
-.attr("x", width / 2)
-.attr("y", 30)
-.attr("text-anchor", "middle")
-.style("font-size", "16px")
-.style("font-weight", "bold")
-.text("Code Activities Distribution");
+  // Add legend below the chart
+  const legendItemWidth = 220;  // Increased width for legend items
+  const legendItems = 2;
+  const legendSpacing = 25;
+  
+  const legend = g.append("g")
+     .attr("transform", `translate(${(chartWidth - (legendItemWidth * legendItems)) / 2}, ${height - 60})`);  // Centered legend
 
-// Add legend below the chart
-const legendItemWidth = 220; // Increased width for legend items
-const legendItems = 2;
-const legendSpacing = 25;
+  // Calculate total width of all legend items
+  const totalLegendWidth = data.length * legendItemWidth / 2;  // Divide by 2 since we have 2 columns
 
-const legend = g.append("g")
-.attr("transform", `translate(${(chartWidth - (legendItemWidth * legendItems)) / 2}, ${height - 60})`); // Centered legend
-
-// Calculate total width of all legend items
-const totalLegendWidth = data.length \* legendItemWidth / 2; // Divide by 2 since we have 2 columns
-
-data.forEach((d, i) => {
-const row = Math.floor(i / legendItems);
-const col = i % legendItems;
-
+  data.forEach((d, i) => {
+    const row = Math.floor(i / legendItems);
+    const col = i % legendItems;
+    
     const lg = legend.append("g")
                     .attr("transform", `translate(${col * legendItemWidth}, ${row * legendSpacing})`);
-
+    
     lg.append("rect")
       .attr("width", 15)
       .attr("height", 15)
       .attr("fill", d.color)
       .attr("rx", 2);
-
+    
     lg.append("text")
       .attr("x", 25)
       .attr("y", 12)
       .style("font-size", "14px")
       .text(`${d.category} (${d.percentage}%)`);
+  });
 
-});
-
-// Add hover interactivity to legend
-legend.selectAll(".legend-item")
-.on("mouseover", (event, d) => {
-tooltip.transition()
-.duration(200)
-.style("opacity", .9);
-tooltip.html(`${d.category}: ${d.count}`)
-.style("left", (event.pageX + 10) + "px")
-.style("top", (event.pageY - 28) + "px");
-})
-.on("mouseout", () => {
-tooltip.transition()
-.duration(500)
-.style("opacity", 0);
-});
+  // Add hover interactivity to legend
+  legend.selectAll(".legend-item")
+    .on("mouseover", (event, d) => {
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", .9);
+      tooltip.html(`${d.category}: ${d.count}`)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+    });
 });
 </script>
 </d-figure>
