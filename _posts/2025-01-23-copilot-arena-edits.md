@@ -35,6 +35,9 @@ AI coding assistants are no longer limited to providing simple code completions,
 
 To date, Copilot Arena has been downloaded over 8.5k times on the VSCode Marketplace! We recently released the Copilot Arena live leaderboard for code completions on lmarena.ai and now the code edit leaderboard, which has 3K votes across 6 top models.
 
+<img src="/assets/img/blog/copilot_arena_edits/demo.png" alt="Demo of Edits" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
+<p style="color:gray; text-align: center;">Figure 1. Demo of Copilot Arena's edit functionality.</p>
+
 In this blogpost we will cover:
 
 - Initial leaderboard and results: Our preliminary results for the code edit leaderboard and analysis of model tiers.
@@ -96,7 +99,7 @@ As an initial set of models, we selected 6 of the best models across multiple mo
 Table 1 presents the current code completion leaderboard and stratifies them into tiers. Here are our main takeaways:
 
 - The clear winner is Claude 3.5 Sonnet in terms of Arena Score.
-- While some of the models in the middle fluctuate, we have generally observed that Llama-3.1-405b is the least preferred by users by far of the models we evaluate, losing a majority of the time to all other models (see Figure 1).
+- While some of the models in the middle fluctuate, we have generally observed that Llama-3.1-405b is the least preferred by users by far of the models we evaluate, losing a majority of the time to all other models (see Figure 2).
 
 <div class="l-page" id="model-comparison-chart" style="display: flex; justify-content: center;"></div>
 
@@ -184,7 +187,7 @@ svg.selectAll("bar")
 - We inspect whether response token length per model is correlated with preferences. Interestingly, we tend to see that people tend to prefer shorter responses. This is the _opposite_ effect compared to what has been observed in prior work where people tend to prefer longer responses. This may however be correlated with model quality.
 
 <img src="/assets/img/blog/copilot_arena_edits/winrate_matrix.png" alt="Model win rate matrix" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 1. Fraction of model A wins for all battles</p>
+<p style="color:gray; text-align: center;">Figure 2. Fraction of model A wins for all battles</p>
 
 We follow the same leaderboard computation as the latest version of Chatbot Arena, which is based on learning Bradley-Terry coefficients that minimize loss when predicting whether one model will beat the other. Please check out this blog post for a more in-depth description.
 
@@ -195,14 +198,14 @@ For general information about how people use Copilot Arena, check out the [first
 **How long are the prompts that people write?** We find that the median prompt length is 34 characters and mean is 139 characters. Most are fairly short and thus depend on the context that is highlighted. In comparison to the chat messages sent by users in Chatbot Arena, user prompts for inline edits tend to be much shorter. The model must instead mostly focus on test the model's ability to infer user goals based on the context (e.g., the highlighted code snippet).
 
 <img src="/assets/img/blog/copilot_arena_edits/prompt_char_length.png" alt="Copilot Arena prompt length distribution" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 2. Distribution of prompt character lengths.</p>
+<p style="color:gray; text-align: center;">Figure 3. Distribution of prompt character lengths.</p>
 
 **What context lengths are we looking at?** We look at the distribution of code-to-edit token lengths, as computed by the number of highlighted tokens. The median is 138 tokens and the mean is 647 tokens. While there are some outliers, this indicates that most people are highlighting targeted portions of code for edits as this is much shorter than the full file length which is typically closer to 4.5k tokens on average.
 
 <img src="/assets/img/blog/copilot_arena_edits/code_to_edit_token.png" alt="Copilot Arena highlighted length distribution" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 3. Number of highlighted tokens</p>
+<p style="color:gray; text-align: center;">Figure 4. Number of highlighted tokens</p>
 
-**What kind of edits are people trying to make?** We find users write prompts for code edits in multiple languages, predominantly English but also in Russian, Chinese, and Spanish. Users typically write prompts using informal language and the prompts are typically directed towards addressing a specific goal. The distribution can be found in Figure 4.
+**What kind of edits are people trying to make?** We find users write prompts for code edits in multiple languages, predominantly English but also in Russian, Chinese, and Spanish. Users typically write prompts using informal language and the prompts are typically directed towards addressing a specific goal. The distribution can be found in Figure 5.
 
 The main categories include:
 
@@ -382,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- prettier-ignore-end -->
 
-<p style="color:gray; text-align: center;">Figure 4. Distribution of code edit activities based on user prompts. Each square represents 1% of the total activities.</p>
+<p style="color:gray; text-align: center;">Figure 5. Distribution of code edit activities based on user prompts. Each square represents 1% of the total activities.</p>
 
 ## What's next?
 
