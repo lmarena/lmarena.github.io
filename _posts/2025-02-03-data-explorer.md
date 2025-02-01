@@ -25,10 +25,19 @@ Text data is inherently messy and complex. While it’s possible to analyze smal
 
 To address this, we developed a topic modeling pipeline and the Arena Explorer. This pipeline organizes user prompts into distinct topics, structuring the text data hierarchically to enable intuitive analysis. We believe this tool for hierarchical topic modeling can be valuable to anyone analyzing complex text data.
 
-The detailed pipeline is in this colab notebook: Link.
+- The detailed pipeline is in this colab notebook: Link.
+- You can find the dataset we used here: Link.
 
-<div class="l-page">
-  <iframe src="https://storage.googleapis.com/public-arena-no-cors/trial/index.html" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+<div class="l-page" style="display: flex; justify-content: center; align-items: center;">
+  <div style="position: relative; width: 100%; max-width: 1200px; height: 0; padding-bottom: 70%; margin-bottom: 20px">
+    <iframe 
+      src="https://storage.googleapis.com/public-arena-no-cors/trial/index.html" 
+      frameborder="0" 
+      scrolling="yes" 
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+      allowfullscreen>
+    </iframe>
+  </div>
 </div>
 
 In this blog post, we will cover:
