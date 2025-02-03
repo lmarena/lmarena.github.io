@@ -60,7 +60,7 @@ To group the prompts into narrow categories, we used a topic modeling pipeline w
    This pipeline groups the prompts into narrow categories, each with 20 example prompts.
 
 <div>
-  <iframe src="{{ '/assets/img/blog/explorer/intertopic_distance.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/intertopic_distance.html' }}" frameborder='0' scrolling='no' height="700px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 1. The intertropical distance map shows the narrow clusters identified by BERTopic. The size of the circles is proportional to the amount of prompts in the cluster.</p>
 
@@ -75,14 +75,14 @@ In our previous [blog post](https://blog.lmarena.ai/blog/2024/arena-category/), 
 Compared to _Tech Programming_, model rankings for the other two largest broad categories, _Creative Writing_ and _Puzzles & Math_, shifted significantly.
 
 <div>
-  <iframe src="{{ '/assets/img/blog/explorer/rank_broad_cat.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/rank_broad_cat.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 2. Tech Programming vs. Creative Writing vs. Puzzles Chatbot Arena ranking of the top 10 ranked models in Tech Programming.</p>
 
 Claude performed better than Gemini in _Tech Programming_, while Gemini outperformed Claude in _Creative Writing_. Deepseek-coder-v2 dropped in ranking for _Creative Writing_ compared to its position in _Tech Programming_.
 
 <div>
-  <iframe src="{{ '/assets/img/blog/explorer/rank_tech_vs_writing.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/rank_tech_vs_writing.html' }}" frameborder='0' scrolling='no' height="800px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 3. Tech Programming vs. Creative Writing Chatbot Arena Score computed using the Bradley-Terry model.</p>
 
@@ -90,19 +90,19 @@ Claude performed better than Gemini in _Tech Programming_, while Gemini outperfo
 Model performance analysis can be broken down into more specific categories based on win rates. We calculated the win rates of Gemini 1.5, GPT-4o, and Claude 3.5 across the narrow categories, treating ties as 0.5 wins. Gemini 1.5 performed best in _Entrepreneurship and Business Strategy_ but had a noticeably lower win rate in _Songwriting and Playlist Creation_. In contrast, GPT-4o maintained a relatively consistent win rate across most categories, except for a dip in _Entrepreneurship and Business Strategy_. Claude 3.5 excelled in _Web Development_ and _Linux & Shell Scripting_ but had lower win rates in other, less technical categories.
 
 <div>
-  <iframe src="{{ '/assets/img/blog/explorer/winrate_narrow.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/winrate_narrow.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 4. Model win rates in the eight largest narrow categories.</p>
 
 Even within the same broad category, model performance varies slightly. For example, within _Tech Programming_, GPT-4o showed a lower win rate in _GPU and CPU Performance and Comparison_ compared to other categories. Within _Creative Writing_, Gemini had a significantly higher win rate in _Genshin Impact Parody Adventures_.
 
 <div>
-  <iframe src="{{ '/assets/img/blog/explorer/winrate_tech.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/winrate_tech.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 5. Model win rates in the eight largest narrow categories within Tech Programming.</p>
 
 <div>
-  <iframe src="{{ '/assets/img/blog/explorer/winrate_writing.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/winrate_writing.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 6. Model win rates in the eight largest narrow categories within Creative Writing.</p>
 
@@ -120,23 +120,15 @@ Embedding models play a major role in clustering accuracy since they are used to
 
 With text-embedding-3-large, the broad category distribution is more balanced. In contrast, all-mpnet-base-v2 produced a large _Tech Programming_ category. Zooming in on this category, we found that AI-related clusters were merged into _Tech Programming_ when using all-mpnet-base-v2, whereas text-embedding-3-large formed a separate AI-related category. Choosing which result to use depends on human preference.
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-  <div>
-    <iframe src="{{ '/assets/img/blog/explorer/embedding_mpnet_broad.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
-  </div>
-  <div>
-    <iframe src="{{ '/assets/img/blog/explorer/embedding_mpnet_tech.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
-  </div>
+<div class="l-page" style="display: flex; justify-content: center; align-items: center;">
+  <iframe src="{{ '/assets/img/blog/explorer/embedding_mpnet_broad.html' }}" frameborder='0' scrolling='no' height="700px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/embedding_mpnet_tech.html' }}" frameborder='0' scrolling='no' height="700px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 7 & 8. Broad categories and specific categories in “Tech Programming” summarized using all-mpnet-base-v2.</p>
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-  <div>
-    <iframe src="{{ '/assets/img/blog/explorer/embedding_openai_broad.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
-  </div>
-  <div>
-    <iframe src="{{ '/assets/img/blog/explorer/embedding_openai_tech.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
-  </div>
+<div class="l-page" style="display: flex; justify-content: center; align-items: center;">
+  <iframe src="{{ '/assets/img/blog/explorer/embedding_openai_broad.html' }}" frameborder='0' scrolling='no' height="700px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/explorer/embedding_openai_tech.html' }}" frameborder='0' scrolling='no' height="700px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 9 & 10. Broad categories and specific categories in “Tech Programming” summarized using  text-embedding-3-large.</p>
 
