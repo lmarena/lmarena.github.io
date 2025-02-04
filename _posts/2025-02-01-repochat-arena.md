@@ -173,29 +173,29 @@ Since there are two separate components (retriever and responder), we produce tw
 
 For more examples, please refer to the [appendix](#appendix)
 - **High level questions about a repository:**
-    - [https://github.com/Mrjoulin/ITMOLabs](https://github.com/Mrjoulin/ITMOLabs)<br>What is this repository about? How I can use it? What main languages and frameworks are used here?
-- **Specific how-to questions:**
-    - [https://github.com/notfiz/de3u](https://github.com/notfiz/de3u)<br>How do I install this on Linux (Mint 22)? Be thorough.
+    - [https://github.com/Mrjoulin/ITMOLabs](https://github.com/Mrjoulin/ITMOLabs)<br>"What is this repository about? How I can use it? What main languages and frameworks are used here?"
 
+- **Specific how-to questions:**
+    - [https://github.com/notfiz/de3u](https://github.com/notfiz/de3u)<br>"How do I install this on Linux (Mint 22)? Be thorough."
 
 - **Implementation requests:**
-    - [https://github.com/dipu-bd/lightnovel-crawler](https://github.com/dipu-bd/lightnovel-crawler)<br>Write a Python script that fetches the top 10 highest-rated light novels from Anilist and then downloads all of their volumes in .epub format using this.
+    - [https://github.com/dipu-bd/lightnovel-crawler](https://github.com/dipu-bd/lightnovel-crawler)<br>"Write a Python script that fetches the top 10 highest-rated light novels from Anilist and then downloads all of their volumes in .epub format using this."
 
 - **Specific explanation requests:**
-    - [https://github.com/hhy-huang/GraphJudger](https://github.com/hhy-huang/GraphJudger)<br>How is the graph knowledge graph in this repository generated?
+    - [https://github.com/hhy-huang/GraphJudger](https://github.com/hhy-huang/GraphJudger)<br>"How is the graph knowledge graph in this repository generated?"
 
 
 - **Requests for solving an issue:**
-    - [https://github.com/rust-lang/rfcs/issues/1856](https://github.com/rust-lang/rfcs/issues/1856)<br>In 100 words or less, what is the easiest approach to resolving this issue (without giving up)?
+    - [https://github.com/rust-lang/rfcs/issues/1856](https://github.com/rust-lang/rfcs/issues/1856)<br>"In 100 words or less, what is the easiest approach to resolving this issue (without giving up)?"
 
 - **Requests for reviewing a PR:**
-    - [https://github.com/pandas-dev/pandas/pull/56061](https://github.com/pandas-dev/pandas/pull/56061)<br>Explain the optimization.
+    - [https://github.com/pandas-dev/pandas/pull/56061](https://github.com/pandas-dev/pandas/pull/56061)<br>"Explain the optimization."
 
 - **Queries with code snippets, requests for modifying existing code, and debugging:** (click the arrow to expand the full query)
 
     - [https://github.com/sktime/sktime](https://github.com/sktime/sktime)<br>
       <details>
-        <summary>debug the code as a professional would do. The code is for running in jupyter.</summary> 
+        <summary>"debug the code as a professional would do. The code is for running in jupyter.</summary> 
         <pre style="background-color: #f9f9f9; padding: 8px; border: 1px solid lightgray; font-family: monospace;">
         import pandas as pd
         import numpy as np
@@ -307,7 +307,7 @@ For more examples, please refer to the [appendix](#appendix)
         print("="*50)
         for param, value in optuna_search.best_params_.items():
             print(f"{param}: {value}")
-        </pre>
+        </pre>"
       </details>
   
 ## How Does It Work?
@@ -409,23 +409,23 @@ Style (length and Markdown formatting) significantly impacts model ranking. A be
 
 <p style="color:gray; text-align: center;">Table 4.  Style-controlled arena ratings of the responder models. </p>
 
-Claude’s score and ranking has improved significantly with style control. GPT-4O's score has decreased, greatly narrowing its lead over other models. 
+Claude’s score and ranking has improved significantly with style control. GPT-4o's score has decreased, greatly narrowing its lead over other models. 
 
 **Why isn’t Claude’s score as high as its ranking on the coding leaderboard in ChatBot Arena?**
 
 This discrepancy is likely because a significant portion of user queries are not focused on strictly code-writing tasks. Instead, many users ask for guidance on how to use the repository, its purpose, or other high-level explanations. These types of queries shift the focus away from pure coding abilities, impacting scores for models like Claude.
 
-Below is an example battle between Claude 3.5 Sonnet (20241022) and GPT 4o (20241120) Response. The GitHub link inputted is **https://github.com/xtekky/gpt4free**, the user query is **"Explain why in the new 0.4.0.0 version Blackbox provider is several times slower than in version 0.3.9.7"**
+Below is an example battle between Claude 3.5 Sonnet (20241022) and GPT 4o (20241120) with identical retrievals. 
+
+The GitHub link is **https://github.com/xtekky/gpt4free**, and the user query is **"Explain why in the new 0.4.0.0 version Blackbox provider is several times slower than in version 0.3.9.7"**
 <details>
-<summary> Click to expand an example of Claude vs. GPT-4o with identical retrievals</summary>
+<summary> Click to expand the example battle of Claude 3.5 Sonnet (20241022) vs. GPT 4o (20241120)</summary>
 <div style="margin-left: auto; margin-right: auto; width: fit-content;">
 <table style="width:100%; table-layout: fixed; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
   <thead style="background-color: #cbe8f1; font-weight: bold; border-bottom: 1px solid lightgray;">
     <tr>
       <th style="padding: 8px; border: 1px solid lightgray; width: 50%;">Claude 3.5 Sonnet (20241022) Response</th>
-Claude 3.5 Sonnet (20241022) Response</th>
-      <th style="padding: 8px; border: 1px solid lightgray; width: 50%;">Claude 3.5 Sonnet (20241022) Response</th>
-GPT 4o (20241120) Response</th>
+      <th style="padding: 8px; border: 1px solid lightgray; width: 50%;">GPT 4o (20241120) Response</th>
     </tr>
   </thead>
   <tbody>
@@ -704,33 +704,33 @@ We are actively collecting more votes and integrating new models, with plans for
 
 ## Appendix
 - **High level questions about a repository:**
-    - [https://github.com/lllyasviel/ControlNet](https://github.com/lllyasviel/ControlNet)<br>Explain
-    - [https://github.com/remix-run/react-router](https://github.com/remix-run/react-router)<br>How to use this repo?
+    - [https://github.com/lllyasviel/ControlNet](https://github.com/lllyasviel/ControlNet)<br>"Explain"
+    - [https://github.com/remix-run/react-router](https://github.com/remix-run/react-router)<br>"How to use this repo?"
 - **Specific how-to questions:**
-    - [https://github.com/leecig/OpenDevin/tree/main](https://github.com/leecig/OpenDevin/tree/main)<br>How do I use a local LLM being ran by LMStudio?
-    - [https://github.com/ohmyzsh/ohmyzsh/](https://github.com/ohmyzsh/ohmyzsh/)<br>Tell me, what it means and how to use the `kubectx_mapping` in the plugins/kubectx?  
+    - [https://github.com/leecig/OpenDevin/tree/main](https://github.com/leecig/OpenDevin/tree/main)<br>"How do I use a local LLM being ran by LMStudio?"
+    - [https://github.com/ohmyzsh/ohmyzsh/](https://github.com/ohmyzsh/ohmyzsh/)<br>"Tell me, what it means and how to use the `kubectx_mapping` in the plugins/kubectx?"
 
 - **Implementation requests:**
-    - [https://github.com/varungodbole/prompt-tuning-playbook](https://github.com/varungodbole/prompt-tuning-playbook)<br>Help me design a system prompt to extract metrics from financial reports.
-    - [https://github.com/ocaml/ocaml](https://github.com/ocaml/ocaml)<br>If I wanted to implement partial escape analysis, which of the OCaml Intermediate Representations would be best suited and where should I make the change?
+    - [https://github.com/varungodbole/prompt-tuning-playbook](https://github.com/varungodbole/prompt-tuning-playbook)<br>"Help me design a system prompt to extract metrics from financial reports."
+    - [https://github.com/ocaml/ocaml](https://github.com/ocaml/ocaml)<br>"If I wanted to implement partial escape analysis, which of the OCaml Intermediate Representations would be best suited and where should I make the change?"
 
 - **Specific explanation requests:**
-    - [https://github.com/ant-design/ant-design](https://github.com/ant-design/ant-design)<br>Why does Ant Design 5 decide to use CSS-in-JS?
-    - [https://github.com/celzero/rethink-app](https://github.com/celzero/rethink-app)<br>How are connection/network changes handled?
+    - [https://github.com/ant-design/ant-design](https://github.com/ant-design/ant-design)<br>"Why does Ant Design 5 decide to use CSS-in-JS?"
+    - [https://github.com/celzero/rethink-app](https://github.com/celzero/rethink-app)<br>"How are connection/network changes handled?"
 
 - **Requests for solving an issue:**
-    - [https://github.com/HALF111/calibration_CDS](https://github.com/HALF111/calibration_CDS)<br>Solve this issue.
-    - [https://github.com/pyca/cryptography/issues/7189](https://github.com/pyca/cryptography/issues/7189)<br>Using asyncssh can fix the immediate loading error for the PEM file, but when accessing `cert.extensions` it still errors out with the same ordering issue.
+    - [https://github.com/HALF111/calibration_CDS](https://github.com/HALF111/calibration_CDS)<br>"Solve this issue."
+    - [https://github.com/pyca/cryptography/issues/7189](https://github.com/pyca/cryptography/issues/7189)<br>"Using asyncssh can fix the immediate loading error for the PEM file, but when accessing `cert.extensions` it still errors out with the same ordering issue."
 
 - **Requests for reviewing a PR:**
-    - [https://github.com/fairy-stockfish/Fairy-Stockfish/pull/758](https://github.com/fairy-stockfish/Fairy-Stockfish/pull/758)<br>Review this PR.
-    - [https://github.com/ggerganov/llama.cpp/pull/10455](https://github.com/ggerganov/llama.cpp/pull/10455)<br>What type of speculative decoding is supported with this pull request?
-
+    - [https://github.com/fairy-stockfish/Fairy-Stockfish/pull/758](https://github.com/fairy-stockfish/Fairy-Stockfish/pull/758)<br>"Review this PR."
+    - [https://github.com/ggerganov/llama.cpp/pull/10455](https://github.com/ggerganov/llama.cpp/pull/10455)<br>"What type of speculative decoding is supported with this pull request?
+"
 
 - **Queries with code snippets, requests for modifying existing code, and debugging:** (click the arrow to expand the full query)
     - [https://github.com/julien-blanchon/arxflix/tree/feat/groq_whisper](https://github.com/julien-blanchon/arxflix/tree/feat/groq_whisper)<br>
       <details>
-        <summary>when using the gradio interface, the stage of generating video get me this error :</summary> 
+        <summary>"when using the gradio interface, the stage of generating video get me this error :</summary> 
         <pre style="background-color: #f9f9f9; padding: 8px; border: 1px solid lightgray; font-family: monospace;">
         INFO:__main__:Generated assets successfully.
         INFO:backend.main:Generating video to output.mp4 from tmpmpc_r1vm
@@ -807,11 +807,12 @@ We are actively collecting more votes and integrating new models, with plans for
         http-server stopped.
         INFO:__main__:Generated video successfully.
         ^CKeyboard interruption in main thread... closing server.
+        </pre>"
         
       </details>
     - [https://github.com/feathers-studio/telegraf-docs](https://github.com/feathers-studio/telegraf-docs)<br>
       <details>
-        <summary>bot.js:</summary> 
+        <summary>"bot.js:</summary> 
 
         <pre style="background-color: #f9f9f9; padding: 8px; border: 1px solid lightgray; font-family: monospace;">
         require("dotenv").config();
@@ -894,7 +895,7 @@ We are actively collecting more votes and integrating new models, with plans for
         })();
         </pre>
 
-        don't do check in database at every message, but have a kind of cache in telegraf.js session
+        don't do check in database at every message, but have a kind of cache in telegraf.js session"
 
       </details>
   
