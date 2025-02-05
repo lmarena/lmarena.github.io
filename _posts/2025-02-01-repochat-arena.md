@@ -17,10 +17,71 @@ An integral part of using LLMs as part of a user's coding workflow is navigating
 
 RepoChat lets models automatically retrieve relevant files from the given GitHub repository. It can resolve issues, review PRs, implement code, as well as answer higher level questions about the repositories–all without requiring users to provide extensive context. 
 
-You can view our video demo [here](https://x.com/lmarena_ai/status/1861869943505182862). 
+<!-- You can view our video demo [here](https://x.com/lmarena_ai/status/1861869943505182862).  -->
 
-<img src="/assets/img/blog/repochat_arena/RepoChat.png" alt="Repochat Demo" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 1. A simplified graphical representation of the RepoChat pipeline.</p>
+<div class="video-container" onclick="playVideo()">
+    <img id="videoThumbnail" class="thumbnail" src="/assets/img/blog/repochat_arena/RepoChat.png" alt="Demo Video Thumbnail">
+    <div class="play-button"></div>
+    <video id="videoPlayer" controls>
+        <source src="/assets/img/blog/repochat_arena/repochat_demo_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<p style="color:gray; text-align: center;">Video 1. A demo of RepoChat.</p>
+
+<style>
+.video-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+.thumbnail {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    display: block;
+    border-radius: 10px;
+}
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.play-button::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 30px solid white;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+video {
+    width: 100%;
+    display: none;
+    border-radius: 10px;
+}
+</style>
+
+<script>
+function playVideo() {
+    document.getElementById("videoThumbnail").style.display = "none";
+    document.querySelector(".play-button").style.display = "none";
+    document.getElementById("videoPlayer").style.display = "block";
+    document.getElementById("videoPlayer").play();
+}
+</script>
+
 
 So far, RepoChat has collected around **20k battles** and over **4k votes**. All statistics calculated in this blog uses conversations and votes collected between **November 30, 2024** to **Feburary 03, 2025** inclusive.
 
