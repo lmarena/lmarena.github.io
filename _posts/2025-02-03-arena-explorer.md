@@ -25,8 +25,8 @@ Text data is inherently messy and complex. While it’s possible to analyze smal
 
 To address this, we developed a topic modeling pipeline and the Arena Explorer. This pipeline organizes user prompts into distinct topics, structuring the text data hierarchically to enable intuitive analysis. We believe this tool for hierarchical topic modeling can be valuable to anyone analyzing complex text data.
 
-- The detailed pipeline is in this colab notebook: Link.
-- You can find the dataset we used here: Link.
+- The detailed pipeline is in this colab notebook: [Link](https://colab.research.google.com/drive/1chzqjePYnpq08fA3KzyKvSkuzCjojyiE?usp=sharing).
+- You can find the dataset we used here: [Link](https://huggingface.co/datasets/lmarena-ai/arena-explorer-preference-100k). This dataset contains 100k leaderboard conversation data, the largest prompt dataset with human preferences we have every released!
 
 <div class="l-page" style="display: flex; justify-content: center; align-items: center;">
   <div style="position: relative; width: 100%; max-width: 1200px; height: 0; padding-bottom: 70%; margin-bottom: 20px">
