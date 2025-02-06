@@ -7,20 +7,20 @@ date: 2025-02-04
 featured: true
 thumbnail: assets/img/blog/copilot_arena/leaderboard_pfp.png
 authors:
-  - name: Wei-Lin Chiang
-    url: "https://infwinston.github.io/"
+  - name: place_holder
+    url: "-"
 ---
 
 ## Introduction
 
 An integral part of using LLMs as part of a user's coding workflow is navigating and understanding complex code bases. We launched **RepoChat** – a new arena that answers code-related queries using a user-provided github repository link. 
 
-RepoChat lets models automatically retrieve relevant files from the given GitHub repository. It can resolve issues, review PRs, implement code, as well as answer higher level questions about the repositories–all without requiring users to provide extensive context. 
+RepoChat lets models automatically retrieve relevant files from the given GitHub repository. It can resolve issues, review PRs, implement code, as well as answer higher level questions about the repositories-all without requiring users to provide extensive context. 
 
 <!-- You can view our video demo [here](https://x.com/lmarena_ai/status/1861869943505182862).  -->
 
 <div class="video-container" onclick="playVideo()">
-    <img id="videoThumbnail" class="thumbnail" src="/assets/img/blog/repochat_arena/RepoChat.png" alt="Demo Video Thumbnail">
+    <img id="videoThumbnail" class="thumbnail" src="/assets/img/blog/repochat_arena/demo_thumbnail.png" alt="Demo Video Thumbnail">
     <div class="play-button"></div>
     <video id="videoPlayer" controls>
         <source src="/assets/img/blog/repochat_arena/repochat_demo_video.mp4" type="video/mp4">
@@ -83,7 +83,7 @@ function playVideo() {
 </script>
 
 
-So far, RepoChat has collected around **20k battles** and over **4k votes**. All statistics calculated in this blog uses conversations and votes collected between **November 30, 2024** to **Feburary 03, 2025** inclusive.
+So far, RepoChat has collected around **20k battles** and over **4k votes**. All statistics calculated in this blog use conversations and votes collected between **November 30, 2024** to **Feburary 03, 2025** inclusive.
 
 <div style="margin-left: auto; margin-right: auto; width: fit-content;">
 <table style="width:100%; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
@@ -120,66 +120,75 @@ In this blog we will cover:
 - [**How do people use RepoChat**](#how-do-people-use-repochat): an analysis of the distribution of github links and user queries' category, length, language, etc.  
 - [**How does it work**](#how-does-it-work): a more technical and detailed explanation of the RepoChat pipeline and implementation
 - [**Further Analysis and Results**](#further-analysis-and-results): retriever and style controlled leaderboards, and other analysis of model rankings. 
-
+ d
 ## Initial Leaderboards
-Since there are two separate components (retriever and responder), we produce two separate leaderboards. Jump to [here](#leaderboard-calculation) for details about how the leaderboards are calculated, and [here](#style-control) for more leaderboards. 
+Since there are two separate components (retriever and responder), we produce two separate leaderboards. Jump to [this section](#leaderboard-calculation) for details about how the leaderboards are calculated, and to [further analysis](#style-control) for more leaderboards. All leaderboards can be reproduced using our [google colab notebook](https://colab.research.google.com/drive/19bxOiNnuP9_qusq7kMo4Xw5Cq3_iYdCp?usp=sharing). 
 
 <div style="margin-left: auto; margin-right: auto; width: fit-content;">
 <table style="width:100%; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
   <thead style="background-color: #cbe8f1; font-weight: bold; border-bottom: 1px solid lightgray;">
     <tr>
-      <th style="padding: 8px; border: 1px solid lightgray;">model</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">rating (rounded)</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">confidence interval</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">num votes</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Rank</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Model</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Arena Score</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">95% CI</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Votes</th>
     </tr>
   </thead>
   <tbody>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">1</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o (20241120)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1091.98</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+11.09 | -12.33</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1092</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+11 | -12</td>
       <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1792</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">2</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">DeepSeek V3</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1024.93</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+21.48 | -16.81</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1025</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+21 | -17</td>
       <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">449</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">3</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 2.0 Flash Exp</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1009.24</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+13.75 | -14.25</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1009</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+14 | -14</td>
       <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1289</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">4</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Claude 3.5 Sonnet (20241022)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1004.40</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+13.54 | -11.1</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1004</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+14 | -11</td>
       <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1903</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">5</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o mini (20240718)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">979.31</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+28.01 | -39.06</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">979</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+28 | -39</td>
       <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">338</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">6</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 1.5 Pro</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">973.76</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+16.99 | -15.68</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">974</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+17 | -16</td>
       <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">978</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">7</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">LLaMA 3.1 405B Instruct FP8</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">916.34</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+19.61 | -18.16</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">916</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+20 | -18</td>
       <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">925</td>
     </tr>
   </tbody>
 </table>
 </div>
+
 
 <p style="color:gray; text-align: center;">Table 2. Arena ratings of seven popular models based on over 4K votes collected between November 30, 2024 to Feburary 03, 2025. This ranks the models for generating model response</p>
 
@@ -187,52 +196,56 @@ Since there are two separate components (retriever and responder), we produce tw
 <table style="width:100%; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
   <thead style="background-color: #cbe8f1; font-weight: bold; border-bottom: 1px solid lightgray;">
     <tr>
-      <th style="padding: 8px; border: 1px solid lightgray;">model</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">rating (rounded)</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">confidence interval</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Rank</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Model</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Arena Score</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">95% CI</th>
     </tr>
   </thead>
   <tbody>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">1</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 1.5 Flash 002</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1008.25</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+14.51 | -14.11</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1008</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+15 | -14</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">2</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o mini (20240718)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">991.75</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+14.11 | -14.51</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">992</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+14 | -15</td>
     </tr>
   </tbody>
 </table>
 </div>
 
+
 <p style="color:gray; text-align: center;">Table 3. Arena ratings of the two retrievers based on 4K votes collected between November 30, 2024 to Feburary 03, 2025. This ranks the models for retrieving relevant files.</p>
 
 ## How do people use RepoChat?
 **What types of Github links do users input?** RepoChat features a wide range of GitHub links, including repositories, issues, pull requests, and others. We find that the vast majority (almost 80%) of user input links are repository links, followed by issues and branches. 
-<img src="/assets/img/blog/repochat_arena/PIC_pie_chart.png" alt="GitHub Link Categories" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 2. Breakdown of the GitHub link categories in RepoChat by percentage.</p>
+<img src="/assets/img/blog/repochat_arena/PIC_pie_chart.png" alt="GitHub Link Categories" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 70%">
+<p style="color:gray; text-align: center;">Figure 1. Breakdown of the GitHub link categories in RepoChat by percentage.</p>
 
 **What programming languages do people ask about?** The following statistic is calculated based on the file extensions of the relevant files. This serves as an indicator of the programming languages users are most frequently inquiring about/coding in. The abundance of markdown files is primarily due to README files, which are often extracted due to containing critical descriptions and instructions for the repository.
 <img src="/assets/img/blog/repochat_arena/PIC_file_type.png" alt="Programming Language Breakdown" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 3. Breakdown of retrieved file types by percentage.</p>
+<p style="color:gray; text-align: center;">Figure 2. Breakdown of retrieved file types by percentage.</p>
 
 **What natural languages do the user queries contain?** Most of our votes contain user queries in English, followed by Russian and Chinese. 
 <img src="/assets/img/blog/repochat_arena/PIC_natural_language.png" alt="Natural Language Breakdown" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 4. Breakdown of user query’s language by count.</p>
+<p style="color:gray; text-align: center;">Figure 3. Breakdown of user query’s language by count.</p>
 
 **How long are the user queries?** The user query length varies significantly, ranging from a minimum of 1 token to a maximum of 1,406,325 tokens, with a median of 19 tokens. Short-length queries mostly consist of prose requesting implementations or instructions, whereas longer queries often include extensive code blocks. 
 <img src="/assets/img/blog/repochat_arena/PIC_query_len.png" alt="Query Length Distribution" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 5. Distribution of user query length.</p>
+<p style="color:gray; text-align: center;">Figure 4. Distribution of user query length.</p>
 
-**How long are the retrieved file contexts?** The distribution of retrieved file content is more stable, with a median of 9,257, an average of 12,881, and a maximum of 126,329 tokens, with the occasional empty retrieval. 
+**How long are the retrieved file contexts?** The distribution of retrieved file content is more stable, with a median of 9,189, an average of 12,859, and a maximum of 126,329 tokens, with the occasional empty retrieval. 
 <img src="/assets/img/blog/repochat_arena/PIC_context_len.png" alt="Retrieved Context Length Distribution" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 6. Distribution of retrieved file context length.</p>
+<p style="color:gray; text-align: center;">Figure 5. Distribution of retrieved file context length.</p>
 
 **What are the most common user query types?** 
 
-For more examples, please refer to the [appendix](#appendix)
+For more examples, please refer to the [appendix](#appendix). We have also released a dataset of around 4k battles [here](insert_huggingface_link).
 - **High level questions about a repository:**
     - [https://github.com/Mrjoulin/ITMOLabs](https://github.com/Mrjoulin/ITMOLabs)<br>"What is this repository about? How I can use it? What main languages and frameworks are used here?"
 
@@ -374,8 +387,8 @@ For more examples, please refer to the [appendix](#appendix)
 ## How Does It Work?
 
 Each generated answer is the collaborative effort between two separate LLM models. The **retriever model** extracts the relevant files from the github repository according to the given user input. The extracted file contents are then concatenated together with the user query and used as a prompt for the **responder model**, which then generates the response.
-<img src="/assets/img/blog/repochat_arena/PIC_complete_pipeline.png" alt="RepoChat full pipeline" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 7. A graphical representation of the full RepoChat retriever->responder pipeline.</p>
+<img src="/assets/img/blog/repochat_arena/PIC_complete_pipeline.png" alt="RepoChat full pipeline" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 60%">
+<p style="color:gray; text-align: center;">Figure 6. A graphical representation of the full RepoChat retriever->responder pipeline.</p>
 
 ### File Retrieval
 We select two models as retrievers: `gemini-1.5-flash-002` and `gpt-4o-mini`.
@@ -415,58 +428,67 @@ You are an expert software engineer. Answer the following user query using provi
 </details>
 
 ## Further Analysis and Results
-
 ### Style Control
 
 Style (length and Markdown formatting) significantly impacts model ranking. A better formatted or visually appealing answer, though not necessarily better, is more likely to win. The style-controlled leaderboard isolates writing style from content quality. For details on our methodology, refer to [this blog post](https://blog.lmarena.ai/blog/2024/style-control/).
+
 <div style="margin-left: auto; margin-right: auto; width: fit-content;">
 <table style="width:100%; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
   <thead style="background-color: #cbe8f1; font-weight: bold; border-bottom: 1px solid lightgray;">
     <tr>
-      <th style="padding: 8px; border: 1px solid lightgray;">model</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">rating (rounded)</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">confidence interval</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Rank</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Model</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Arena Score</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">95% CI</th>
     </tr>
   </thead>
   <tbody>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">1</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o (20241120)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1041.62</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+32.65 | -23.70</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1042</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+33 | -24</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">2</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Claude 3.5 Sonnet (20241022)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1025.84</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+22.53 | -24.59</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1026</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+23 | -25</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">3</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">DeepSeek V3</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1015.12</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+21.88 | -20.81</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1015</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+22 | -21</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">4</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 1.5 Pro</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">998.61</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+18.63 | -20.50</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">999</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+19 | -21</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">5</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 2.0 Flash Exp</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">992.14</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+18.53 | -14.65</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">992</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+19 | -15</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">6</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o mini (20240718)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">973.62</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+28.76 | -40.80</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">974</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+29 | -41</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">7</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">LLaMA 3.1 405B Instruct FP8</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">955.16</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+22.75 | -29.07</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">955</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+23 | -29</td>
     </tr>
   </tbody>
 </table>
 </div>
+
 
 <p style="color:gray; text-align: center;">Table 4.  Style-controlled arena ratings of the responder models. </p>
 
@@ -649,50 +671,59 @@ The GitHub link is **https://github.com/xtekky/gpt4free**, and the user query is
 
 ### Retriever Control
 Similar to style-control, the retriever-controlled leaderboard separates the effect of the retrievers from the content quality. 
+
 <div style="margin-left: auto; margin-right: auto; width: fit-content;">
 <table style="width:100%; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
   <thead style="background-color: #cbe8f1; font-weight: bold; border-bottom: 1px solid lightgray;">
     <tr>
-      <th style="padding: 8px; border: 1px solid lightgray;">model</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">rating (rounded)</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">confidence interval</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Rank</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Model</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Arena Score</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">95% CI</th>
     </tr>
   </thead>
   <tbody>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">1</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o (20241120)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1091.80</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+11.37 | -12.15</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1092</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+11 | -12</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">2</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">DeepSeek V3</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1025.19</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+21.36 | -16.11</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1025</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+21 | -16</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">3</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 2.0 Flash Exp</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1009.17</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+13.68 | -14.23</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1009</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+14 | -14</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">4</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Claude 3.5 Sonnet (20241022)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1004.41</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+13.52 | -11.08</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1004</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+14 | -11</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">5</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o mini (20240718)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">979.55</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+27.58 | -39.25</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">980</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+28 | -39</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">6</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 1.5 Pro</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">973.65</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+16.65 | -15.57</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">974</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+17 | -16</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">7</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">LLaMA 3.1 405B Instruct FP8</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">916.39</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+19.56 | -18.18</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">916</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+20 | -18</td>
     </tr>
   </tbody>
 </table>
@@ -706,46 +737,54 @@ The retriever-controlled leaderboard shows only slight differences from the orig
 <table style="width:100%; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
   <thead style="background-color: #cbe8f1; font-weight: bold; border-bottom: 1px solid lightgray;">
     <tr>
-      <th style="padding: 8px; border: 1px solid lightgray;">model</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">rating (rounded)</th>
-      <th style="padding: 8px; border: 1px solid lightgray;">confidence interval</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Rank</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Model</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">Arena Score</th>
+      <th style="padding: 8px; border: 1px solid lightgray;">95% CI</th>
     </tr>
   </thead>
   <tbody>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">1</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o (20241120)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1041.73</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+32.79 | -23.71</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1042</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+33 | -24</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">2</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Claude 3.5 Sonnet (20241022)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1025.39</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+22.84 | -24.59</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1025</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+23 | -25</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">3</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">DeepSeek V3</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1014.93</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+22.23 | -19.87</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">1015</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+22 | -20</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">4</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 1.5 Pro</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">998.77</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+18.46 | -20.44</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">999</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+18 | -20</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">5</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">Gemini 2.0 Flash Exp</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">992.32</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+18.35 | -14.83</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">992</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+18 | -15</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">6</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">GPT 4o mini (20240718)</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">973.11</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+29.08 | -40.26</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">973</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+29 | -40</td>
     </tr>
     <tr style="background-color: white;">
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">7</td>
       <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">LLaMA 3.1 405B Instruct FP8</td>
-      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">954.94</td>
-      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+22.97 | -29.05</td>
+      <td style="padding: 8px; text-align: left; border: 1px solid lightgray; font-weight: 500;">955</td>
+      <td style="padding: 8px; border: 1px solid lightgray; font-weight: 500;">+23 | -29</td>
     </tr>
   </tbody>
 </table>
@@ -756,9 +795,9 @@ The retriever-controlled leaderboard shows only slight differences from the orig
 ### Leaderboard Calculation
 How do we get separate leaderboards for the retrievers and the responders from one set of battles? Extra features!
 
-Chabot Arena leverages the [**Bradley-Terry**](https://en.wikipedia.org/wiki/Bradley%E2%80%93Terry_model) model for scoring model strength using pairwise battles. We adopt its [**statistical extension**](https://blog.lmarena.ai/blog/2024/extended-arena/) to evaluate the additional subparts–the retrievers–we integrate them as extra features just like the responder models. Each retriever feature takes values from {-1, 0, 1}, indicating whether it was active in the file retrieval for model_a, neither/both, or model_b, respectively. By performing Logistic Regression on these additional retriever features along with the original model features, we obtain coefficients that are later scaled to become the leaderboard scores. 
+Chabot Arena leverages the [**Bradley-Terry**](https://en.wikipedia.org/wiki/Bradley%E2%80%93Terry_model) model for scoring model strength using pairwise battles. We adopt its [**statistical extension**](https://blog.lmarena.ai/blog/2024/extended-arena/) to evaluate the additional subparts–the retrievers–by integrating them as extra features just like the responder models. Each retriever feature takes values from {-1, 0, 1}, indicating whether it was active in the file retrieval for model_a, neither/both, or model_b, respectively. By performing Logistic Regression on these additional retriever features along with the original model features, we obtain coefficients that are later scaled to become the leaderboard scores. 
 <img src="/assets/img/blog/repochat_arena/PIC_winrates.png" alt="Model Pairwise Winrates" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
-<p style="color:gray; text-align: center;">Figure 8. Fraction of model A wins for all non-tied battles.</p>
+<p style="color:gray; text-align: center;">Figure 7. Fraction of model A wins for all non-tied battles.</p>
 
 ## What's Next?
 We are actively collecting more votes and integrating new models, with plans for more comprehensive analysis down the line. Additionally, we are exploring ways to enhance RepoChat by incorporating features such as support for private repositories, GitLab integration, and improvements to our retrieval process. Community contributions are welcome—feel free to ping us if you'd like to get involved!
