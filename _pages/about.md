@@ -18,14 +18,14 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Chatbot Arena is an open-source platform for evaluating large language models by human preference, created by researchers from UC Berkeley [SkyLab](https://sky.cs.berkeley.edu/) and [LMArena](https://lmarena.ai/?about). Join us at [lmarena.ai](https://lmarena.ai) to vote for your top models and contribute to the live leaderboard!
+LMArena is an open-source platform for crowdsourced AI benchmarking, created by researchers from UC Berkeley [SkyLab](https://sky.cs.berkeley.edu/). Join us at [lmarena.ai](https://lmarena.ai) to vote for your top models and contribute to the live leaderboard!
 
 We always welcome contributions from the community. If you're interested in getting involved, we'd love to hear from you!
 
 #### Open-source contributors
 
 - Leads: [Wei-Lin Chiang](https://infwinston.github.io/), [Anastasios Angelopoulos](https://people.eecs.berkeley.edu/~angelopoulos/)
-- Contributors: [Lianmin Zheng](https://lmzheng.net/), [Ying Sheng](https://sites.google.com/view/yingsheng/home), [Lisa Dunlap](https://www.lisabdunlap.com/), [Christopher Chou](https://www.linkedin.com/in/chrisychou/), [Tianle Li](https://codingwithtim.github.io/), [Evan Frick](https://efrick2002.github.io/), [Naman Jain](https://naman-ntc.github.io/), [Dacheng Li](https://dachengli1.github.io/), [Siyuan Zhuang](https://github.com/suquark)
+- Contributors: [Lianmin Zheng](https://lmzheng.net/), [Ying Sheng](https://sites.google.com/view/yingsheng/home), [Lisa Dunlap](https://www.lisabdunlap.com/), [Christopher Chou](https://www.linkedin.com/in/chrisychou/), [Tianle Li](https://codingwithtim.github.io/), [Evan Frick](https://efrick2002.github.io/), [Aryan Vichare](https://www.aryanvichare.dev/), [Naman Jain](https://naman-ntc.github.io/), [Manish Shetty](https://manishs.org/), [Dacheng Li](https://dachengli1.github.io/), [Kelly Tang](https://www.linkedin.com/in/kelly-yuguo-tang/), [Siyuan Zhuang](https://github.com/suquark)
 - Advisors: [Ion Stoica](https://people.eecs.berkeley.edu/~istoica/), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Hao Zhang](https://cseweb.ucsd.edu/~haozhang/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/)
 
 #### Learn more
