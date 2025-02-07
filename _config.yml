@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: Chatbot
+first_name: LM
 middle_name:
 last_name: Arena
 email: lmarena.ai@gmail.com
@@ -128,7 +128,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Chatbot Arena # blog_name will be displayed in your blog page
+blog_name: LMArena # blog_name will be displayed in your blog page
 blog_description: An Open Platform for Human Preference Evals
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
