@@ -19,9 +19,9 @@ authors:
 
 ## Introduction
 
-Chatbot Arena receives vast amounts of LLM conversations daily, but understanding what people ask, how they structure prompts, and how models perform isn’t straightforward. Raw text data is messy and complex. Analyzing small samples is feasible, but identifying trends in large datasets is challenging. This isn’t just our problem; anyone dealing with unstructured data, from long texts to images, faces the same question: how do you organize it to extract meaningful insights?
+Chatbot Arena receives vast amounts of LLM conversations daily. However, understanding what people ask, how they structure prompts, and how models perform isn’t straightforward. Raw text data is messy and complex. Analyzing small samples is feasible, but identifying trends in large datasets is challenging. This isn’t just our problem. Anyone dealing with unstructured data, e.g. long texts and images, faces the same question: how do you organize it to extract meaningful insights?
 
-To address this, we developed a topic modeling pipeline and the Arena Explorer. This pipeline organizes user prompts into distinct topics, structuring the text data hierarchically to enable intuitive analysis. We believe this tool for hierarchical topic modeling can be valuable to anyone analyzing complex text data.
+To address this, we developed a topic modeling pipeline and the **Arena Explorer**. This pipeline organizes user prompts into distinct topics, structuring the text data hierarchically to enable intuitive analysis. We believe this tool for hierarchical topic modeling can be valuable to anyone analyzing complex text data.
 
 <div class="l-page" style="display: flex; justify-content: center; align-items: center;">
   <div style="position: relative; width: 100%; max-width: 1200px; height: 0; padding-bottom: 70%; margin-bottom: 20px">
@@ -86,6 +86,8 @@ Even within the same broad category, model performance varies slightly. For exam
 </div>
 <p style="color:gray; text-align: center;">Figure 5. Model win rates in the eight largest narrow categories within Creative Writing.</p>
 
+Note: Since models compete against different sets of opponents, win rates are only meaningful when compared within the same model. Therefore, we do not directly compare win rates across different models.
+
 ## Topic Modeling Pipeline
 
 We used the leaderboard conversation data between June 2024 and August 2024. To facilitate clustering in later steps, we selected prompts tagged in English and removed duplicate prompts. The final dataset contains around 52k prompts.
@@ -94,7 +96,7 @@ To group the prompts into narrow categories, we used a topic modeling pipeline w
 
 1. We create embeddings for user prompts with SentenceTransformers’ model (all-mpnet-base-v2), transforming prompts into representation vectors.
 2. To reduce the dimensionality of embeddings, we use UMAP (Uniform Manifold Approximation and Projection)
-3. We use the density distribution-based clustering algorithm HDBSCAN to identify topic clusters with a minimum clustering size of 30.
+3. We use the density distribution-based clustering algorithm HDBSCAN to identify topic clusters with a minimum clustering size of 20.
 4. We select 20 example prompts per cluster. They were chosen from the ones with high HDBSCAN probability scores (top 20% within their respective clusters). For clarity, we choose those with fewer than 100 words.
 5. To come up with cluster names, we feed the example prompts into ChatGPT-4o to give the category a name and description.
 6. We reduced all outliers using probabilities obtained from HDBSCAN and then embeddings of each outlier prompt.
@@ -148,6 +150,15 @@ We would love to hear your feedback and how you are using the pipeline to derive
     title={Decoding Unstructured Data: Arena Explorer's topic modeling and categorization pipeline},
     author={Kelly Tang and Wei-Lin Chiang and Anastasios N. Angelopoulos}
     year={2025},
+}
+
+@misc{chiang2024chatbot,
+    title={Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference},
+    author={Wei-Lin Chiang and Lianmin Zheng and Ying Sheng and Anastasios Nikolas Angelopoulos and Tianle Li and Dacheng Li and Hao Zhang and Banghua Zhu and Michael Jordan and Joseph E. Gonzalez and Ion Stoica},
+    year={2024},
+    eprint={2403.04132},
+    archivePrefix={arXiv},
+    primaryClass={cs.AI}
 }
 
 @misc{chiang2024chatbot,
