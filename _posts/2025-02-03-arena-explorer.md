@@ -29,7 +29,7 @@ To address this, we developed a topic modeling pipeline and the **Arena Explorer
       src="https://storage.googleapis.com/public-arena-no-cors/trial/index.html" 
       frameborder="0" 
       scrolling="yes" 
-      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white;"
       allowfullscreen>
     </iframe>
   </div>
