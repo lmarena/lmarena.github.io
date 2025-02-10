@@ -5,10 +5,26 @@ description: A Live Benchmark for AI Software Engineers
 giscus_comments: true
 date: 2025-02-04
 featured: true
-thumbnail: assets/img/blog/copilot_arena/leaderboard_pfp.png
+thumbnail: assets/img/blog/repochat_arena/purple_octopus.png
 authors:
-  - name: place_holder
-    url: "-"
+  - name: Yifan Song*
+    url: "https://www.linkedin.com/in/yf-song/"
+    affiliations: 
+      name: UC Berkeley, CMU
+  - name: Naman Jain*
+    url: "https://naman-ntc.github.io/"
+  - name: Manish Shetty*
+    url: "https://manishs.org"
+  - name: Wei-Lin Chiang*
+    url: "https://infwinston.github.io/"
+  - name: Valerie Chen
+    url: "https://valeriechen.github.io/"
+  - name: Wayne Chi
+    url: "https://waynchi.github.io"
+  - name: Anastasios N. Angelopoulos
+    url: "http://angelopoulos.ai"
+  - name: Ion Stoica
+    url: "https://people.eecs.berkeley.edu/~istoica/"
 ---
 
 ## Introduction
@@ -16,8 +32,6 @@ authors:
 An integral part of using LLMs as part of a user's coding workflow is navigating and understanding complex code bases. We launched **RepoChat** – a new arena that answers code-related queries using a user-provided github repository link. 
 
 RepoChat lets models automatically retrieve relevant files from the given GitHub repository. It can resolve issues, review PRs, implement code, as well as answer higher level questions about the repositories-all without requiring users to provide extensive context. 
-
-<!-- You can view our video demo [here](https://x.com/lmarena_ai/status/1861869943505182862).  -->
 
 <div class="video-container" onclick="playVideo()">
     <img id="videoThumbnail" class="thumbnail" src="/assets/img/blog/repochat_arena/demo_thumbnail.png" alt="Demo Video Thumbnail">
@@ -120,9 +134,9 @@ In this blog we will cover:
 - [**How do people use RepoChat**](#how-do-people-use-repochat): an analysis of the distribution of github links and user queries' category, length, language, etc.  
 - [**How does it work**](#how-does-it-work): a more technical and detailed explanation of the RepoChat pipeline and implementation
 - [**Further Analysis and Results**](#further-analysis-and-results): retriever and style controlled leaderboards, and other analysis of model rankings. 
- d
+
 ## Initial Leaderboards
-Since there are two separate components (retriever and responder), we produce two separate leaderboards. Jump to [this section](#leaderboard-calculation) for details about how the leaderboards are calculated, and to [further analysis](#style-control) for more leaderboards. All leaderboards can be reproduced using our [google colab notebook](https://colab.research.google.com/drive/19bxOiNnuP9_qusq7kMo4Xw5Cq3_iYdCp?usp=sharing). 
+Since there are two separate components (retriever and responder), we produce two separate leaderboards. Jump to [this section](#leaderboard-calculation) for details about how the leaderboards are calculated, and to [further analysis](#style-control) for more leaderboards. All leaderboards can be reproduced using our [google colab notebook](https://colab.research.google.com/drive/1sdSE07D7IqKAdb8LwMlOGCIfmWih3Df3?usp=sharing). 
 
 <div style="margin-left: auto; margin-right: auto; width: fit-content;">
 <table style="width:100%; border-collapse: collapse; border: 1px solid lightgray; background-color: white;">
@@ -245,7 +259,7 @@ Since there are two separate components (retriever and responder), we produce tw
 
 **What are the most common user query types?** 
 
-For more examples, please refer to the [appendix](#appendix). We have also released a dataset of around 4k battles [here](insert_huggingface_link).
+For more examples, please refer to the [appendix](#appendix). We have also released a dataset of around 4k battles [here](https://huggingface.co/datasets/lmarena-ai/repochat-arena-battles-4k) on Hugging Face.
 - **High level questions about a repository:**
     - [https://github.com/Mrjoulin/ITMOLabs](https://github.com/Mrjoulin/ITMOLabs)<br>"What is this repository about? How I can use it? What main languages and frameworks are used here?"
 
