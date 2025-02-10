@@ -146,19 +146,10 @@ We would love to hear your feedback and how you are using the pipeline to derive
 ## Citation
 
 ```bibtex
-@misc{chi2024copilot,
-    title={Decoding Unstructured Data: Arena Explorer's topic modeling and categorization pipeline},
+@misc{tang2025explorer,
+    title={Arena Explorer: A Topic Modeling Pipeline for LLM Evals & Analytics},
     author={Kelly Tang and Wei-Lin Chiang and Anastasios N. Angelopoulos}
     year={2025},
-}
-
-@misc{chiang2024chatbot,
-    title={Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference},
-    author={Wei-Lin Chiang and Lianmin Zheng and Ying Sheng and Anastasios Nikolas Angelopoulos and Tianle Li and Dacheng Li and Hao Zhang and Banghua Zhu and Michael Jordan and Joseph E. Gonzalez and Ion Stoica},
-    year={2024},
-    eprint={2403.04132},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI}
 }
 
 @misc{chiang2024chatbot,
