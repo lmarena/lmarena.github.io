@@ -41,9 +41,9 @@ In this blog post, we will cover:
 - Details of how we created the Explorer, transforming a large dataset of user conversations into an exploratory tool.
 - Ways to fine-tune and improve topic models.
 
-Check out the pipeline in this colab notebook, [Link](https://colab.research.google.com/drive/1chzqjePYnpq08fA3KzyKvSkuzCjojyiE?usp=sharing), and try it out yourself.
+Check out the pipeline in this [colab notebook](https://colab.research.google.com/drive/1chzqjePYnpq08fA3KzyKvSkuzCjojyiE?usp=sharing), and try it out yourself.
 
-You can find the dataset we used here: [Link](https://huggingface.co/datasets/lmarena-ai/arena-explorer-preference-100k). This dataset contains 100k leaderboard conversation data, the largest prompt dataset with human preferences we have every released!
+We also published the [dataset](https://huggingface.co/datasets/lmarena-ai/arena-explorer-preference-100k) we used. This dataset contains 100k leaderboard conversation data, the largest prompt dataset with human preferences we have every released!
 
 ## Insights
 
