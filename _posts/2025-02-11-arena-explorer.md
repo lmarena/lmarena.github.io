@@ -3,7 +3,7 @@ layout: distill
 title: "Arena Explorer"
 description: A topic modeling pipeline for LLM evals & analytics
 giscus_comments: true
-date: 2025-02-10
+date: 2025-02-11
 featured: true
 thumbnail: assets/img/blog/explorer/explorer.png
 authors:
@@ -26,7 +26,7 @@ To address this, we developed a topic modeling pipeline and the **Arena Explorer
 <div class="l-page" style="display: flex; justify-content: center; align-items: center;">
   <div style="position: relative; width: 100%; max-width: 1200px; height: 0; padding-bottom: 70%; margin-bottom: 20px">
     <iframe 
-      src="https://storage.googleapis.com/public-arena-no-cors/V2/index.html" 
+      src="https://storage.googleapis.com/public-arena-no-cors/index.html" 
       frameborder="0" 
       scrolling="yes" 
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white;"
