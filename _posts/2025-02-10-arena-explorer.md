@@ -26,7 +26,7 @@ To address this, we developed a topic modeling pipeline and the **Arena Explorer
 <div class="l-page" style="display: flex; justify-content: center; align-items: center;">
   <div style="position: relative; width: 100%; max-width: 1200px; height: 0; padding-bottom: 70%; margin-bottom: 20px">
     <iframe 
-      src="https://storage.googleapis.com/public-arena-no-cors/trial/index.html" 
+      src="https://storage.googleapis.com/public-arena-no-cors/V2/index.html" 
       frameborder="0" 
       scrolling="yes" 
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white;"
