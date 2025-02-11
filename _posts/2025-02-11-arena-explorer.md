@@ -107,7 +107,7 @@ To group the prompts into narrow categories, we used a topic modeling pipeline w
 </div>
 <p style="color:gray; text-align: center;">Figure 6. The intertropical distance map shows the narrow clusters identified by BERTopic. The size of the circles is proportional to the amount of prompts in the cluster.</p>
 
-We consolidate the initial narrow categories into broad categories for more efficient and intuitive exploration. We perform a second round of this topic clustering pipeline on the summarized category names and descriptions generated earlier. The steps are almost identical to before. Except for steps 4 and 5, we use all category names in a cluster for summarization instead of selecting examples.
+We consolidate the initial narrow categories into broad categories for more efficient and intuitive exploration. We perform a second round of this topic modeling pipeline on the summarized category names and descriptions generated earlier. The steps are almost identical to before. Except for steps 4 and 5, we use all category names in a cluster for summarization instead of selecting examples.
 
 ### Tuning Topic Clusters
 
