@@ -71,24 +71,24 @@ So far, RepoChat has collected around **20k battles** and over **4k votes**. All
   <tbody>
     <tr style="background-color: white;">
       <td style="padding: 8px; border: 1px solid lightgray;font-weight:500"># of conversations</td>
-      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">11,447</td>
+      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">12,732</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
       <td style="padding: 8px; border: 1px solid lightgray;font-weight: 500"># of votes</td>
-      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">4,308</td>
+      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">4,857</td>
     </tr>
     <tr style="background-color: white;">
       <td style="padding: 8px; border: 1px solid lightgray;font-weight: 500"># of unique GitHub links (in convos)</td>
-      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">4,513</td>
+      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">5,037</td>
     </tr>
     <tr style="background-color: #f9f9f9;">
       <td style="padding: 8px; border: 1px solid lightgray;font-weight: 500"># of unique GitHub links (in votes)</td>
-      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">2,179</td>
+      <td style="padding: 8px; border: 1px solid lightgray; text-align: right;font-weight: 500">2,465</td>
     </tr>
   </tbody>
 </table>
 </div>
-<p style="color:gray; text-align: center;">Table 1.  Number of conversations, votes, and unique GitHub links logged from 11/30/2024 - 02/03/2025.</p>
+<p style="color:gray; text-align: center;">Table 1.  Number of conversations, votes, and unique GitHub links logged from 11/30/2024 - 02/11/2025.</p>
 
 In this blog we will cover:
 - [**Initial Results**](#initial-leaderboards): our preliminary results for the RepoChat leaderboards
@@ -224,12 +224,12 @@ Since there are two separate components (retriever and answer), we produce two s
 <img src="/assets/img/blog/repochat_arena/PIC_natural_language.png" alt="Natural Language Breakdown" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 3. Breakdown of user query’s language by count.</p>
 
-**How long are the user queries?** The user query length varies significantly, ranging from a minimum of 1 token to a maximum of 1,406,325 tokens, with a median of 19 tokens. Short-length queries mostly consist of prose requesting implementations or instructions, whereas longer queries often include extensive code blocks. 
+**How long are the user queries?** The user query length varies significantly, ranging from a minimum of 1 token to a maximum of 1,406,325 tokens, with a median of 22 tokens. Short-length queries mostly consist of prose requesting implementations or instructions, whereas longer queries often include extensive code blocks. 
 
 <img src="/assets/img/blog/repochat_arena/PIC_query_len.png" alt="Query Length Distribution" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 4. Distribution of user query length.</p>
 
-**How long are the retrieved file contexts?** The distribution of retrieved file content is more stable, with a median of 9,189, an average of 12,859, and a maximum of 126,329 tokens, with the occasional empty retrieval. 
+**How long are the retrieved file contexts?** The distribution of retrieved file content is more stable, with a median of 8,870, an average of 12,508, and a maximum of 126,329 tokens, with the occasional empty retrieval. 
 
 <img src="/assets/img/blog/repochat_arena/PIC_context_len.png" alt="Retrieved Context Length Distribution" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 <p style="color:gray; text-align: center;">Figure 5. Distribution of retrieved file context length.</p>
