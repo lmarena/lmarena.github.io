@@ -845,7 +845,7 @@ How do we get separate leaderboards for the retrievers and the answer models fro
 Chabot Arena leverages the [**Bradley-Terry**](https://en.wikipedia.org/wiki/Bradley%E2%80%93Terry_model) model for scoring model strength using pairwise battles. We adopt its [**statistical extension**](https://blog.lmarena.ai/blog/2024/extended-arena/) to evaluate the additional subparts–the retrievers–by integrating them as extra features just like the answer models. Each retriever feature takes values from {-1, 0, 1}, indicating whether it was active in the file retrieval for model_a, neither/both, or model_b, respectively. By performing Logistic Regression on these additional retriever features along with the original model features, we obtain coefficients that are later scaled to become the leaderboard scores.
 <img src="/assets/img/blog/repochat_arena/PIC_winrates.png" alt="Model Pairwise Winrates" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 90%">
 
-<p style="color:gray; text-align: center;">Figure 88. Fraction of model A wins for all non-tied battles.</p>
+<p style="color:gray; text-align: center;">Figure 8. Fraction of model A wins for all non-tied battles.</p>
 
 ## What's Next?
 
