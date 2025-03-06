@@ -27,6 +27,8 @@ LLMs have shown impressive coding abilities in various coding benchmarks, but ho
 
 Inspired by [Chatbot Arena](http://lmarena.ai), WebDev Arena allows users to test LLMs in a real-world coding task: building interactive web applications. Users submit a prompt, two LLMs generate web apps, and the community votes on which model performs better.
 
+Try out our [colab](https://colab.research.google.com/drive/1xq_-PGp8gJ8aHUyokrSqL_qZnn8s-UHV?usp=sharing) to explore the data and analysis behind WebDev Arena.
+
 #### Why WebDev Arena?
 
 Traditional coding benchmarks like HumanEval focus on solving isolated function-based problems, but real-world coding demands more—including UI generation, handling package dependencies, and structuring complete applications. 
