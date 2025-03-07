@@ -146,201 +146,180 @@ Therefore, we deduplicated the data, reducing the votes from 103096 to 61473, an
       <td>1</td>
       <td>claude-3-7-sonnet-20250219</td>
       <td>1362.94</td>
-      <td>1311.42</td>
-      <td>-51.52</td>
+      <td>1311.40</td>
+      <td>51.54</td>
     </tr>
     <tr>
       <td>2</td>
       <td>claude-3-5-sonnet-20241022</td>
       <td>1245.85</td>
-      <td>1209.08</td>
-      <td>-36.77</td>
+      <td>1209.07</td>
+      <td>36.78</td>
     </tr>
     <tr>
       <td>3</td>
       <td>deepseek-r1</td>
-      <td>1204.69</td>
-      <td>1165.4</td>
-      <td>-39.29</td>
+      <td>1204.70</td>
+      <td>1165.42</td>
+      <td>39.28</td>
     </tr>
     <tr>
       <td>4</td>
       <td>early-grok-3-so-false</td>
-      <td>1147</td>
+      <td>1146.99</td>
       <td>1111.37</td>
-      <td>-35.63</td>
+      <td>35.62</td>
     </tr>
     <tr>
       <td>5</td>
       <td>o3-mini-2025-01-31-high</td>
-      <td>1146.14</td>
+      <td>1146.13</td>
       <td>1119.43</td>
-      <td>-26.71</td>
+      <td>26.70</td>
     </tr>
     <tr>
       <td>6</td>
       <td>o3-mini-2025-01-31-high-so-false</td>
-      <td>1137.21</td>
+      <td>1137.20</td>
       <td>1119.85</td>
-      <td>-17.36</td>
+      <td>17.35</td>
     </tr>
     <tr>
       <td>7</td>
       <td>claude-3-5-haiku-20241022</td>
-      <td>1136.38</td>
-      <td>1112.98</td>
-      <td>-23.4</td>
+      <td>1136.34</td>
+      <td>1112.94</td>
+      <td>23.40</td>
     </tr>
     <tr>
       <td>8</td>
       <td>o3-mini-2025-01-31-so-false</td>
-      <td>1109.05</td>
-      <td>1083.3</td>
-      <td>-25.75</td>
+      <td>1109.04</td>
+      <td>1083.30</td>
+      <td>25.74</td>
     </tr>
     <tr>
       <td>9</td>
       <td>gemini-2.0-flash-thinking-01-21-so-false</td>
-      <td>1108.82</td>
+      <td>1108.81</td>
       <td>1099.89</td>
-      <td>-8.93</td>
+      <td>8.92</td>
     </tr>
     <tr>
       <td>10</td>
       <td>gemini-2.0-pro-exp-02-05</td>
       <td>1101.89</td>
-      <td>1078.58</td>
-      <td>-23.31</td>
+      <td>1078.59</td>
+      <td>23.30</td>
     </tr>
     <tr>
       <td>11</td>
       <td>o3-mini-2025-01-31</td>
       <td>1099.29</td>
-      <td>1076.49</td>
-      <td>-22.8</td>
+      <td>1076.50</td>
+      <td>22.78</td>
     </tr>
     <tr>
       <td>12</td>
-      <td>gpt-4-turbo</td>
-      <td>1054.73</td>
-      <td>1037.26</td>
-      <td>-17.47</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>o1</td>
-      <td>1054.73</td>
-      <td>1037.26</td>
-      <td>-17.47</td>
-    </tr>
-    <tr>
-      <td>14</td>
       <td>o1-2024-12-17-so-false</td>
       <td>1054.52</td>
       <td>1043.16</td>
-      <td>-11.36</td>
+      <td>11.36</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>o1-2024-12-17</td>
+      <td>1049.87</td>
+      <td>1035.79</td>
+      <td>14.09</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>o1-mini-2024-09-12</td>
+      <td>1046.62</td>
+      <td>1028.03</td>
+      <td>18.59</td>
     </tr>
     <tr>
       <td>15</td>
-      <td>o1-2024-12-17</td>
-      <td>1049.89</td>
-      <td>1035.79</td>
-      <td>-14.1</td>
+      <td>gemini-2.0-flash-thinking-exp-01-21</td>
+      <td>1034.30</td>
+      <td>1014.79</td>
+      <td>19.52</td>
     </tr>
     <tr>
       <td>16</td>
-      <td>o1-mini-2024-09-12</td>
-      <td>1046.59</td>
-      <td>1027.98</td>
-      <td>-18.61</td>
+      <td>gemini-2.0-flash-001-so-false</td>
+      <td>1031.71</td>
+      <td>1011.87</td>
+      <td>19.84</td>
     </tr>
     <tr>
       <td>17</td>
-      <td>gemini-2.0-flash-thinking-exp-01-21</td>
-      <td>1034.29</td>
-      <td>1014.75</td>
-      <td>-19.54</td>
+      <td>gemini-2.0-flash-thinking-exp-1219</td>
+      <td>1023.31</td>
+      <td>1005.65</td>
+      <td>17.66</td>
     </tr>
     <tr>
       <td>18</td>
-      <td>gemini-2.0-flash-001-so-false</td>
-      <td>1031.72</td>
-      <td>1011.87</td>
-      <td>-19.85</td>
+      <td>gemini-exp-1206</td>
+      <td>1022.30</td>
+      <td>998.24</td>
+      <td>24.07</td>
     </tr>
     <tr>
       <td>19</td>
-      <td>gemini-2.0-flash-thinking-exp-1219</td>
-      <td>1023.31</td>
-      <td>1005.57</td>
-      <td>-17.74</td>
+      <td>gemini-2.0-flash-exp</td>
+      <td>983.69</td>
+      <td>966.74</td>
+      <td>16.94</td>
     </tr>
     <tr>
       <td>20</td>
-      <td>gemini-exp-1206</td>
-      <td>1022.12</td>
-      <td>998.06</td>
-      <td>-24.06</td>
+      <td>qwen-max-2025-01-25</td>
+      <td>979.81</td>
+      <td>971.04</td>
+      <td>8.77</td>
     </tr>
     <tr>
       <td>21</td>
-      <td>gemini-2.0-flash-exp</td>
-      <td>983.58</td>
-      <td>966.59</td>
-      <td>-16.99</td>
+      <td>gpt-4o-2024-11-20</td>
+      <td>964.00</td>
+      <td>964.00</td>
+      <td>0.00</td>
     </tr>
     <tr>
       <td>22</td>
-      <td>qwen-max-2025-01-25</td>
-      <td>979.82</td>
-      <td>971.03</td>
-      <td>-8.79</td>
+      <td>deepseek-v3</td>
+      <td>963.81</td>
+      <td>940.75</td>
+      <td>23.05</td>
     </tr>
     <tr>
       <td>23</td>
-      <td>gpt-4o-2024-11-20</td>
-      <td>964</td>
-      <td>964</td>
-      <td>0</td>
+      <td>qwen-2.5-coder-32b-instruct</td>
+      <td>903.04</td>
+      <td>907.14</td>
+      <td>-4.09</td>
     </tr>
     <tr>
       <td>24</td>
-      <td>deepseek-v3</td>
-      <td>963.9</td>
-      <td>940.75</td>
-      <td>-23.15</td>
+      <td>gemini-1.5-pro-002</td>
+      <td>893.47</td>
+      <td>891.07</td>
+      <td>2.40</td>
     </tr>
     <tr>
       <td>25</td>
-      <td>qwen-2.5-coder-32b-instruct</td>
-      <td>903.06</td>
-      <td>907.07</td>
-      <td>4.01</td>
-    </tr>
-    <tr>
-      <td>26</td>
-      <td>gemini-1.5-pro-002</td>
-      <td>893.5</td>
-      <td>891.07</td>
-      <td>-2.43</td>
-    </tr>
-    <tr>
-      <td>27</td>
-      <td>llama-v3.3-70b-instruct</td>
-      <td>861.76</td>
-      <td>904.38</td>
-      <td>42.62</td>
-    </tr>
-    <tr>
-      <td>28</td>
       <td>llama-v3.1-405b-instruct</td>
-      <td>811.61</td>
-      <td>798.89</td>
-      <td>-12.72</td>
+      <td>811.66</td>
+      <td>798.96</td>
+      <td>12.71</td>
     </tr>
   </tbody>
 </table>
-<p style="color:gray; text-align: center; padding-top: 10px;">Figure 9. Comparison of original and deduplicated leaderboards showing Elo ratings for all models.</p>
+<p style="color:gray; text-align: center; padding-top: 10px;">Figure 9. Comparison of original and deduplicated leaderboards showing scores for all models.</p>
 
 Another interesting difference between Chatbot Arena and WebDev Arena is the tie ratio. Webdev Arena has a 26% tie ratio and Chatbot Arena has a tie ratio of 35%. However, out of the ties, we note that WebDev arena has a much higher ratio of them being both bad. We will get to this later with the errors that can occur.
 
@@ -526,7 +505,7 @@ We conducted a systematic ablation study examining structured output's impact on
 
 For example, we evaluated o3-mini (with/without structured output), o1 (with/without structured output), and Gemini models (with/without structured output).
 
-Our analysis revealed a consistent performance advantage for models operating without structured output constraints, as evidenced in Table 1\.
+Our analysis revealed a consistent performance advantage for models operating without structured output constraints, as evidenced in Figure 13.
 
 <table>
   <thead>
@@ -606,6 +585,7 @@ Our analysis revealed a consistent performance advantage for models operating wi
     </tr>
   </tbody>
 </table>
+<p style="color:gray; text-align: center; padding-top: 10px;">Figure 13. Comparison of model performance with and without structured output constraints, showing consistent performance advantages for unstructured output across different model architectures.</p>
 
 Our experimental results demonstrate that unstructured output configurations consistently outperform their structured counterparts across all tested model architectures, with Arena Score improvements ranging from \+12.98 to \+88.76 points. These improvements are statistically significant within 95% confidence intervals across all model pairs. The magnitude of this performance impact varies considerably by model architecture \- Gemini exhibits the most substantial performance delta (+88.76), while o3-mini-high shows the smallest improvement (+16.08). 
 
@@ -613,7 +593,7 @@ These findings suggest that while structured output constraints provide benefits
 
 ### Vision Support for Web Development
 
-We've extended WebDev Arena to support multi-modal models, enabling evaluation of vision-language capabilities in web development contexts. Currently, six production models in our evaluation suite support vision inputs: Claude 3.5 Sonnet, Claude 3.5 Haiku, GPT-4o, and three variants of Gemini (2.0-flash-thinking, 2.0-pro-exp, and 1.5-pro-002). Each model accepts visual input through our structured schema, which standardizes how images are processed and incorporated into the development workflow.
+We've extended WebDev Arena to support multi-modal models, enabling evaluation of vision-language capabilities in web development contexts. Currently, seven production models in our evaluation suite support vision inputs: Claude 3.7 Sonnet, Claude 3.5 Sonnet, Claude 3.5 Haiku, GPT-4o, and three variants of Gemini (2.0-flash-thinking, 2.0-pro-exp, and 1.5-pro-002). Each model accepts visual input through our structured schema, which standardizes how images are processed and incorporated into the development workflow.
 
 Our implementation supports base64-encoded images and URLs, with vision models demonstrating capabilities in UI replication, design-to-code translation, and visual bug fixing. Early deployments show that models can parse complex visual hierarchies, extract design tokens (colors, spacing, typography), and generate semantically meaningful JSX (JavaScript XML) from screenshots. 
 
