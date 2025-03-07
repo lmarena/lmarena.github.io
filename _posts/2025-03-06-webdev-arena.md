@@ -625,7 +625,7 @@ While WebDev Arena represents a significant step forward in evaluating LLMs for 
 
 Future work will extend WebDev Arena to a broader range of software engineering tasks, encompassing full-stack development and non-web domains to better capture the diverse challenges of real-world coding. Unlike traditional benchmarks that focus on algorithmic correctness or isolated bug fixes, our approach evaluates LLMs in the context of complete application development, emphasizing deployment-ready implementations. We also plan to refine our human evaluation methodology, enhance model ranking with more granular error diagnostics, and investigate the impact of multimodal capabilities, particularly in UI-to-code translation. By addressing these limitations, we aim to establish WebDev Arena as a comprehensive benchmark for assessing LLMs in practical software engineering contexts, bridging the gap between academic evaluation and real-world application development.
 
-## Citation
+### Citation
 
 ```bibtex
 @misc{vichare2025webdev,
