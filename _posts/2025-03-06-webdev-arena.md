@@ -624,3 +624,22 @@ The integration of vision capabilities has significant implications for web deve
 While WebDev Arena represents a significant step forward in evaluating LLMs for real-world software development, several limitations remain. Unlike existing benchmarks such as HumanEval and CodeXGLUE, which focus on function-level code generation, or SWE-bench, which evaluates issue resolution in open-source repositories, WebDev Arena is currently constrained to Next.js-based React applications. This limitation excludes other widely used frameworks such as Vue, Svelte, and backend technologies like Django or Rails. Furthermore, the single-file constraint does not accurately reflect real-world software engineering workflows, where projects are typically structured across multiple files with modular architectures. Another challenge is error handling—our analysis indicates that 18% of user votes fall into the "both bad" category, often due to dependency resolution failures, incorrect state management, or TypeScript-related compilation errors. A more sophisticated error classification framework would enhance the interpretability of failure cases and inform improvements in model reliability.
 
 Future work will extend WebDev Arena to a broader range of software engineering tasks, encompassing full-stack development and non-web domains to better capture the diverse challenges of real-world coding. Unlike traditional benchmarks that focus on algorithmic correctness or isolated bug fixes, our approach evaluates LLMs in the context of complete application development, emphasizing deployment-ready implementations. We also plan to refine our human evaluation methodology, enhance model ranking with more granular error diagnostics, and investigate the impact of multimodal capabilities, particularly in UI-to-code translation. By addressing these limitations, we aim to establish WebDev Arena as a comprehensive benchmark for assessing LLMs in practical software engineering contexts, bridging the gap between academic evaluation and real-world application development.
+
+## Citation
+
+```bibtex
+@misc{vichare2025webdev,
+    title={WebDev Arena: A Live LLM Leaderboard for Web App Development},
+    author={Aryan Vichare and Anastasios N. Angelopoulos and Wei-Lin Chiang and Kelly Tang and Luca Manolache},
+    year={2025}
+}
+
+@misc{chiang2024chatbot,
+    title={Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference},
+    author={Wei-Lin Chiang and Lianmin Zheng and Ying Sheng and Anastasios Nikolas Angelopoulos and Tianle Li and Dacheng Li and Hao Zhang and Banghua Zhu and Michael Jordan and Joseph E. Gonzalez and Ion Stoica},
+    year={2024},
+    eprint={2403.04132},
+    archivePrefix={arXiv},
+    primaryClass={cs.AI}
+}
+```
