@@ -3,7 +3,7 @@ layout: distill
 title: "WebDev Arena"
 description: A Live LLM Leaderboard for Web App Development
 giscus_comments: true
-date: 2025-03-06
+date: 2025-03-10
 featured: true
 thumbnail: assets/img/blog/explorer/explorer.png
 authors:
