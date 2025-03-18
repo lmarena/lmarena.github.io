@@ -5,7 +5,7 @@ description:
 giscus_comments: true
 date: 2025-03-18
 featured: true
-thumbnail: assets/img/blog/explorer/explorer.png
+thumbnail: assets/img/blog/new-discord/cover.png
 authors:
   - name: LMArena Team
     affiliations:
