@@ -64,7 +64,7 @@ For roughly 75% of the prompts collected each day, there is not a similar prompt
     <iframe src="{{ '/assets/img/blog/freshness/daily_matches.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" class="plot-iframe"></iframe>
   </div>
   
-  <div id="weekly-plot" class="plot-frame">
+  <div id="weekly-plot" class="plot-frame" style="display: none;">
     <iframe src="{{ '/assets/img/blog/freshness/weekly_matches.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" class="plot-iframe"></iframe>
   </div>
   
@@ -136,7 +136,7 @@ We find that many of the duplicates can be attributed to 3 things: "tester"promp
 
 **Hi's and Hello's**. We see that 2.1% of our data is some variation of "hi" in various languages. As per our deduplication policy, these are deduplicated when calculating the final rankings.
 
-**Tester prompts** There are certain prompts that users have found to stump most LLM's, like "how many r's are in strawberry" or "what is bigger, 9.11 or 9.8". When a new model comes out, these prompts are commonly asked to gauge performance, which can be a source of days with a low proportion of fresh prompts. For instance, the week of August 8th saw a large decrease in prompt freshness, which coincides with a release of an update to GPT-4o. Looking at the top prompts on those days we see many of these prompts are a version of "how many r's are in strawberry". [add in potential dedup policy?]
+**Tester prompts** There are certain prompts that users have found to stump most LLM's, like "how many r's are in strawberry" or "what is bigger, 9.11 or 9.8". When a new model comes out, these prompts are commonly asked to gauge performance, which can be a source of days with a low proportion of fresh prompts. For instance, the week of August 8th saw a large decrease in prompt freshness, which coincides with a release of an update to GPT-4o. Looking at the top prompts on those days we see many of these prompts are a version of "how many r's are in strawberry".
 
 <div>
   <iframe src="{{ '/assets/img/blog/freshness/strawberry_and_nn_match.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
@@ -144,9 +144,10 @@ We find that many of the duplicates can be attributed to 3 things: "tester"promp
 <p style="color:gray; text-align: center;">Strawberry and Nearest Neighbor Matches.</p>
 
 <div>
-  <iframe src="{{ '/assets/img/blog/freshness/most_common_prompt_per_day.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/freshness/most_common_prompt_per_week.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
 </div>
-<p style="color:gray; text-align: center;">Most Common Prompts by Day.</p>
+<p style="color:gray; text-align: center;">Most Common Prompts by 
+Week (excluding "hi" prompts).</p>
 
 **Repeated prompts by the Same user**: Many duplicate prompts are submitted by the same person on the same day. Comparing prompts to every prompt seen at an previous timestep (rather than a previous day or week) 65% of prompts at a given time have been previously seen. However, most of these duplicates occur on the same day, with 60% of these prompts submitted by the same user. This indicates that users are asking a prompt, voting, then starting a new battle with two new models and asking the same prompt. This is encouraging because the models used in each conversation vary, which helps maintain diversity in prompts across different model pairs and results in more consistent voting from the same user. Removing duplicate prompts submitted by the same user on the same day raises the percentage of unique prompts from 65% to 80%.
 
