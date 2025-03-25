@@ -22,7 +22,7 @@ LMSys has always been more than just a single initiative—it has served as a re
 
 ## Our New Discord Server
 
-With this exciting evolution, we recently also launched a dedicated Discord community server earlier this month! Join us at: [discord.gg/LMArena](discord.gg/LMArena)! This will be the new hub for all things LMArena—where we’ll share insights on ongoing projects, leaderboard updates, and even host community-driven events and surprises.
+With this exciting evolution, we recently also launched a dedicated Discord community server earlier this month! Join us at: [discord.gg/LMArena](https://discord.gg/LMArena)! This will be the new hub for all things LMArena—where we’ll share insights on ongoing projects, leaderboard updates, and even host community-driven events and surprises.
 
 In fact, we recently held our very first community event in the new Discord server, where over 20 members joined us for a walkthrough of the new desktop UI design in alpha. We also dove into community feedback on the voting UI—as your voices are shaping the future of the platform, and we can’t wait to continue these conversations with you. It was an exciting opportunity to connect directly with the community, discuss upcoming improvements, and get live input on the changes. We’re looking forward to hosting many more events like this so [give us your feedback on what you’d like to see](https://forms.gle/mgSodQEa28r8J5cz7).
 
@@ -38,4 +38,4 @@ Looking ahead, we see many opportunities to expand our tools, provide deeper ins
 
 This is just the beginning, and we couldn’t have done it without you—our amazing community. Thank you for being part of this journey. We can’t wait to see what we’ll build together next. Arena is currently built and run with a team of contributors and advisors, but we're actively looking to grow and explore paths that help us deliver on this big mission very soon.
 
-Come join us in our new Discord ([discord.gg/LMArena](discord.gg/LMArena)), and let’s shape the future of AI, together!
+Come join us in our new Discord ([discord.gg/LMArena](https://discord.gg/LMArena)), and let’s shape the future of AI, together!
