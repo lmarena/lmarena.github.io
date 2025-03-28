@@ -55,76 +55,94 @@ Given a prompt at submitted at time $$t$$, we examine the following:
 For roughly 75% of the prompts collected each day, there is not a similar prompt submitted on a previous day. This indicates that roughly 75% of the prompts submitted each day are fresh.
 
 <div class="plot-container">
-  <div class="plot-buttons">
-    <button onclick="togglePlot('daily')" class="plot-btn active" id="daily-btn">Daily View</button>
-    <button onclick="togglePlot('weekly')" class="plot-btn" id="weekly-btn">Weekly View</button>
+  <div class="plot-toggle">
+    <button onclick="togglePlotView('daily')" class="toggle-btn active" id="daily-btn">Daily View</button>
+    <button onclick="togglePlotView('weekly')" class="toggle-btn" id="weekly-btn">Weekly View</button>
   </div>
   
-  <div id="daily-plot" class="plot-frame">
-    <iframe src="{{ '/assets/img/blog/freshness/daily_matches.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" class="plot-iframe"></iframe>
+  <div class="plot-wrapper">
+    <div class="plot-frame active" id="daily-plot">
+      <iframe src="{{ '/assets/img/blog/freshness/daily_matches.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
+      <p style="color:gray; text-align: center;">Prompt Freshness per Day.</p>
+    </div>
+    
+    <div class="plot-frame" id="weekly-plot">
+      <iframe src="{{ '/assets/img/blog/freshness/weekly_matches.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
+      <p style="color:gray; text-align: center;">Prompt Freshness per Week.</p>
+    </div>
   </div>
-  
-  <div id="weekly-plot" class="plot-frame" style="display: none;">
-    <iframe src="{{ '/assets/img/blog/freshness/weekly_matches.html' }}" frameborder='0' scrolling='no' height="500px" width="100%" class="plot-iframe"></iframe>
-  </div>
-  
-  <p style="color:gray; text-align: center;" id="plot-caption">Prompt Freshness per Day.</p>
 </div>
 
 <style>
 .plot-container {
   margin: 20px 0;
+  width: 100%;
 }
-.plot-buttons {
-  margin-bottom: 15px;
-  display: flex;
-  gap: 10px;
-}
-.plot-btn {
-  padding: 8px 16px;
-  background-color: var(--global-bg-color, #f8f9fa);
-  border: 1px solid var(--global-divider-color, #dee2e6);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: var(--global-text-color, #212529);
-}
-.plot-btn:hover {
-  background-color: var(--global-hover-color, #e9ecef);
-}
-.plot-btn.active {
-  background-color: var(--global-theme-color, #0076df);
-  color: white;
-  border-color: var(--global-theme-color, #0076df);
+.plot-wrapper {
+  position: relative;
+  width: 100%;
 }
 .plot-frame {
   border: 1px solid var(--global-divider-color, #dee2e6);
   border-radius: 4px;
   overflow: hidden;
+  margin-bottom: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+.plot-frame.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+}
+.plot-frame iframe {
+  display: block;
+  width: 100%;
+}
+.plot-toggle {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+}
+.toggle-btn {
+  padding: 8px 12px;
+  background-color: var(--global-bg-color, #f0f0f0);
+  border: 1px solid var(--global-divider-color, #ddd);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--global-text-color, #000);
+}
+.toggle-btn:hover {
+  background-color: var(--global-hover-color, #e0e0e0);
+}
+.toggle-btn.active {
+  background-color: var(--global-theme-color, #4a6baf);
+  color: white;
+  border-color: var(--global-theme-color, #3a5a9f);
 }
 </style>
 
 <script>
-function togglePlot(plotType) {
+function togglePlotView(view) {
   // Hide all plots
-  document.getElementById('daily-plot').style.display = 'none';
-  document.getElementById('weekly-plot').style.display = 'none';
+  document.querySelectorAll('.plot-frame').forEach(function(plot) {
+    plot.classList.remove('active');
+  });
   
   // Remove active class from all buttons
-  document.getElementById('daily-btn').classList.remove('active');
-  document.getElementById('weekly-btn').classList.remove('active');
+  document.querySelectorAll('.toggle-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
   
   // Show selected plot and activate button
-  document.getElementById(`${plotType}-plot`).style.display = 'block';
-  document.getElementById(`${plotType}-btn`).classList.add('active');
-  
-  // Update caption
-  const caption = document.getElementById('plot-caption');
-  if (plotType === 'daily') {
-    caption.textContent = 'Prompt Freshness per Day.';
-  } else {
-    caption.textContent = 'Prompt Freshness per Week.';
-  }
+  document.getElementById(view + '-plot').classList.add('active');
+  document.getElementById(view + '-btn').classList.add('active');
 }
 </script>
 
@@ -134,9 +152,9 @@ While we do see a downward trend in proportion of unique prompts over time, this
 
 We find that many of the duplicates can be attributed to 3 things: "tester"prompts, hi/hello's, and prompts asked multiple times by the same user back to back.
 
-**Hi's and Hello's**. We see that 2.1% of our data is some variation of "hi" in various languages. As per our deduplication policy, these are deduplicated when calculating the final rankings.
+**Hi's and Hello's.** We see that 2.1% of our data is some variation of "hi" in various languages. As per our deduplication policy, these are deduplicated when calculating the final rankings.
 
-**Tester prompts** There are certain prompts that users have found to stump most LLM's, like "how many r's are in strawberry" or "what is bigger, 9.11 or 9.8". When a new model comes out, these prompts are commonly asked to gauge performance, which can be a source of days with a low proportion of fresh prompts. For instance, the week of August 8th saw a large decrease in prompt freshness, which coincides with a release of an update to GPT-4o. Looking at the top prompts on those days we see many of these prompts are a version of "how many r's are in strawberry".
+**Tester prompts.** There are certain prompts that users have found to stump most LLM's, like "how many r's are in strawberry" or "what is bigger, 9.11 or 9.8". When a new model comes out, these prompts are commonly asked to gauge performance, which can be a source of days with a low proportion of fresh prompts. For instance, the week of August 8th saw a large decrease in prompt freshness, which coincides with a release of an update to GPT-4o. Looking at the top prompts on those days we see many of these prompts are a version of "how many r's are in strawberry".
 
 <div>
   <iframe src="{{ '/assets/img/blog/freshness/strawberry_and_nn_match.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
@@ -149,7 +167,7 @@ We find that many of the duplicates can be attributed to 3 things: "tester"promp
 <p style="color:gray; text-align: center;">Most Common Prompts by 
 Week (excluding "hi" prompts).</p>
 
-**Repeated prompts by the Same user**: Many duplicate prompts are submitted by the same person on the same day. Comparing prompts to every prompt seen at an previous timestep (rather than a previous day or week) 65% of prompts at a given time have been previously seen. However, most of these duplicates occur on the same day, with 60% of these prompts submitted by the same user. This indicates that users are asking a prompt, voting, then starting a new battle with two new models and asking the same prompt. This is encouraging because the models used in each conversation vary, which helps maintain diversity in prompts across different model pairs and results in more consistent voting from the same user. Removing duplicate prompts submitted by the same user on the same day raises the percentage of unique prompts from 65% to 80%.
+**Repeated prompts by the same user.** Many duplicate prompts are submitted by the same person on the same day. Comparing prompts to every prompt seen at an previous timestep (rather than a previous day or week) 65% of prompts at a given time have been previously seen. However, most of these duplicates occur on the same day, with 60% of these prompts submitted by the same user. This indicates that users are asking a prompt, voting, then starting a new battle with two new models and asking the same prompt. This is encouraging because the models used in each conversation vary, which helps maintain diversity in prompts across different model pairs and results in more consistent voting from the same user. Removing duplicate prompts submitted by the same user on the same day raises the percentage of unique prompts from 65% to 80%.
 
 <div>
   <iframe src="{{ '/assets/img/blog/freshness/days_before_nn_log.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
