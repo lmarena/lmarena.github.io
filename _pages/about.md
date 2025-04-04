@@ -34,5 +34,5 @@ We always welcome contributions from the community. If you're interested in gett
 
 #### Contact us
 
-- Follow our [X](https://x.com/lmarena_ai), [Discord](https://discord.gg/6GXcFg3TH8) or email us at `lmarena.ai@gmail.com`
+- Follow our [X](https://x.com/lmarena_ai), [Discord](https://discord.gg/LMArena) or email us at `lmarena.ai@gmail.com`
 - File issues on [GitHub](https://github.com/lm-sys/FastChat)
