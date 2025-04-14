@@ -28,8 +28,8 @@ authors:
 ## TL;DR
 
 1. We introduce **Search Arena**, a crowdsourced in-the-wild evaluation platform for search-augmented LLM systems based on human preference. Unlike LM-Arena or SimpleQA, our data focuses on current events and diverse real-world use cases (see [Sec. 1](#why-search-arena)).
-2. Based on 7k human votes (03/18–04/13), Gemini-2.5-Pro-Grounding and PPL-Sonar-Reasoning-Pro are at the top, followed by the rest of Perplexity's Sonar models, Gemini-2.0-Flash-Grounding, and OpenAI's web search API models. Standardizing citation styles had minimal effect on rankings (see [Sec. 2](#leaderboard)).
-3. Three features show strong positive correlation with human preference: response length, citation count, and specific web sources like YouTube and online forum/blogs (see [Sec. 3](#analyses)).
+2. Based on 7k human votes (03/18–04/13), **Gemini-2.5-Pro-Grounding** and **PPL-Sonar-Reasoning-Pro** are at the top, followed by the rest of Perplexity's Sonar models, Gemini-2.0-Flash-Grounding, and OpenAI's web search API models. Standardizing citation styles had minimal effect on rankings (see [Sec. 2](#leaderboard)).
+3. Three features show strong positive correlation with human preference: response length, citation count, and citing specific web sources like YouTube and online forum/blogs (see [Sec. 3](#analyses)).
 4. We open-sourced our dataset ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-5k)) and code ([⚙️ Colab notebook](https://colab.research.google.com/drive/1Vb92s3O9RZ0aOs5c953SzaB2HniVcX4_)) for leaderboard analysis. Try [🌐 Search Arena](https://lmarena.ai/?search) and see [Sec. 4](#futurework) for what's next.
 
 <div id="fig1">
@@ -52,7 +52,7 @@ Since our [initial launch](https://x.com/lmarena_ai/status/1902036561119899983) 
 
 <b>Data Filtering and Citation Style Control.</b> Each model provider uses a unique inline citation style, which can potentially compromise model anonymity. However, citation formatting impacts how information is presented to and processed by the user, impacting their final votes. To balance these considerations, we introduced <em>"style randomization"</em>: responses are displayed either in a standardized format or in the original format (i.e., the citation style agreed upon with each model provider).
 <details>
-  <summary>Click to view citation style comparisons.</summary>
+  <summary>Click to view standardized and original citation styles for each provider.</summary>
   <div style="margin-top: 1rem;">
     <img 
       src="/assets/img/blog/search_arena/04092025/gemini_formatting_example.png" 
@@ -79,7 +79,7 @@ Since our [initial launch](https://x.com/lmarena_ai/status/1902036561119899983) 
   <p>(3) OpenAI's Formatting: standardized (left), original (right)</p>
 </details>
 
-This approach mitigates de-anonymization while allowing us to analyze how citation style impacts user votes (see the citation analyses subsection [here](#citation_analyses)). After updating and standardizing citation styles in collaboration with providers, we filtered the dataset to include only battles with the updated styles, resulting in ~7,000 clean samples for leaderboard computation and further analysis.
+This approach mitigates de-anonymization while allowing us to analyze how citation style impacts user votes (see the citation analyses subsection [here](#citation_analyses)). After updating and standardizing citation styles in collaboration with providers, we filtered the dataset to include only battles with the updated styles, resulting in ~7,000 clean samples for leaderboard calculation and further analysis.
 
 <b>Comparison to Existing Benchmarks.</b> To highlight what makes Search Arena unique, we compare our collected data to [LM-Arena](https://arxiv.org/abs/2403.04132) and [SimpleQA](https://arxiv.org/abs/2411.04368). As shown in [Fig. 2](#fig2), Search Arena prompts focus more on current events, while LM-Arena emphasizes coding/writing, and SimpleQA targets narrow factual questions (e.g., dates, names, specific domains). [Tab. 1](#tab1) shows that Search Arena features longer prompts, longer responses, more turns, and more languages compared to SimpleQA—closer to natural user interactions seen in LM-Arena.
 
@@ -181,10 +181,10 @@ By default, we use each provider’s standard API settings. For Perplexity and O
     <tr>
       <td style="padding: 8px;"><code>gemini-2.5-pro-grounding</code></td>
       <td style="padding: 8px;"><a href="https://ai.google.dev/gemini-api/docs/models#gemini-2.5-pro-preview-03-25" target="_blank">gemini-2.5-pro-exp-03-25</a></td>
-      <td style="padding: 8px;">With <code>Google Search</code> tool enabled; originally displayed as <code>gemini-2.0-pro-exp-02-05-grounding</code> due to API routing<sup>†</sup></td>
+      <td style="padding: 8px;">With <code>Google Search</code> tool enabled</td>
     </tr>
     <tr>
-      <td rowspan="4" style="padding: 8px;">OpenAI<sup>††</sup></td>
+      <td rowspan="4" style="padding: 8px;">OpenAI<sup>†</sup></td>
       <td style="padding: 8px;"><code>api-gpt-4o-mini-search-preview</code></td>
       <td style="padding: 8px;"><a href="https://platform.openai.com/docs/models/gpt-4o-mini-search-preview" target="_blank">gpt-4o-mini-search-preview</a></td>
       <td style="padding: 8px;">Default config</td>
@@ -212,10 +212,7 @@ By default, we use each provider’s standard API settings. For Perplexity and O
 </p>
 
 <p style="color:gray; font-size: 13px; max-width: 700px; margin: 0 auto;">
-  <sup>†</sup> Until April 8, the model was displayed as <code>gemini-2.0-pro-exp-02-05-grounding</code>: due to Google’s API replacement,
-  calls to <code>gemini-2.0-pro-exp-02-05-grounding</code> were internally mapped routed to <code>gemini-2.5-pro-exp-03-25</code>. We only include battles where this routing rule was in effect for our analyses and leaderboard calculations.
-  <br />
-  <sup>††</sup>We evaluate OpenAI’s <a href="https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat" target="_blank">web search API</a>, which is different from the search feature in the ChatGPT product.
+  <sup>†</sup>We evaluate OpenAI’s <a href="https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat" target="_blank">web search API</a>, which is different from the search feature in the ChatGPT product.
 </p>
 
 <div id="fig3">
@@ -229,7 +226,7 @@ By default, we use each provider’s standard API settings. For Perplexity and O
 We begin by analyzing pairwise win rates—i.e., the proportion of wins of model A over model B in head-to-head battles. This provides a direct view of model performance differences without aggregating scores. The results are shown in [Fig. 4](#fig4), along with the following observations:
 
 - `gemini-2.5-pro-grounding` and `ppl-sonar-reasoning-pro-high` outperform all other models by a large margin. In direct head-to-head battles `ppl-sonar-reasoning-pro-high` has a slight advantage (53% win rate).
-- For the rest of Perplexity models, <code>ppl-sonar-reasoning</code> outperforms the other three. There's no clear difference between <code>ppl-sonar-pro</code> and <code>ppl-sonar-pro-high</code> (52%/48% win rate), and even <code>ppl-sonar</code> beats <code>ppl-sonar-pro-high</code> (60% win rate). This suggests that increasing search context does not necessarily improve performance and may even degrade it.
+- <code>ppl-sonar-reasoning</code> outperforms the rest of Perplexity's models. There's no clear difference between <code>ppl-sonar-pro</code> and <code>ppl-sonar-pro-high</code> (52%/48% win rate), and even <code>ppl-sonar</code> beats <code>ppl-sonar-pro-high</code> (60% win rate). This suggests that increasing search context does not necessarily improve performance and may even degrade it.
 - Within OpenAI’s models, larger search context does not significantly improve performance (`api-gpt-4o-search` vs `api-gpt-4o-search-high`). While adding user location improves performance in head-to-head battles (58% win rate of `api-gpt-4o-search-high-loc` over `api-gpt-4o-search-high`), location-enabled version ranks lower in the leaderboard.
 
 
@@ -239,7 +236,7 @@ We begin by analyzing pairwise win rates—i.e., the proportion of wins of model
 
 <p style="color:gray; text-align: center;">Figure 4. Pairwise win rates (Model A wins Model B), excluding <code>tie</code> and <code>tie (bothbad)</code> votes.</p>
 
-Now we build the leaderboard! Consistent with [LM Arena](https://lmarena.ai/), we apply the Bradley-Terry (BT) model to compute model scores. The resulting BT coefficients are then translated to Elo scale, with the final model scores and rankings displayed in [Fig. 1](#fig1) and [Tab. 3](#tab3). The confidence intervals are still wide, which means the leaderboard hasn’t fully settled and there’s still some uncertainty. But clear performance trends are already starting to emerge. Consistent with the pairwise win rate analysis in the previous section, `gemini-2.5-pro-grounding` and `ppl-sonar-reasoning-pro-high` top the leaderboard by a substantial margin. It is followed by models from the `ppl-sonar` family, with `ppl-sonar-reasoning` leading the group. Then comes `gemini-2.0-flash-grounding`, and finally OpenAI models with `api-gpt-4o-search` based models outperforming `api-gpt-4o-mini-search`. Generally, users prefer responses from reasoning models (top 3 on the leaderboard).
+Now we build the leaderboard! Consistent with [LM Arena](https://lmarena.ai/), we apply the Bradley-Terry (BT) model to compute model scores. The resulting BT coefficients are then translated to Elo scale, with the final model scores and rankings displayed in [Fig. 1](#fig1) and [Tab. 3](#tab3). The confidence intervals are still wide, which means the leaderboard hasn’t fully settled and there’s still some uncertainty. But clear performance trends are already starting to emerge. Consistent with the pairwise win rate analysis in the previous section, `gemini-2.5-pro-grounding` and `ppl-sonar-reasoning-pro-high` top the leaderboard by a substantial margin. They are followed by models from the `ppl-sonar` family, with `ppl-sonar-reasoning` leading the group. Then comes `gemini-2.0-flash-grounding`, and finally OpenAI models with `api-gpt-4o-search` based models outperforming `api-gpt-4o-mini-search`. Generally, users prefer responses from reasoning models (top 3 on the leaderboard).
 
 <table id="tab2" style="width: 100%; border-collapse: collapse; text-align: center;">
   <thead>
@@ -254,14 +251,14 @@ Now we build the leaderboard! Consistent with [LM Arena](https://lmarena.ai/), w
   </thead>
   <tbody>
     <tr><td>1</td><td><code>gemini-2.5-pro-grounding</code></td><td>1142</td><td>+14/-17</td><td>1,215</td><td>Google</td></tr>
-    <tr><td>2</td><td><code>ppl-sonar-reasoning-pro-high</code></td><td>1136</td><td>+21/-19</td><td>861</td><td>Perplexity</td></tr>
+    <tr><td>1</td><td><code>ppl-sonar-reasoning-pro-high</code></td><td>1136</td><td>+21/-19</td><td>861</td><td>Perplexity</td></tr>
     <tr><td>3</td><td><code>ppl-sonar-reasoning</code></td><td>1097</td><td>+11/-17</td><td>1,644</td><td>Perplexity</td></tr>
     <tr><td>3</td><td><code>ppl-sonar</code></td><td>1072</td><td>+15/-17</td><td>1,208</td><td>Perplexity</td></tr>
     <tr><td>3</td><td><code>ppl-sonar-pro-high</code></td><td>1071</td><td>+15/-10</td><td>1,364</td><td>Perplexity</td></tr>
-    <tr><td>6</td><td><code>ppl-sonar-pro</code></td><td>1066</td><td>+12/-13</td><td>1,214</td><td>Perplexity</td></tr>
+    <tr><td>4</td><td><code>ppl-sonar-pro</code></td><td>1066</td><td>+12/-13</td><td>1,214</td><td>Perplexity</td></tr>
     <tr><td>7</td><td><code>gemini-2.0-flash-grounding</code></td><td>1028</td><td>+16/-16</td><td>1,193</td><td>Google</td></tr>
     <tr><td>7</td><td><code>api-gpt-4o-search</code></td><td>1000</td><td>+13/-19</td><td>1,196</td><td>OpenAI</td></tr>
-    <tr><td>8</td><td><code>api-gpt-4o-search-high</code></td><td>999</td><td>+13/-14</td><td>1,707</td><td>OpenAI</td></tr>
+    <tr><td>7</td><td><code>api-gpt-4o-search-high</code></td><td>999</td><td>+13/-14</td><td>1,707</td><td>OpenAI</td></tr>
     <tr><td>8</td><td><code>api-gpt-4o-search-high-loc</code></td><td>994</td><td>+14/-14</td><td>1,226</td><td>OpenAI</td></tr>
     <tr><td>11</td><td><code>api-gpt-4o-mini-search</code></td><td>961</td><td>+16/-15</td><td>1,172</td><td>OpenAI</td></tr>
   </tbody>
@@ -346,12 +343,12 @@ In addition to number of citations and response length, we also study the common
 
 ### Control Experiments
 
-After analyzing model characteristics such as response length, citation count, and citation sources, we revisited the Bradley-Terry model with these features as additional control variables [(Li et al., 2024)](https://blog.lmarena.ai/blog/2024/style-control/). Below are some findings from different control experiments:
+After analyzing model characteristics such as response length, citation count, and citation sources, we revisited the Bradley-Terry model with these features as additional control variables [(Li et al., 2024)](https://blog.lmarena.ai/blog/2024/style-control/). Below are some findings when controlling for different subsets of control features:
 
 - **Response length**: Controlling for response length yields a positive and statistically significant coefficient (0.255, *p* < 0.05), indicating that users prefer more verbose responses.
 - **Number of citations**: Controlling for citation count also results in a positive and significant coefficient (0.234, *p* < 0.05), suggesting a preference for responses with more cited sources.
-- **Citation source categories**: As shown in [Fig. 8](#fig8), citations from **community platforms** (e.g., Reddit, Quora) and **YouTube** had statistically significant positive effects on user votes. Other categories had insignificant coefficients.
-- **Joint controls**: When controlling for all features, only **response length** and **citation count** remained statistically significant.
+- **Citation source categories**: As shown in [Fig. 8](#fig8), citations from **community platforms** (e.g., Reddit, Quora) and **YouTube** have statistically significant positive effects on user votes. The remaining categories have insignificant coefficients.
+- **Joint controls**: When controlling for all features, only **response length** and **citation count** remain statistically significant.
 
 <div id="fig8" style="display: flex; justify-content: center;">
   <iframe src="{{ '/assets/img/blog/search_arena/04092025/domain_citations_style_control_bootstrap_style_coefs.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
@@ -362,7 +359,7 @@ After analyzing model characteristics such as response length, citation count, a
 Finally, we used all previously described features to construct a controlled leaderboard. [Fig. 9](#fig9) compares the original and adjusted arena scores after controlling for response length, citation count, and cited sources. Interestingly, when using all these features as control variables, the top six models all show a reduction in score, while the remaining models are largely unaffected. This narrows the gap between <code>gemini-2.0-flash-grounding</code> and non-reasoning Perplexity models. [Tab. 5](#tab5) shows model rankings when controlling for different subsets of these features:
 
 - Controlling for response length, `ppl-sonar-reasoning` shares the first rank with `gemini-2.5-pro-grounding` and `ppl-sonar-reasoning-pro-high`. The difference between (1) `sonar-pro` and other non-reasoning sonar models as well (2) `api-gpt-4o-search-high` and `api-gpt-4o-search-high-loc`, disappear.
-- When controlling for the number of citations, model rankings converge (i.e., multiple models share the same rank), suggesting that the number of citations is a significant factor impacting differences in model outputs and the resulting performance.
+- When controlling for the number of citations, model rankings converge (i.e., multiple models share the same rank), suggesting that the number of citations is a significant factor impacting differences across models and the resulting rankings.
 - Controlling for cited domains has minimal effect on model rankings.
 
 <div id="fig9">
