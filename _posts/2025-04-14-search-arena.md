@@ -3,9 +3,9 @@ layout: distill
 title: "Introducing the Search Arena: Evaluating Search-Enabled AI"
 description: 
 giscus_comments: true
-date: 2025-04-13
+date: 2025-04-14
 featured: true
-thumbnail: assets/img/blog/search_arena/04092025/logo.png
+thumbnail: assets/img/blog/search_arena/04142025/logo.png
 authors:
   - name: Mihran Miroyan*
     url: "https://mmiroyan.github.io"
@@ -35,7 +35,7 @@ authors:
 4. We open-sourced our dataset ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-7k)) and code ([⚙️ Colab notebook](https://colab.research.google.com/drive/1h7rR7rhePBPuIfaWsVNlW87kv3DLibPS?usp=sharing)) for leaderboard analysis. Try [🌐 Search Arena](https://lmarena.ai/?search) and see [Sec. 4](#futurework) for what's next.
 
 <div id="fig1">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/main_bootstrap_elo_rating.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/main_bootstrap_elo_rating.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 1. Search Arena leaderboard.</p>
@@ -57,7 +57,7 @@ Since our [initial launch](https://x.com/lmarena_ai/status/1902036561119899983) 
   <summary>Click to view standardized and original citation styles for each provider.</summary>
   <div style="margin-top: 1rem;">
     <img 
-      src="/assets/img/blog/search_arena/04092025/gemini_formatting_example.png" 
+      src="/assets/img/blog/search_arena/04142025/gemini_formatting_example.png" 
       alt="Google's Gemini citation formatting comparison"
       style="width: 100%; max-width: 1000px; border: 1px solid #ccc; border-radius: 8px;"
     />
@@ -65,7 +65,7 @@ Since our [initial launch](https://x.com/lmarena_ai/status/1902036561119899983) 
   <p>(1) Google's Gemini Formatting: standardized (left), original (right)</p>
   <div style="margin-top: 1rem;">
     <img 
-      src="/assets/img/blog/search_arena/04092025/ppl_formatting_example.png" 
+      src="/assets/img/blog/search_arena/04142025/ppl_formatting_example.png" 
       alt="Perplexity's Sonar citation formatting comparison"
       style="width: 100%; max-width: 1000px; border: 1px solid #ccc; border-radius: 8px;"
     />
@@ -73,7 +73,7 @@ Since our [initial launch](https://x.com/lmarena_ai/status/1902036561119899983) 
   <p>(2) Perplexity’s Formatting: standardized (left), original (right)</p>
   <div style="margin-top: 1rem;">
     <img 
-      src="/assets/img/blog/search_arena/04092025/gpt_formatting_example.png" 
+      src="/assets/img/blog/search_arena/04142025/gpt_formatting_example.png" 
       alt="OpenAI's GPT citation formatting comparison"
       style="width: 100%; max-width: 1000px; border: 1px solid #ccc; border-radius: 8px;"
     />
@@ -86,7 +86,7 @@ This approach mitigates de-anonymization while allowing us to analyze how citati
 <b>Comparison to Existing Benchmarks.</b> To highlight what makes Search Arena unique, we compare our collected data to [LM-Arena](https://arxiv.org/abs/2403.04132) and [SimpleQA](https://arxiv.org/abs/2411.04368). As shown in [Fig. 2](#fig2), Search Arena prompts focus more on current events, while LM-Arena emphasizes coding/writing, and SimpleQA targets narrow factual questions (e.g., dates, names, specific domains). [Tab. 1](#tab1) shows that Search Arena features longer prompts, longer responses, more turns, and more languages compared to SimpleQA—closer to natural user interactions seen in LM-Arena.
 
 <div id="fig2">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/topical_distribution_plot.html' }}" frameborder='0' scrolling='no' height="450px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/topical_distribution_plot.html' }}" frameborder='0' scrolling='no' height="450px" width="100%"></iframe>
 </div>
 <p style="color:gray; text-align: center;">Figure 2. Top-5 topic distributions across Search Arena, LM Arena, and SimpleQA. We use 
   <a href="https://blog.lmarena.ai/blog/2025/arena-explorer/">Arena Explorer (Tang et al., 2025)</a> to extract topic clusters from the three datasets.</p>
@@ -218,7 +218,7 @@ By default, we use each provider’s standard API settings. For Perplexity and O
 </p>
 
 <div id="fig3">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/main_battle_count.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/main_battle_count.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 3. Battle counts across 11 models. The distribution is not even as (1) we released models into the arena in batches and (2) filtered votes (described above).</p>
@@ -233,7 +233,7 @@ We begin by analyzing pairwise win rates—i.e., the proportion of wins of model
 
 
 <div id="fig4">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/main_pairwise_average_win_rate.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/main_pairwise_average_win_rate.html' }}" frameborder='0' scrolling='no' height="500px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 4. Pairwise win rates (Model A wins Model B), excluding <code>tie</code> and <code>tie (bothbad)</code> votes.</p>
@@ -280,7 +280,7 @@ First, following the method in [(Li et al., 2024)](https://blog.lmarena.ai/blog/
 We further investigate the effect of citation style on model performance, by treating each combination of model and citation style as a distinct model (e.g., `api-gpt-4o-search` with original style will be different from `api-gpt-4o-search` with standardized citation style). [Fig. 5](#fig5) shows the change in the arena score between the two styles of each model. Overall, we observe increase or no change in score with standardized citations across all models except `gemini-2.0-flash`. However, the differences remain within the confidence intervals (CI), and we will continue collecting data to assess whether the trend converges toward statistical significance.
 
 <div id="fig5">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/og_vs_st.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/og_vs_st.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 5. Change in arena score for original vs standardized citation style for each model.</p>
@@ -327,7 +327,7 @@ Guided by the above findings, we analyze how these features vary across models a
 [Fig. 6 (left)](#fig6) shows the distribution of average response length across models. Gemini models are generally the most verbose—<code>gemini-2.5-pro-grounding</code>, in particular, produces responses nearly twice as long as most Perplexity or OpenAI models. Within the Perplexity and OpenAI families, response length is relatively consistent, with the exception of `ppl-sonar-reasoning-pro-high`. [Fig. 6 (right)](#fig6) shows the average number of citations per response. Sonar models cite the most, with <code>ppl-sonar-pro-high</code> citing 2-3x more than Gemini models. OpenAI models cite the fewest sources (2-2.5) with little variation within the group.
 
 <div id="fig6">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/lenght_cit_features.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/lenght_cit_features.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 6. Average response length (left) and number of citations (right) per model.</p>
@@ -338,7 +338,7 @@ In addition to number of citations and response length, we also study the common
 3. Gemini prefers community/blog content, whereas Perplexity frequently cites YouTube. Perplexity also strongly favors U.S. news sources over foreign ones (3x more often).
 
 <div id="fig7">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/domain_citations.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/domain_citations.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 7. Distribution of cited domain categories across models. Use the dropdown to switch between all prompts and a filtered Trump-related subset.</p> 
@@ -353,7 +353,7 @@ After analyzing model characteristics such as response length, citation count, a
 - **Joint controls**: When controlling for all features, only **response length** and **citation count** remain statistically significant.
 
 <div id="fig8" style="display: flex; justify-content: center;">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/domain_citations_style_control_bootstrap_style_coefs.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/domain_citations_style_control_bootstrap_style_coefs.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 8. Estimates (with 95% CIs) of style coefficients.</p>
@@ -365,7 +365,7 @@ Finally, we used all previously described features to construct a controlled lea
 - Controlling for cited domains has minimal effect on model rankings.
 
 <div id="fig9">
-  <iframe src="{{ '/assets/img/blog/search_arena/04092025/style_control.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
+  <iframe src="{{ '/assets/img/blog/search_arena/04142025/style_control.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
 <p style="color:gray; text-align: center;">Figure 9. Arena scores before and after a controlled setting.</p>
