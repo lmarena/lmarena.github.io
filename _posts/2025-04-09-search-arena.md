@@ -17,11 +17,11 @@ authors:
     url: "https://www.linkedin.com/in/logan-king-8a4267281"
   - name: Tianle Li
     url: "https://codingwithtim.github.io"
-  - name: Anastasios N. Angelopoulos†
+  - name: Anastasios N. Angelopoulos
     url: "http://angelopoulos.ai"
-  - name: Wei-Lin Chiang†
+  - name: Wei-Lin Chiang
     url: "https://infwinston.github.io"
-  - name: Joseph E. Gonzalez†
+  - name: Joseph E. Gonzalez
     url: "https://people.eecs.berkeley.edu/~jegonzal"
 ---
 
