@@ -32,7 +32,7 @@ authors:
 1. We introduce **Search Arena**, a crowdsourced in-the-wild evaluation platform for search-augmented LLM systems based on human preference. Unlike LM-Arena or SimpleQA, our data focuses on current events and diverse real-world use cases (see [Sec. 1](#why-search-arena)).
 2. Based on 7k human votes (03/18–04/13), **Gemini-2.5-Pro-Grounding** and **Perplexity-Sonar-Reasoning-Pro** are at the top, followed by the rest of Perplexity's Sonar models, Gemini-2.0-Flash-Grounding, and OpenAI's web search API models. Standardizing citation styles had minimal effect on rankings (see [Sec. 2](#leaderboard)).
 3. Three features show strong positive correlation with human preference: response length, citation count, and citing specific web sources like YouTube and online forum/blogs (see [Sec. 3](#analyses)).
-4. We open-sourced our dataset ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-7k)) and code ([⚙️ Colab notebook](https://colab.research.google.com/drive/1Vb92s3O9RZ0aOs5c953SzaB2HniVcX4_)) for leaderboard analysis. Try [🌐 Search Arena](https://lmarena.ai/?search) and see [Sec. 4](#futurework) for what's next.
+4. We open-sourced our dataset ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-7k)) and code ([⚙️ Colab notebook](https://colab.research.google.com/drive/1h7rR7rhePBPuIfaWsVNlW87kv3DLibPS?usp=sharing)) for leaderboard analysis. Try [🌐 Search Arena](https://lmarena.ai/?search) and see [Sec. 4](#futurework) for what's next.
 
 <div id="fig1">
   <iframe src="{{ '/assets/img/blog/search_arena/04092025/main_bootstrap_elo_rating.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
@@ -48,7 +48,7 @@ But how should these systems be evaluated? Static benchmarks like SimpleQA focus
 
 To this end, we developed search arena, aiming to (1) enable crowd-sourced evaluation of search-augmented LLMs and (2) release a diverse, in-the-wild dataset of user–system interactions.
 
-Since our [initial launch](https://x.com/lmarena_ai/status/1902036561119899983) on March 18th, we've collected over 11k votes across 10+ models. We then filtered this data to construct 7k battles with user votes ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-7k)) and calculated the leaderboard with this [⚙️ Colab notebook](https://colab.research.google.com/drive/1Vb92s3O9RZ0aOs5c953SzaB2HniVcX4_). Below, we provide details on the collected data and the supported models.
+Since our [initial launch](https://x.com/lmarena_ai/status/1902036561119899983) on March 18th, we've collected over 11k votes across 10+ models. We then filtered this data to construct 7k battles with user votes ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-7k)) and calculated the leaderboard with this [⚙️ Colab notebook](https://colab.research.google.com/drive/1h7rR7rhePBPuIfaWsVNlW87kv3DLibPS?usp=sharing). Below, we provide details on the collected data and the supported models.
 
 <h3>A. Data</h3>
 
@@ -221,7 +221,7 @@ By default, we use each provider’s standard API settings. For Perplexity and O
   <iframe src="{{ '/assets/img/blog/search_arena/04092025/main_battle_count.html' }}" frameborder='0' scrolling='no' height="400px" width="100%"></iframe>
 </div>
 
-<p style="color:gray; text-align: center;">Figure 3. Battle counts across 11 models. The distribution is not even as we (1) added models after the first release and (2) filtered votes (described above).</p>
+<p style="color:gray; text-align: center;">Figure 3. Battle counts across 11 models. The distribution is not even as (1) we released models into the arena in batches and (2) filtered votes (described above).</p>
 
 <h2 id="leaderboard">2. Leaderboard</h2>
 
@@ -405,7 +405,7 @@ As search-augmented LLMs become increasingly popular, **Search Arena** provides 
 Using 7k human votes, we found that **Gemini-2.5-Pro-Grounding** and **Perplexity-Sonar-Reasoning-Pro-High** share the first rank in the leaderboard. User preferences are positively correlated with **response length**, **number of citations**, and **citation sources**. Citation formatting, surprisingly, had minimal impact.
 
 
-We have open-sourced our data ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-7k)) and analysis code ([⚙️ Colab notebook](https://colab.research.google.com/drive/1Vb92s3O9RZ0aOs5c953SzaB2HniVcX4_)). Try [🌐 Search Arena](https://lmarena.ai/?search) now and see what’s next: 
+We have open-sourced our data ([🤗 search-arena-7k](https://huggingface.co/datasets/lmarena-ai/search-arena-v1-7k)) and analysis code ([⚙️ Colab notebook](https://colab.research.google.com/drive/1h7rR7rhePBPuIfaWsVNlW87kv3DLibPS?usp=sharing)). Try [🌐 Search Arena](https://lmarena.ai/?search) now and see what’s next: 
 
 - **Open participation**: We are inviting model submissions from researchers and industry, and encouraging public voting.
 - **Cross-task evaluation**: How well do search models handle general questions? Can LLMs manage search-intensive tasks?
@@ -415,7 +415,7 @@ We have open-sourced our data ([🤗 search-arena-7k](https://huggingface.co/dat
 
 ```bibtex
 @misc{searcharena2025,
-    title = {Finally. Search Arena.},
+    title = {Introducing the Search Arena: Evaluating Search-Enabled AI},
     url = {https://blog.lmarena.ai/blog/2025/search-arena/},
     author = {Mihran Miroyan*, Tsung-Han Wu*, Logan Kenneth King, Tianle Li, Anastasios N. Angelopoulos, Wei-Lin Chiang, Narges Norouzi, Joseph E. Gonzalez},
     month = {April},
