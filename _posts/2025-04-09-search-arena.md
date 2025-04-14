@@ -21,6 +21,8 @@ authors:
     url: "http://angelopoulos.ai"
   - name: Wei-Lin Chiang
     url: "https://infwinston.github.io"
+  - name: Narges Norouzi
+    url: "https://nargesnorouzi.me/"
   - name: Joseph E. Gonzalez
     url: "https://people.eecs.berkeley.edu/~jegonzal"
 ---
@@ -415,7 +417,7 @@ We have open-sourced our data ([🤗 search-arena-7k](https://huggingface.co/dat
 @misc{searcharena2025,
     title = {Finally. Search Arena.},
     url = {https://blog.lmarena.ai/blog/2025/search-arena/},
-    author = {Mihran Miroyan*, Tsung-Han Wu*, Logan Kenneth King, Tianle Li, Anastasios N. Angelopoulos†, Wei-Lin Chiang†, Joseph E. Gonzalez†},
+    author = {Mihran Miroyan*, Tsung-Han Wu*, Logan Kenneth King, Tianle Li, Anastasios N. Angelopoulos, Wei-Lin Chiang, Narges Norouzi, Joseph E. Gonzalez},
     month = {April},
     year = {2025}
 }
