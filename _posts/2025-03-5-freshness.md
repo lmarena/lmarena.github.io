@@ -41,14 +41,14 @@ We find that:
 
 ## How do we measure prompt duplicates?
 
-Prompt duplicates are measured by the cosine similarity of the text embeddings (OpenAI's text-embedding-3-small). If the similarity between the embeddings of prompt a and prompt b are greater than or equal to 0.7, we consider it a duplicate. This threshold is set by manually looking through examples to determine when two prompts are asking the same thing. A random sample of prompt pairs with their similarities are provided on our hugging face.
+Prompt duplicates are measured by the cosine similarity of the text embeddings (OpenAI's text-embedding-3-small). If the similarity between the embeddings of prompt a and prompt b are greater than or equal to 0.7, we consider it a duplicate. This threshold is set by manually looking through examples to determine when two prompts are asking the same thing. A random sample of prompt pairs with their similarities are provided on our [Hugging Face](https://huggingface.co/lmarena-ai).
 
 Given a prompt at submitted at time $$t$$, we examine the following:
 
-- Nearest neighbor with all prompts submitted before time $$t$$
-- Nearest neighbor with all prompts submitted at least a day before $$t$$
-- Nearest neighbor with all prompts submitted at least a week before $$t$$
-- Nearest neighbor with all prompts from existing datasets (contamination)
+- The largest similarity between the prompt submitted at time $$t$$ and any prompt submitted before time $$t$$
+- The largest similarity between the prompt submitted at time $$t$$ and any prompt submitted at least one day before time $$t$$
+- The largest similarity between the prompt submitted at time $$t$$ and any prompt submitted at least one week before time $$t$$
+- The largest similarity between the prompt submitted at time $$t$$ and any prompt from an existing dataset (contamination analysis)
 
 ## How many duplicate prompts are there?
 
@@ -146,7 +146,11 @@ function togglePlotView(view) {
 }
 </script>
 
-While we do see a downward trend in proportion of unique prompts over time, this decrease is plateauing. Interestingly, we also see certain dates where prompt freshness is significantly lower than neighboring dates: we will get to why that is in the next section.
+If you look at the above analysis, the proportion of fresh prompts decreases as a function of $$t$$. This is expected, since as $$t$$ grows, we are comparing new prompts with an ever-larger set of past prompts. For example, when $$t=1$$, there are no previos prompts, so of course, the proportion of unique prompts is $$1/1=100$$%.
+
+However, as $$t$$ grows, this number stabilizes to around 70-80% fresh prompts at a similarity threshold of 0.7. This equilibrium represents the fraction of fresh prompts that we expect chatbot arena to generate in the long run.
+
+Interestingly, we also see certain dates where prompt freshness is significantly lower than neighboring dates: we will get to why that is in the next section.
 
 ## What are the sources of duplicates?
 
