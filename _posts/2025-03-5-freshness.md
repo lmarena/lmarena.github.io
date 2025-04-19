@@ -3,7 +3,7 @@ layout: distill
 title: "How Many User Prompts are New?"
 description: Analysis of prompt freshness and benchmark contamination
 giscus_comments: true
-date: 2025-02-11
+date: 2025-04-18
 featured: true
 thumbnail: assets/img/blog/explorer/explorer.png
 authors:
