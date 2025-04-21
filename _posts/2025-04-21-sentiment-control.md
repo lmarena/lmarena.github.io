@@ -20,8 +20,9 @@ authors:
 
 <h2> Introduction </h2>
 
-You may have noticed that many of the recent models seem to employ stronger emotion compared to older models. To what extent does this increase the model rankings on the Chatbot Arena leaderboard? Our [previous exploration](https://blog.lmarena.ai/blog/2024/style-control/) disentangled style and substance, revealing that style significantly impacts model performance. However, we suspected that style might encompass more than markdown formatting and response length—emojis and sentiment could also play a pivotal role.
-Today, we're excited to introduce **Sentiment Control**, an extended version of our style-controlled ranking that includes:
+You may have noticed that recent models on Chatbot Arena appear more emotionally expressive than their predecessors. But does this added sentiment actually improve their rankings on the leaderboard? Our [previous exploration](https://blog.lmarena.ai/blog/2024/style-control/) revealed that style — including formatting and length — plays a significant role in perceived model quality. Yet, we hypothesized that **style may go beyond layout**—perhaps sentiment and emojis are just as influential.
+
+Enter **Sentiment Control**: a refined version of our original Style Control methodology that expands the feature set to include:
 
 1. Emoji Count
 2. Sentiment (Very Negative, Negative, Neutral, Positive, Very Positive, Positive)
@@ -66,15 +67,15 @@ Building upon our previous style control approach, we've now included additional
 
 ```
 
-We performed logistic regression, incorporating these additional features to isolate each model’s substantive performance from stylistic preferences.
+We fit a logistic regression model using these new features to isolate each model’s intrinsic quality from stylistic embellishments.
 
 <h2> Results </h2>
 
-When controlling for emojis and sentiment, we observed significant changes in the leaderboard, particularly:
+Controlling for sentiment and emoji usage yields notable shifts in rankings:
 
-1. Sentiment Analysis indicated that models consistently employing a more positive sentiment gained higher user preference scores.
+1. Models expressing more positive sentiment consistently receive higher user preference scores.  
 
-2. Under style and sentiment control, models renowned for its style and positivity, such as Grok-3 and Llama-4-Maverick-03-26-Experimental dropped significantly in ranking, while models that seemingly use less style and sentiment, such as Claude-3.7, significantly increased in ranking. 
+2. Models known for strong stylistic appeal—like Grok-3 and Llama-4-Maverick—drop in rank, while those with more neutral or subdued styles—like Claude-3.7—rise noticeably.
 
 <img src="/assets/img/blog/sentiment-control/overall_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
@@ -85,7 +86,7 @@ When controlling for emojis and sentiment, we observed significant changes in th
 <p style="color:gray; text-align: center;">Figure 2. Style Control ranking vs Style and Sentiment Control ranking
 </p>
 
-We provide the coefficients for each newly added feature to demonstrate their impact clearly:
+To illustrate the individual impact of each feature, we include the regression coefficients below:
 
 | Feature         |  Coefficient  |
 | -------------   | :-----------: |
@@ -102,7 +103,8 @@ We provide the coefficients for each newly added feature to demonstrate their im
 
 <h2> Ablation Tests </h2>
 
-To better isolate the effect of sentiment alone, we conducted an ablation study where we removed all style-related features (such as markdown and length) and only included emoji count and sentiment scores in the regression.
+To disentangle sentiment effects from other style cues, we ran an ablation study removing formatting features and retaining only emoji count and sentiment.
+
 
 | Feature         |  Coefficient  |
 | -------------   | :-----------: |
@@ -113,11 +115,11 @@ To better isolate the effect of sentiment alone, we conducted an ablation study 
 | Positive        |  0.0262    |
 | Very Positive   |   0.0419    |
 
-We find that:
+Key observations:
 
-- Positive sentiment still strongly correlates with higher preference, even in the absence of formatting cues.
+- **Positive sentiment maintains a strong positive effect**, even without formatting.  
+- **Neutral and Negative tones are penalized**, highlighting a general preference for emotional expressiveness.
 
-- Negative and neutral tones are penalized, suggesting user preference leans heavily toward emotionally expressive models.
 
 <img src="/assets/img/blog/sentiment-control/overall_sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
