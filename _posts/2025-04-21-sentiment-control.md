@@ -72,11 +72,7 @@ We fit a logistic regression model using these new features to isolate each mode
 
 <h2> Results </h2>
 
-Controlling for sentiment and emoji usage yields notable shifts in rankings:
-
-1. Models expressing more positive sentiment consistently receive higher user preference scores.  
-
-2. When controlling for sentiment, models known for strong stylistic and emotional appeal-like Grok-3 and Llama-4-Maverick-Experimental—drop in rank, while those with more neutral or subdued styles—like Claude-3.7—rise noticeably.
+Controlling for style, sentiment, and emoji usage yields notable shifts in rankings. Primarily, models known for strong stylistic and emotional appeal-like Grok-3 and Llama-4-Maverick-Experimental—drop in rank, while those with more neutral or subdued styles—like Claude-3.7—rise noticeably.
 
 <img src="/assets/img/blog/sentiment-control/overall_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
