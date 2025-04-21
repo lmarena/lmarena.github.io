@@ -3,9 +3,8 @@ layout: distill
 title: "Does Sentiment Matter Too?"
 description: "Introducing Sentiment Control: Disentagling Sentiment and Substance"
 giscus_comments: true
-date: 2025-04-14
+date: 2025-04-21
 featured: true
-thumbnail: assets/img/blog/search_arena/04142025/logo.png
 authors:
   - name: Connor Chen*
     url: "https://www.linkedin.com/in/connorzchen/"
@@ -19,7 +18,7 @@ authors:
     url: "http://angelopoulos.ai"
 ---
 
-## Introduction
+<h2> Introduction </h2>
 
 You may have noticed that many of the recent models seem to employ stronger emotion compared to older models. To what extent does this increase the model rankings on the Chatbot Arena leaderboard? Our previous exploration disentangled style and substance, revealing that style significantly impacts model performance. However, we suspected that style might encompass more than markdown formatting and response length—emojis and sentiment could also play a pivotal role.
 Today, we're excited to introduce **Sentiment Control**, an extended version of our style-controlled ranking [1] that includes:
@@ -29,7 +28,7 @@ Today, we're excited to introduce **Sentiment Control**, an extended version of 
 
 Let’s see how this expanded definition of style affects model rankings and whether it boosts specific performance.
 
-<h3> Methodology: Emojis and Sentiment as Style Features </h3>
+<h2> Methodology</h2>
 
 Building upon our previous style control approach [1], we've now included additional style variables:
 
@@ -69,7 +68,7 @@ Building upon our previous style control approach [1], we've now included additi
 
 We performed logistic regression, incorporating these additional features to isolate each model’s substantive performance from stylistic preferences.
 
-<h3> Results </h3>
+<h2> Results </h2>
 
 When controlling for emojis and sentiment, we observed significant changes in the leaderboard, particularly:
 
@@ -101,7 +100,7 @@ We provide the coefficients for each newly added feature to demonstrate their im
 | Positive        |   0.0146    |
 | Very Positive   |   0.0285    |
 
-<h3> Ablation Tests </h3>
+<h2> Ablation Tests </h2>
 
 We apply sentiment control without style control. The corresponding coefficients are:
 
@@ -119,7 +118,7 @@ We apply sentiment control without style control. The corresponding coefficients
 <p style="color:gray; text-align: center;">Figure 2. Overall ranking vs Sentiment Control ranking, where we only control for emoji count and sentiment
 </p>
 
-<h3> Further Analysis </h3>
+<h2> Further Analysis </h2>
 
 Conditioned on the sentiment tones, the win rates are as follows
 
@@ -132,7 +131,7 @@ Conditioned on the sentiment tones, the win rates are as follows
 | **Very Positive**|   0.569536    |  0.782908  |  0.637285  |  0.550232  |   —-------    |
 
 
-<h3> Limitations and Future Directions </h3>
+<h2> Limitations and Future Directions </h2>
 
 While Sentiment Control is an important advancement, our analysis remains observational. Unobserved confounders may still exist, such as intrinsic correlations between sentiment positivity and answer quality. Future work includes exploring other emotional and psychological dimensions of style.
 
