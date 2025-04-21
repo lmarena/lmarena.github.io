@@ -77,11 +77,11 @@ When controlling for emojis and sentiment, we observed significant changes in th
 
 2. Models renowned for its style and positivity, such as Grok-3 and Llama-4-Maverick-03-26-Experimental dropped significantly in ranking, while models tat seemingly use less style and sentiment, such as Claude-3.7, significantly increased in ranking. 
 
-<img src="/assets/img/blog/sentiment_control/overall_sentiment_and_style.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
+<img src="/assets/img/blog/sentiment-control/overall_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
 <p style="color:gray; text-align: center;">Figure 1. Overall Chatbot Arena ranking vs Overall Chatbot Arena ranking where our style features are being controlled.</p>
 
-<img src="/assets/img/blog/sentiment_control/style_style_and_sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
+<img src="/assets/img/blog/sentiment-control/style_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
 <p style="color:gray; text-align: center;">Figure 2. Style Control ranking vs Style and Sentiment Control ranking, where we now control for emoji count and sentiment
 </p>
@@ -113,6 +113,11 @@ We apply sentiment control without style control. The corresponding coefficients
 | Neutral         |  -0.0463    |
 | Positive        |  0.0262    |
 | Very Positive   |   0.0419    |
+
+<img src="/assets/img/blog/sentiment-control/overall_sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
+
+<p style="color:gray; text-align: center;">Figure 2. Overall ranking vs Sentiment Control ranking, where we only control for emoji count and sentiment
+</p>
 
 <h3> Further Analysis </h3>
 
