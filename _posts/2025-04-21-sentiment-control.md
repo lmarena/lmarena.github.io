@@ -20,8 +20,8 @@ authors:
 
 <h2> Introduction </h2>
 
-You may have noticed that many of the recent models seem to employ stronger emotion compared to older models. To what extent does this increase the model rankings on the Chatbot Arena leaderboard? Our previous exploration disentangled style and substance, revealing that style significantly impacts model performance. However, we suspected that style might encompass more than markdown formatting and response length—emojis and sentiment could also play a pivotal role.
-Today, we're excited to introduce **Sentiment Control**, an extended version of our style-controlled ranking [1] that includes:
+You may have noticed that many of the recent models seem to employ stronger emotion compared to older models. To what extent does this increase the model rankings on the Chatbot Arena leaderboard? Our [previous exploration](https://blog.lmarena.ai/blog/2024/style-control/) disentangled style and substance, revealing that style significantly impacts model performance. However, we suspected that style might encompass more than markdown formatting and response length—emojis and sentiment could also play a pivotal role.
+Today, we're excited to introduce **Sentiment Control**, an extended version of our style-controlled ranking that includes:
 
 1. Emoji Count
 2. Sentiment (Very Negative, Negative, Neutral, Positive, Very Positive, Positive)
@@ -30,11 +30,11 @@ Let’s see how this expanded definition of style affects model rankings and whe
 
 <h2> Methodology</h2>
 
-Building upon our previous style control approach [1], we've now included additional style variables:
+Building upon our previous style control approach, we've now included additional style variables:
 
 1. **Emoji Count**: Total number of emojis used in responses.
 
-2. **Sentiment Scores**: Categorized into Very Positive, Positive, Neutral sentiments with Gemini-2.0-flash-001 using the following system prompt:
+2. **Sentiment Scores**: Categorized into Very Negative, Negative, Neutral, Positive, Very Positive, Positive sentiments with Gemini-2.0-flash-001 using the following system prompt:
 
 ```
   You are a specialized tone classifier analyzing chatbot responses. You will be given a full chat log containing both user prompts and chatbot responses.  
@@ -74,15 +74,15 @@ When controlling for emojis and sentiment, we observed significant changes in th
 
 1. Sentiment Analysis indicated that models consistently employing a more positive sentiment gained higher user preference scores.
 
-2. Models renowned for its style and positivity, such as Grok-3 and Llama-4-Maverick-03-26-Experimental dropped significantly in ranking, while models tat seemingly use less style and sentiment, such as Claude-3.7, significantly increased in ranking. 
+2. Under style and sentiment control, models renowned for its style and positivity, such as Grok-3 and Llama-4-Maverick-03-26-Experimental dropped significantly in ranking, while models that seemingly use less style and sentiment, such as Claude-3.7, significantly increased in ranking. 
 
 <img src="/assets/img/blog/sentiment-control/overall_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
-<p style="color:gray; text-align: center;">Figure 1. Overall Chatbot Arena ranking vs Overall Chatbot Arena ranking where our style features are being controlled.</p>
+<p style="color:gray; text-align: center;">Figure 1. Overall Chatbot Arena ranking vs Style and Sentiment Control ranking</p>
 
 <img src="/assets/img/blog/sentiment-control/style_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
-<p style="color:gray; text-align: center;">Figure 2. Style Control ranking vs Style and Sentiment Control ranking, where we now control for emoji count and sentiment
+<p style="color:gray; text-align: center;">Figure 2. Style Control ranking vs Style and Sentiment Control ranking
 </p>
 
 We provide the coefficients for each newly added feature to demonstrate their impact clearly:
@@ -102,7 +102,7 @@ We provide the coefficients for each newly added feature to demonstrate their im
 
 <h2> Ablation Tests </h2>
 
-We apply sentiment control without style control. The corresponding coefficients are:
+To better isolate the effect of sentiment alone, we conducted an ablation study where we removed all style-related features (such as markdown and length) and only included emoji count and sentiment scores in the regression.
 
 | Feature         |  Coefficient  |
 | -------------   | :-----------: |
@@ -113,6 +113,12 @@ We apply sentiment control without style control. The corresponding coefficients
 | Positive        |  0.0262    |
 | Very Positive   |   0.0419    |
 
+We find that:
+
+- Positive sentiment still strongly correlates with higher preference, even in the absence of formatting cues.
+
+- Negative and neutral tones are penalized, suggesting user preference leans heavily toward emotionally expressive models.
+
 <img src="/assets/img/blog/sentiment-control/overall_sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
 <p style="color:gray; text-align: center;">Figure 2. Overall ranking vs Sentiment Control ranking, where we only control for emoji count and sentiment
@@ -120,7 +126,7 @@ We apply sentiment control without style control. The corresponding coefficients
 
 <h2> Further Analysis </h2>
 
-Conditioned on the sentiment tones, the win rates are as follows
+To better understand how sentiment impacts head-to-head outcomes, we computed win rates conditioned on sentiment labels. Each entry below represents the probability that a model with a given tone (row) beats a model with another tone (column):
 
 |                  | Very Negative |  Negative  |  Neutral   |  Positive  | Very Positive |
 |:----------------:|:-------------:|:----------:|:----------:|:----------:|:-------------:|
@@ -130,6 +136,15 @@ Conditioned on the sentiment tones, the win rates are as follows
 | **Positive**  |   0.597403    |  0.706844  |  0.585593  |  —-------  |   0.449768    |
 | **Very Positive**|   0.569536    |  0.782908  |  0.637285  |  0.550232  |   —-------    |
 
+Several insights emerge:
+
+- Very Negative beats Negative (65%) and Neutral (54%), which might seem surprising at first. This likely reflects scenarios where users prompt the chatbot to behave maliciously or humorously at their own expense (e.g., “Roast me” or “Make fun of me”). In such cases, chatbots that lean into the negativity—rather than deflect—are actually rewarded by users.
+
+- Neutral tone underperforms across the board, losing to every other tone except Negative. This supports the idea that emotional expression, whether positive or negative, tends to be preferred over dry or purely factual responses. Neutral responses may be perceived as disengaged or unhelpful, especially in creative or open-ended tasks.
+
+- As expected, Positive and Very Positive dominate, with Very Positive winning 78% of the time against Negative and 64% against Neutral.
+
+This suggests that sentiment affects not only absolute rankings but also pairwise preferences in nuanced and sometimes counterintuitive ways.
 
 <h2> Limitations and Future Directions </h2>
 
@@ -148,7 +163,7 @@ Please see the link to the colab notebook below. We will be adding sentiment con
 ## Citation
 
 ```bibtex
-@misc{searcharena2025,
+@misc{sentimentarena2025,
     title = {Introducing Sentiment Control: Disentagling Sentiment and Substance},
     url = {https://blog.lmarena.ai/blog/2025/sentiment-control/},
     author = {Connor Chen*, Wei-Lin Chiang*, Tianle Li*, Anastasios N. Angelopoulos*},
