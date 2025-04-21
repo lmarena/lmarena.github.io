@@ -4,17 +4,18 @@ title: "Does Sentiment Matter Too?"
 description: "Introducing Sentiment Control: Disentagling Sentiment and Substance"
 giscus_comments: true
 date: 2025-04-21
+thumbnail: "/assets/img/blog/sentiment-control/sentiment_logo.png"
 featured: true
 authors:
-  - name: Connor Chen*
+  - name: Connor Chen
     url: "https://www.linkedin.com/in/connorzchen/"
     affiliations:
       name: UC Berkeley
-  - name: Wei-Lin Chiang*
+  - name: Wei-Lin Chiang
     url: "https://infwinston.github.io/"
-  - name: Tianle Li*
+  - name: Tianle Li
     url: "https://codingwithtim.github.io/"
-  - name: Anastasios Angelopoulos*
+  - name: Anastasios Angelopoulos
     url: "http://angelopoulos.ai"
 ---
 
@@ -75,7 +76,7 @@ Controlling for sentiment and emoji usage yields notable shifts in rankings:
 
 1. Models expressing more positive sentiment consistently receive higher user preference scores.  
 
-2. When controlling for sentiment, models known for strong stylistic and emotional appeal-like Grok-3 and Llama-4-Maverick—drop in rank, while those with more neutral or subdued styles—like Claude-3.7—rise noticeably.
+2. When controlling for sentiment, models known for strong stylistic and emotional appeal-like Grok-3 and Llama-4-Maverick-Experimental—drop in rank, while those with more neutral or subdued styles—like Claude-3.7—rise noticeably.
 
 <img src="/assets/img/blog/sentiment-control/overall_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
@@ -168,7 +169,7 @@ Please see the link to the colab notebook below. We will be adding sentiment con
 @misc{sentimentarena2025,
     title = {Introducing Sentiment Control: Disentagling Sentiment and Substance},
     url = {https://blog.lmarena.ai/blog/2025/sentiment-control/},
-    author = {Connor Chen*, Wei-Lin Chiang*, Tianle Li*, Anastasios N. Angelopoulos*},
+    author = {Connor Chen, Wei-Lin Chiang, Tianle Li, Anastasios N. Angelopoulos},
     month = {April},
     year = {2025}
 }
