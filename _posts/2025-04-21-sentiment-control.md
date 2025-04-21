@@ -25,7 +25,7 @@ You may have noticed that recent models on Chatbot Arena appear more emotionally
 Enter **Sentiment Control**: a refined version of our original Style Control methodology that expands the feature set to include:
 
 1. Emoji Count
-2. Sentiment (Very Negative, Negative, Neutral, Positive, Very Positive, Positive)
+2. Sentiment (Very Negative, Negative, Neutral, Positive, Very Positive)
 
 Let’s see how this expanded definition of style affects model rankings and whether it boosts specific performance.
 
@@ -35,7 +35,7 @@ Building upon our previous style control approach, we've now included additional
 
 1. **Emoji Count**: Total number of emojis used in responses.
 
-2. **Sentiment Scores**: Categorized into Very Negative, Negative, Neutral, Positive, Very Positive, Positive sentiments with Gemini-2.0-flash-001 using the following system prompt:
+2. **Sentiment Scores**: Categorized into Very Negative, Negative, Neutral, Positive, and Very Positive sentiments with Gemini-2.0-flash-001 using the following system prompt:
 
 ```
   You are a specialized tone classifier analyzing chatbot responses. You will be given a full chat log containing both user prompts and chatbot responses.  
@@ -75,7 +75,7 @@ Controlling for sentiment and emoji usage yields notable shifts in rankings:
 
 1. Models expressing more positive sentiment consistently receive higher user preference scores.  
 
-2. Models known for strong stylistic appeal—like Grok-3 and Llama-4-Maverick—drop in rank, while those with more neutral or subdued styles—like Claude-3.7—rise noticeably.
+2. When controlling for sentiment, models known for strong stylistic and emotional appeal-like Grok-3 and Llama-4-Maverick—drop in rank, while those with more neutral or subdued styles—like Claude-3.7—rise noticeably.
 
 <img src="/assets/img/blog/sentiment-control/overall_style-sentiment.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 80%"/>
 
