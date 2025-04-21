@@ -138,11 +138,13 @@ While Sentiment Control is an important advancement, our analysis remains observ
 
 We're eager for community contributions and further collaboration! 
 
+Please see the link to the colab notebook below. We will be adding sentiment control soon to all categories of the leaderboard. We look forward to seeing how the community leverages these new insights. Stay tuned for more updates!
+
+- [Colab Link](https://colab.research.google.com/drive/17Pf9xW2agVJbm_KGOLEet5OxB98CcjTP?usp=sharing)
+
 ## Reference
 
 [1] Li et al. “Does Style Matter? Disentangling style and substance in Chatbot Arena”
-
-We look forward to seeing how the community leverages these new insights. Stay tuned for more updates!
 
 ## Citation
 
