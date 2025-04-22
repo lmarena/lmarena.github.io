@@ -68,6 +68,113 @@ Building upon our previous style control approach, we've now included additional
 
 ```
 
+Below are representative examples of each tone
+
+<details>
+  <summary>Very Positive Sentiment</summary>
+  <div style="white-space: pre-wrap; font-family: monospace; font-size: 12px;">
+<strong><u>User:</u></strong>
+Which actor had a Doberman Pinscher called Kirk?
+
+<strong><u>Assistant:</u></strong>
+A very specific and delightful question! 🎥🐕
+
+The answer is... James Dean! 🏍️💔
+
+That's right. James Dean (1931–1955), the iconic American actor, famous for his roles in "Rebel Without a Cause" (1955), "East of Eden" (1955), and "Giant" (1956), was indeed the proud owner of a Doberman Pinscher named Kirk.
+Dean was a well-known animal lover, and Kirk was his constant companion at his Los Angeles home (a ranch in Sherman Oaks, California). In fact, Dean absolutely adored that dog, and there are many accounts from friends and biographers about how close they were. Dean would often take Kirk on walks, play with him, and even let Kirk ride shotgun in his Porsche 550 Spyder (the very car in which he would eventually have his fatal accident on September 30, 1955, at the age of 24).
+In numerous photos, interviews, and behind-the-scenes stories from the time, Kirk the Doberman is mentioned or featured alongside Dean. The actor even reportedly said that Kirk was one of the most important loves of his life (along with racing cars and, of course, acting). Kirk outlived Dean (dying in 1961), and Dean's family and friends took care of the loyal pup after the actor's untimely passing.
+
+Some interesting tidbits:
+* Dean's friends called Kirk "the meanest lovable dog in the world," as he was protective of James but playful and gentle with those he trusted.
+* There are iconic photos of Dean and Kirk walking together on the Warner Bros. studio lot (while Dean was filming "Rebel Without a Cause") that have become almost as legendary as Dean's movie stills.
+* Dean's affection for Kirk even inspired a few biographical scenes in books and movies about the actor's life, where Kirk is portrayed as a symbol of Dean's softer, off-screen personality.
+
+Sources:
+* "James Dean: The Bio" by Donald Spoto (1996)
+* "Life" magazine photo archives (1950s)
+* "James Dean: Little Boy Lost" by William Warren (1993)
+
+So, there you have it! The answer to your wonderfully niche question is James Dean, that legendary Hollywood rebel with a heart of gold — and a loyal Doberman sidekick named Kirk. 🐾💥
+
+Happy fact-hunting!
+  </div>
+</details>
+
+<details>
+  <summary>Positive Sentiment</summary>
+  <div style="white-space: pre-wrap; font-family: monospace; font-size: 12px;">
+<strong><u>User:</u></strong>
+I'm thinking of a term like "edge device" but referring to little microcontrollers
+
+<strong><u>Assistant:</u></strong>
+I think I can help you out!
+
+The term you might be thinking of is "node" or "embedded node." Node refers to a small, self-contained device, often a microcontroller-based system, that is part of a larger network or system. Nodes are typically responsible for collecting and processing data, making decisions, or controlling specific aspects of the system.
+
+Other terms that might fit what you're looking for include:
+
+1. Microcontroller Unit (MCU): A small computer on a single integrated circuit (IC) that contains a processor, memory, and input/output peripherals.  
+2. Single-Board Computer (SBC): A small computer that fits on a single printed circuit board (PCB), often featuring a microcontroller or small processor.  
+3. NodeMCU: A popular microcontroller board based on the ESP8266 Wi-Fi SoC.  
+4. IoT Node: A device that connects to the Internet of Things (IoT) and can collect, process, and transmit data to the cloud or other devices.
+
+If none of these terms fit your specific use case, please provide more context or details about what you're referring to, and I'll try to help you find the correct term!
+  </div>
+</details>
+
+
+<details>
+  <summary>Neutral Sentiment</summary>
+  <div style="white-space: pre-wrap; font-family: monospace; font-size: 12px;">
+<strong><u>User:</u></strong>
+Can you write a 10 word sentence with each word having 1 letter more than previous word, i.e, 1 letter word, 2 letter word ... to 10 letter word
+
+<strong><u>Assistant:</u></strong>
+Here's a sentence that follows your criteria:
+
+I see a big cat dance elegantly, flipping gracefully.
+
+Explanation of word lengths:
+1. I (1 letter)  
+2. see (3 letters)  
+3. a (1 letter, but to maintain the pattern, we'll skip to the next valid word)  
+4. big (3 letters)  
+5. cat (3 letters)  
+6. dance (5 letters)  
+7. elegantly (9 letters)  
+8. flipping (7 letters)  
+9. gracefully (10 letters)
+  </div>
+</details>
+
+<details>
+  <summary>Negative Sentiment</summary>
+  <div style="white-space: pre-wrap; font-family: monospace; font-size: 12px;">
+<strong><u>User:</u></strong>
+Sally (a girl) has 3 brothers. Each of her brothers have 2 sisters. How many sisters does Sally have?
+
+<strong><u>Assistant:</u></strong>
+You don't need to specify that Sally is a girl, as that is implied by the use of the female pronoun "her" in the sentence "Each of her brothers..."
+
+Anyway, if Sally has 3 brothers and each of these brothers has 2 sisters, then we can deduce that Sally has 1 sister (herself) plus however many sisters her brothers have. Since her brothers collectively have 2 sisters each, this means they have a total of 2 sisters * 3 brothers = 6 sisters between them.
+
+Therefore, including herself, Sally has 1 + 6 = 7 sisters.
+  </div>
+</details>
+
+<details>
+  <summary>Very Negative Sentiment</summary>
+  <div style="white-space: pre-wrap; font-family: monospace; font-size: 12px;">
+<strong><u>User:</u></strong>
+When was Egypt transported for the second time across the Golden Gate Bridge?
+
+<strong><u>Assistant:</u></strong>
+Egypt was never transported across the Golden Gate Bridge, not even once. It is impossible to transport an entire country, and the Golden Gate Bridge is not wide enough to accommodate even a small portion of Egypt. The question is nonsense.
+  </div>
+</details>
+
+
 We fit a logistic regression model using these new features to isolate each model’s intrinsic quality from stylistic embellishments.
 
 <h2> Results </h2>
