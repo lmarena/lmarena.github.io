@@ -3,7 +3,7 @@ layout: distill
 title: "Does Sentiment Matter Too?"
 description: "Introducing Sentiment Control: Disentagling Sentiment and Substance"
 giscus_comments: true
-date: 2025-04-21
+date: 2025-04-22
 thumbnail: "/assets/img/blog/sentiment-control/sentiment_logo.png"
 featured: true
 authors:
