@@ -5,14 +5,14 @@ description: Analysis of prompt freshness and benchmark contamination
 giscus_comments: true
 date: 2025-04-18
 featured: true
-thumbnail: assets/img/blog/explorer/explorer.png
+thumbnail: assets/img/blog/freshness/thumbnail.png
 authors:
   - name: Lisa Dunlap
-    url: "https://www.linkedin.com/in/kelly-yuguo-tang/"
+    url: "https://www.lisabdunlap.com/"
     affiliations:
       name: UC Berkeley
   - name: Elva Lu
-    url: "http://angelopoulos.ai"
+    url: "https://datascience.uchicago.edu/people/elva-lu/"
   - name: Joseph E. Gonzalez
     url: "https://people.eecs.berkeley.edu/~jegonzal/"
   - name: Anastasios N. Angelopoulos
