@@ -14,13 +14,14 @@ authors:
 
 To date, the community has evaluated over **400+ public models** on LMArena as well as **300+ pre-release tests**. **Tens of millions** of battle pairings have been served to users across the world, and each vote has shaped real-world AI performance and development. Around this time two years ago, the community helped us publish our [very first leaderboard rankings](https://lmsys.org/blog/2023-05-03-arena/):
 
+#### The first Chatbot Arena Leaderboard (May 2023)
 <img src="/assets/img/blog/arena_two_year/first_leaderboard.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 95%">
 
 It's amazing to see how far we’ve come together since then! Today we’re celebrating some fun figures outlining the scale of this community evaluation effort, showcasing how it has helped LLMs develop:
-- 400+ models have been evaluated across various modalities (Text, [Vision](https://blog.lmarena.ai/blog/2024/multimodal/), [Text-to-Image](https://x.com/lmarena_ai/status/1882164189739073990), [WebDev](https://blog.lmarena.ai/blog/2025/webdev-arena/) and more!)
-- 300+ evaluations have been pre-release (giving the community access to pre-release frontier models)
-- 1.5 million prompts contributed by the community have been released for open research
-- 9 papers and 15 blog posts on evaluation and human preference been published 
+- <p style="font-weight: 400;">400+ models have been evaluated across various modalities (Text, <a href="https://blog.lmarena.ai/blog/2024/multimodal/">Vision</a>, <a href="https://x.com/lmarena_ai/status/1882164189739073990">Text-to-Image</a>, <a href="https://blog.lmarena.ai/blog/2025/webdev-arena/">WebDev</a> and more!)</p>
+- <p style="font-weight: 400;">300+ evaluations have been pre-release (giving the community access to pre-release frontier models)</p>
+- <p style="font-weight: 400;">1.5 million prompts contributed by the community have been released for open research</p>
+- <p style="font-weight: 400;">9 papers and 15 blog posts on evaluation and human preference been published </p>
 
 #### Current leaderboard (as of April 2025):
 <img src="/assets/img/blog/arena_two_year/beta_leaderboard.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 95%">
@@ -40,25 +41,28 @@ As part of our commitment to AI transparency, we’ve also released [public data
 <img src="/assets/img/blog/arena_two_year/battle_breakdown.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 95%">
 
 From the start, the LMArena experience has been community-driven. One trend that continues to come through in the feedback loud and clear is that a valuable experience involves having frequent access to the best models, and being a part of the first to access the newest ones. To meet the community expectations, our sampling [policy](https://blog.lmarena.ai/blog/2024/policy/) focuses on those two areas:
-1. Preserve the community experience by serving the best models.
-2. Make it easy to converge on new models as they arrive.
+1. <p style="font-weight: 400;">Preserve the community experience by serving the best models.</p>
+2. <p style="font-weight: 400;">Make it easy to converge on new models as they arrive.</p>
 
-To achieve this, we upsample the best models, and new models, so they get seen more frequently in battles and provide the most value back to the community. The way we prioritize models is just one example of how community input shapes every aspect of the platform. 
+To achieve this, we upsample the best models, and new models, so they get seen more frequently in battles and provide the most value back to the community. The way we prioritize models is just one example of how community input shapes every aspect of the platform.
 
 
-### Supporting Open-Source
+### Supporting Open-Source with Open Data
 
 <img src="/assets/img/blog/arena_two_year/open_vs_proprietary.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 95%">
 
-In addition to having ungated access to top models, the community remains especially excited and always passionate about testing the latest and greatest open-source ones. That said, the leaderboard is the place where the best models are revealed. Every model steps into the arena, but only the best rise to the top. Open source or proprietary, it doesn’t matter, the community calls the winners. 
+In addition to having ungated access to top models, the community remains especially excited and always passionate about testing the latest and greatest open-source models. That said, the leaderboard is the place where the best models are revealed. Every model steps into the arena, but only the best rise to the top. Open source or proprietary, it doesn’t matter, the community calls the winners. 
 
-We proudly support open-source models to be sampled into battle mode, with nearly 41% of battles involving an open model. Our community not only champions open-source initiatives but also understands firsthand how much more cost efficient and customizable these models can be for real-world applications. Open-source models and proprietary ones are given equal footing in receiving community feedback.
+We proudly support open-source models with nearly 41% of battles involving an open model. Our community not only champions open-source initiatives but also understands firsthand how much more cost efficient and customizable these models can be for real-world applications. Moreover, we have been releasing open data since Day 1, including over 1.5 millions prompts and 200K feedback votes to support open research. Expect more coming soon!
+
+#### Data release on our HuggingFace
+<img src="/assets/img/blog/arena_two_year/dataset.png" style="display:block; margin-top: auto; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 95%">
 
 
 ### Join the Community
 
 We're going to keep working to make LMArena an even more inclusive and open experience. If you’ve been following our journey, you know we’re actively testing a [new experience in Beta](https://beta.lmarena.ai) to be more accessible to everyone. We’re also going to continue to expand the range of models we test, improving ways for new teams to participate, and building features to make the evaluation experience better for the whole ecosystem. If you're building something new or curious to explore the frontier of AI with others, we’d love for you to help shape the future of AI with us.
 
-- Check out our new UI in Beta: [https://beta.lmarena.ai](https://beta.lmarena.ai)
-- Join the conversation: [https://discord.gg/LMArena](https://discord.gg/LMArena)
-- Follow us on X: [x.com/lmarena_ai](https://x.com/lmarena_ai) 
+- <p style="font-weight: 400;">Check out our new UI in Beta: <a href="https://beta.lmarena.ai">beta.lmarena.ai</a></p>
+- <p style="font-weight: 400;">Join the conversation: <a href="https://discord.gg/LMArena">discord.gg/LMArena</a></p>
+- <p style="font-weight: 400;">Follow us on X: <a href="https://x.com/lmarena_ai">x.com/lmarena_ai</a></p>
