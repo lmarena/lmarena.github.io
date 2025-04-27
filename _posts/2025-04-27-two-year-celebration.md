@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: "Celebrating Community Impact: 2.8M votes, 400+ models, and 300+ pre-release tests"
+title: "Celebrating Community Impact: 3M+ votes, 400+ models, and 300+ pre-release tests"
 description:
 giscus_comments: true
 date: 2025-04-27
