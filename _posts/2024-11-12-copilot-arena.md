@@ -238,9 +238,13 @@ During real development processes, developers frequently modify or expand on exi
 ## Citation
 
 ```bibtex
-@misc{chi2024copilot,
-    title={Copilot Arena},
-    author={Wayne Chi and Valerie Chen and Wei-Lin Chiang and Anastasios N. Angelopoulos and Naman Jain and Tianjun Zhang and Ion Stoica and Chris Donahue and Ameet Talwalkar}
-    year={2024},
+@misc{chi2025copilotarenaplatformcode,
+      title={Copilot Arena: A Platform for Code LLM Evaluation in the Wild}, 
+      author={Wayne Chi and Valerie Chen and Anastasios Nikolas Angelopoulos and Wei-Lin Chiang and Aditya Mittal and Naman Jain and Tianjun Zhang and Ion Stoica and Chris Donahue and Ameet Talwalkar},
+      year={2025},
+      eprint={2502.09328},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2502.09328}, 
 }
 ```
