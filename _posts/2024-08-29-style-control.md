@@ -21,7 +21,7 @@ authors:
 ### Updated Notes (2025/05/15):
 - Starting from May 15, 2025, Style Control is now the default view on [lmarena.ai/leaderboard](https://lmarena.ai/leaderboard).
 - For any category, the #1 model on the non-style-control leaderboard will always have the same score on the style-control leaderboard as it does on the non-style-control leaderboard. We ensure this by applying the same translation to every entry in the style-control leaderboard. This does not change the interpretation of the scores because the Bradley-Terry coefficients are translation invariant. We perform this translation to preserve consistency between the style-control and non-style-control leaderboards.
-- The non-style-control leaderboard will be referred to as the "raw leaderboard", and the default will be the style-control leaderboard. We will no longer explicitly mention style control.
+- Moving forward, the non-style-control leaderboard will be referred to as the "raw leaderboard", and the default will be the style-control leaderboard. We will no longer explicitly mention style control.
 
 ---
 
