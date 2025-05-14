@@ -18,6 +18,12 @@ authors:
     url: "https://infwinston.github.io/"
 ---
 
+### Updated Notes (2025/05/15):
+- Starting from May 15, 2025, Style Control is now the default view on [lmarena.ai/leaderboard](https://lmarena.ai/leaderboard).
+- For any category, the #1 model on the non-style-control leaderboard will always have the same score on the style-control leaderboard as it does on the non-style-control leaderboard. We ensure this by applying the same translation to every entry in the style-control leaderboard. This does not change the interpretation of the scores because the Bradley-Terry coefficients are translation invariant. We perform this translation to preserve consistency between the style-control and non-style-control leaderboards.
+
+---
+
 Why is GPT-4o-mini so good? Why does Claude rank so low, when anecdotal experience suggests otherwise?
 
 We have answers for you. We controlled for the effect of length and markdown, and indeed, _the ranking changed_. This is just a first step towards our larger goal of disentangling **substance** and **style** in Chatbot Arena leaderboard.
