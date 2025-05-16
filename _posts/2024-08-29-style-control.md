@@ -20,7 +20,7 @@ authors:
 
 ### Updated Notes (2025/05/15):
 - Starting from May 15, 2025, Style Control becomes the default view on [lmarena.ai/leaderboard](https://lmarena.ai/leaderboard).
-- For consistency, we change the anchor model to be the current #1 model on the non-style-control leaderboard to its score (specifically, `gemini-2.5-pro-preview-05-06` to 1446). This does not change the interpretation of the scores because the Bradley-Terry coefficients are translation invariant. We perform this translation to preserve consistency between the style-control and non-style-control leaderboards.
+- For consistency, we change the anchor model to be the current #1 model on the non-style-control leaderboard (specifically, `gemini-2.5-pro-preview-05-06` to 1446). This does not change the interpretation of the scores because the Bradley-Terry coefficients are translation invariant. We perform this translation to preserve consistency between the style-control and non-style-control leaderboards.
 - Moving forward, the non-style-control leaderboard will be referred to as the "raw leaderboard", and the default will be the style-control leaderboard. We will no longer explicitly mention style control.
 
 ---
