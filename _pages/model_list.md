@@ -308,7 +308,6 @@
 - `llama-4-maverick-03-26-experimental`
 - `gemini-2.5-flash-preview-04-17`
 - `gpt-4.1-nano-2025-04-14`
-- `llama-4-scout-17b-16e-instruct`
 - `gemma-3-12b-it`
 - `gemma-3-4b-it`
 - `olmo-2-0325-32b-instruct`
