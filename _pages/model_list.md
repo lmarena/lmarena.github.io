@@ -313,4 +313,3 @@
 - `gemma-3-4b-it`
 - `olmo-2-0325-32b-instruct`
 - `qwen3-30b-a3b`
-- `gemma-3n-e4b-it`
