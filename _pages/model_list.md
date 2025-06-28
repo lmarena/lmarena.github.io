@@ -1,4 +1,4 @@
-#### List of Models Deprecated from the Text Arena Battle Mode and the Leaderboard (as of 2025/06/15)
+#### List of Models Deprecated from the Text Arena Battle Mode and the Leaderboard (as of 2025/06/27)
 
 - `gemini-1.5-pro-exp-0801`
 - `gemini-1.5-pro-api-0409-preview`
@@ -43,9 +43,11 @@
 - `gemini-2.0-pro-exp-02-05`
 - `gemini-2.0-flash-thinking-exp-01-21`
 - `gemini-2.5-pro-exp-03-25`
+- `gemini-2.5-pro-preview-05-06`
+- `gemini-2.5-flash-preview-04-17`
 
 
-#### List of Models Deprecated from the Text Arena Battle Mode (as of 2025/06/15)
+#### List of Models Deprecated from the Text Arena Battle Mode (as of 2025/06/27)
 
 - `wizardlm-30b`
 - `vicuna-13b-16k`
@@ -312,3 +314,4 @@
 - `gemma-3-4b-it`
 - `olmo-2-0325-32b-instruct`
 - `qwen3-30b-a3b`
+- `gemini-2.5-pro-preview-05-06`
